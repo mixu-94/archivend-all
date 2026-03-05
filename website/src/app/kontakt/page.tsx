@@ -1,0 +1,127 @@
+import type { Metadata } from "next";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { ContactFormSection } from "@/components/sections/ContactFormSection";
+import { COMPANY } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Kontakt",
+  description:
+    "Kontaktieren Sie Archivend GmbH in Günzburg. Wir beraten Sie persönlich zu Immobilien, Bauprojekten und Luftfahrtservices — kostenlos und unverbindlich.",
+  alternates: { canonical: "/kontakt" },
+};
+
+export default function KontaktPage() {
+  return (
+    <>
+      {/* Page Hero */}
+      <section className="bg-brand-primary py-16 md:py-24 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg, transparent, transparent 39px, white 39px, white 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, white 39px, white 40px)",
+          }}
+        />
+        <div className="container mx-auto px-6 md:px-10 relative">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="block h-px w-8 bg-brand-accent" />
+            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-brand-accent">
+              Kontakt
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            Sprechen wir miteinander
+          </h1>
+          <p className="text-white/70 text-lg max-w-xl">
+            Ob Frage, Anfrage oder Beratungsgespräch — wir freuen uns auf Ihre Kontaktaufnahme.
+            Persönlich, schnell und unverbindlich.
+          </p>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="py-16 md:py-24 bg-brand-surface">
+        <div className="container mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+            {/* Formular */}
+            <div className="lg:col-span-2">
+              <ContactFormSection />
+            </div>
+
+            {/* Kontaktdaten */}
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-xl font-bold text-brand-text mb-6">
+                  Direkter Kontakt
+                </h2>
+
+                <div className="space-y-4">
+                  <a
+                    href={`tel:${COMPANY.contact.phoneClean}`}
+                    className="flex items-start gap-4 p-4 rounded-xl border border-border hover:border-brand-accent/40 hover:shadow-sm transition-all group"
+                  >
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-brand-primary/10 shrink-0 group-hover:bg-brand-accent/15 transition-colors">
+                      <Phone className="h-5 w-5 text-brand-accent" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-brand-text-muted uppercase tracking-wider mb-1">Telefon</p>
+                      <p className="font-semibold text-brand-text">{COMPANY.contact.phone}</p>
+                    </div>
+                  </a>
+
+                  <a
+                    href={`mailto:${COMPANY.contact.email}`}
+                    className="flex items-start gap-4 p-4 rounded-xl border border-border hover:border-brand-accent/40 hover:shadow-sm transition-all group"
+                  >
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-brand-primary/10 shrink-0 group-hover:bg-brand-accent/15 transition-colors">
+                      <Mail className="h-5 w-5 text-brand-accent" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-brand-text-muted uppercase tracking-wider mb-1">E-Mail</p>
+                      <p className="font-semibold text-brand-text">{COMPANY.contact.email}</p>
+                    </div>
+                  </a>
+
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(COMPANY.address.full)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 p-4 rounded-xl border border-border hover:border-brand-accent/40 hover:shadow-sm transition-all group"
+                  >
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-brand-primary/10 shrink-0 group-hover:bg-brand-accent/15 transition-colors">
+                      <MapPin className="h-5 w-5 text-brand-accent" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-brand-text-muted uppercase tracking-wider mb-1">Adresse</p>
+                      <p className="font-semibold text-brand-text">{COMPANY.address.street}</p>
+                      <p className="text-brand-text-muted text-sm">{COMPANY.address.zip} {COMPANY.address.city}</p>
+                    </div>
+                  </a>
+
+                  <div className="flex items-start gap-4 p-4 rounded-xl border border-border">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-brand-primary/10 shrink-0">
+                      <Clock className="h-5 w-5 text-brand-accent" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-brand-text-muted uppercase tracking-wider mb-1">Antwortzeit</p>
+                      <p className="font-semibold text-brand-text">Innerhalb von 24 h</p>
+                      <p className="text-brand-text-muted text-sm">Mo – Fr, 8:00 – 18:00 Uhr</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-5 rounded-xl bg-brand-primary text-white">
+                <p className="text-brand-accent text-xs font-semibold tracking-wider uppercase mb-2">Unser Versprechen</p>
+                <p className="text-sm text-white/80 leading-relaxed">
+                  Jede Anfrage wird von uns persönlich und sorgfältig bearbeitet.
+                  Kein Call-Center, keine automatischen Antworten — nur echte Beratung von echten Experten.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

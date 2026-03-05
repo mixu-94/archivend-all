@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -11,8 +11,39 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { COMPANY, NAV_LINKS } from "@/lib/constants";
+import { COMPANY, NAV_LINKS, type NavLink } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+
+function NavItem({
+  link,
+  isActive,
+  className,
+  onClick,
+}: {
+  link: NavLink;
+  isActive: boolean;
+  className: string;
+  onClick?: () => void;
+}) {
+  if (link.external) {
+    return (
+      <a
+        href={link.href}
+        target={link.target ?? "_blank"}
+        rel="noopener noreferrer"
+        className={className}
+        onClick={onClick}
+      >
+        {link.label}
+      </a>
+    );
+  }
+  return (
+    <Link href={link.href} className={className} onClick={onClick}>
+      {link.label}
+    </Link>
+  );
+}
 
 export function Header() {
   const pathname = usePathname();
@@ -35,20 +66,22 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                pathname === link.href
-                  ? "text-brand-accent bg-white/10"
-                  : "text-white/80 hover:text-white hover:bg-white/10"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = !link.external && pathname === link.href;
+            return (
+              <NavItem
+                key={link.href}
+                link={link}
+                isActive={isActive}
+                className={cn(
+                  "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                  isActive
+                    ? "text-brand-accent bg-white/10"
+                    : "text-white/80 hover:text-white hover:bg-white/10"
+                )}
+              />
+            );
+          })}
         </nav>
 
         {/* Desktop CTA */}
@@ -76,21 +109,23 @@ export function Header() {
           <SheetContent side="right" className="bg-brand-primary border-brand-primary-light w-72">
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <div className="flex flex-col gap-1 mt-8">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    "px-4 py-3 rounded-md text-base font-medium transition-colors",
-                    pathname === link.href
-                      ? "text-brand-accent bg-white/10"
-                      : "text-white/80 hover:text-white hover:bg-white/10"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive = !link.external && pathname === link.href;
+                return (
+                  <NavItem
+                    key={link.href}
+                    link={link}
+                    isActive={isActive}
+                    className={cn(
+                      "px-4 py-3 rounded-md text-base font-medium transition-colors",
+                      isActive
+                        ? "text-brand-accent bg-white/10"
+                        : "text-white/80 hover:text-white hover:bg-white/10"
+                    )}
+                    onClick={() => setMobileOpen(false)}
+                  />
+                );
+              })}
               <div className="mt-4 pt-4 border-t border-white/20">
                 <a
                   href={`tel:${COMPANY.contact.phoneClean}`}

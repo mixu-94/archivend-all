@@ -19,16 +19,16 @@ export function getLocalBusinessSchema() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 49.1414,
-      longitude: 10.0714,
+      latitude: 48.4517,
+      longitude: 10.2784,
     },
     priceRange: "€€",
     areaServed: {
       "@type": "GeoCircle",
       geoMidpoint: {
         "@type": "GeoCoordinates",
-        latitude: 49.1414,
-        longitude: 10.0714,
+        latitude: 48.4517,
+        longitude: 10.2784,
       },
       geoRadius: "100000",
     },
