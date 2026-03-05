@@ -18,6 +18,13 @@ export const metadata: Metadata = {
     "Rundflug buchen Schwäbische Alb",
   ],
   alternates: { canonical: "/air-fly" },
+  openGraph: {
+    title: "Air Fly Division | Archivend GmbH",
+    description:
+      "Archivend Air Fly Division: Rundflüge, Kurierflüge und professionelle Luftbildaufnahmen in der Region Günzburg und Bayern. Einzigartige Perspektiven für Immobilien und Bauprojekte.",
+    url: "/air-fly",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Air Fly Division — Archivend GmbH" }],
+  },
 };
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -101,7 +108,7 @@ export default function AirFlyPage() {
               const Icon = ICON_MAP[service.icon] ?? PlaneTakeoff;
               return (
                 <StaggerItem key={service.id}>
-                  <div className="bg-white rounded-2xl p-8 border border-border hover:border-brand-accent/40 hover:shadow-xl transition-all duration-300 h-full group">
+                  <div className="bg-card rounded-2xl p-8 border border-border hover:border-brand-accent/40 hover:shadow-xl transition-all duration-300 h-full group">
                     <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-brand-primary mb-6 group-hover:bg-brand-accent/20 transition-colors">
                       <Icon className="h-7 w-7 text-brand-accent" />
                     </div>
@@ -171,7 +178,7 @@ export default function AirFlyPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-card">
         <div className="container mx-auto px-6 md:px-10 text-center">
           <FadeIn>
             <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-4 tracking-tight">

@@ -11,7 +11,21 @@ import { COMPANY } from "@/lib/constants";
 export const metadata: Metadata = {
   title: `${COMPANY.name} — ${COMPANY.tagline}`,
   description: COMPANY.description,
+  keywords: [
+    "Immobilien Günzburg",
+    "Immobilienmakler Günzburg",
+    "Bauprojekte Bayern",
+    "Immobilienbewertung",
+    "Rundflüge Bayern",
+    "Archivend GmbH",
+  ],
   alternates: { canonical: "/" },
+  openGraph: {
+    title: `${COMPANY.name} — ${COMPANY.tagline}`,
+    description: COMPANY.description,
+    url: "/",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: COMPANY.name }],
+  },
 };
 
 export default function HomePage() {

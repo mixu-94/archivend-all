@@ -28,7 +28,7 @@ const STATS = [
 
 export function AboutSection() {
   return (
-    <section className="py-24 md:py-32 bg-white overflow-hidden">
+    <section className="py-24 md:py-32 bg-card overflow-hidden">
       <div className="container mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left — Text content */}
@@ -61,18 +61,18 @@ export function AboutSection() {
               style={{ color: "var(--brand-text-muted)" }}
             >
               Die Archivend GmbH ist ein modernes Immobilienunternehmen mit Sitz
-              in Crailsheim. Wir stehen für professionelle Kompetenz bei der
-              Vermittlung und Verwaltung von Immobilien sowie bei der
-              Abwicklung von Bauprojekten.
+              in Günzburg, Bayern. Seit unserer Gründung 2015 stehen wir für
+              verlässliche Expertise bei Immobilientransaktionen und Bauprojekten
+              in der Region.
             </p>
             <p
               className="text-base leading-relaxed mb-10"
               style={{ color: "var(--brand-text-muted)" }}
             >
-              Unser Anspruch: Jeder Auftrag wird mit derselben Sorgfalt und
-              Leidenschaft betreut. Mit unserem einzigartigen Air-Fly-Service
-              bieten wir zusätzlich exklusive Luftfahrtlösungen für
-              Privatpersonen und Unternehmen.
+              Unser Anspruch: Kein Auftrag ist zu klein, kein Projekt zu komplex.
+              Mit unserer Air Fly Division ergänzen wir klassische
+              Immobilienservices durch professionelle Luftbildaufnahmen — ein
+              Alleinstellungsmerkmal in der Region.
             </p>
 
             {/* Value Propositions */}
@@ -200,7 +200,7 @@ export function AboutSection() {
                     &ldquo;Your assignment is our passion&rdquo;
                   </p>
                   <p className="text-white/50 text-xs mt-1">
-                    — Archivend GmbH, Crailsheim
+                    — Archivend GmbH, Günzburg
                   </p>
                 </div>
               </div>

@@ -47,8 +47,9 @@ export function ServicesSection() {
             Unsere Leistungen
           </h2>
           <p className="text-lg" style={{ color: "var(--brand-text-muted)" }}>
-            Kompetente Beratung und professionelle Abwicklung — für Ihr
-            Immobilienprojekt von Anfang bis Ende.
+            Sechs spezialisierte Leistungsbereiche — vom ersten Beratungsgespräch
+            bis zum erfolgreichen Abschluss. Persönlich betreut, professionell
+            abgewickelt.
           </p>
         </div>
 
@@ -61,7 +62,7 @@ export function ServicesSection() {
                 key={service.id}
                 href={service.href}
                 className={cn(
-                  "group relative bg-white rounded-xl p-8 border transition-all duration-300",
+                  "group relative bg-card rounded-xl p-8 border transition-all duration-300",
                   "hover:-translate-y-1 hover:shadow-xl",
                   "border-border hover:border-brand-accent/30"
                 )}

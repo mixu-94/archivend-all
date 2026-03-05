@@ -9,15 +9,29 @@ import { getLocalBusinessSchema } from "@/lib/structured-data";
 export const metadata: Metadata = {
   title: "Über uns",
   description:
-    "Lernen Sie Archivend GmbH kennen — Ihr kompetenter Partner für Immobilien, Bauprojekte und Luftfahrtservices in Günzburg. Seit 2020 stehen wir für Kompetenz, Transparenz und ganzheitlichen Service.",
+    "Lernen Sie Archivend GmbH kennen — Ihr kompetenter Partner für Immobilien, Bauprojekte und Luftfahrtservices in Günzburg. Seit 2015 stehen wir für Kompetenz, Transparenz und ganzheitlichen Service.",
+  keywords: [
+    "Archivend GmbH Über uns",
+    "Immobilienmakler Günzburg Team",
+    "Johannes Wopfner",
+    "Immobilien Bayern",
+    "Bauprojekte Günzburg",
+  ],
   alternates: { canonical: "/ueber-uns" },
+  openGraph: {
+    title: "Über uns | Archivend GmbH",
+    description:
+      "Lernen Sie Archivend GmbH kennen — Ihr kompetenter Partner für Immobilien, Bauprojekte und Luftfahrtservices in Günzburg. Seit 2015 stehen wir für Kompetenz, Transparenz und ganzheitlichen Service.",
+    url: "/ueber-uns",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Archivend GmbH — Über uns" }],
+  },
 };
 
 const VALUES = [
   {
     icon: Target,
     title: "Kompetenz & Erfahrung",
-    text: "Seit der Gründung 2020 haben wir uns als verlässlicher Partner in der Region etabliert. Unser Team bringt tiefes Fachwissen in Immobilien, Baurecht und Luftfahrt mit.",
+    text: "Seit der Gründung 2015 haben wir uns als verlässlicher Partner in der Region etabliert. Unser Team bringt tiefes Fachwissen in Immobilien, Baurecht und Luftfahrt mit.",
   },
   {
     icon: ShieldCheck,
@@ -69,7 +83,7 @@ export default function UeberUnsPage() {
       </section>
 
       {/* Story */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-card">
         <div className="container mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <FadeIn direction="right">
@@ -84,11 +98,11 @@ export default function UeberUnsPage() {
                   Überlegene Bauwerte<br />kompetent betreut
                 </h2>
                 <p className="text-brand-text-muted mb-4 leading-relaxed">
-                  Archivend GmbH wurde {COMPANY.foundedYear} mit einem klaren Ziel gegründet: Menschen in der Region
-                  Günzburg und darüber hinaus mit fundierter Expertise bei Immobilien- und
-                  Bauprojekten zu begleiten. Unser Geschäftsführer {COMPANY.legalRepresentative} bringt
-                  langjährige Erfahrung in der Immobilienbranche mit und hat Archivend als Rundum-Dienstleister
-                  aufgebaut.
+                  Archivend GmbH wurde {COMPANY.foundedYear} gegründet. Seit 2024 haben wir unseren
+                  Hauptsitz in Günzburg, Bayern — von hier aus betreuen wir Kunden in der gesamten
+                  Region mit fundierter Expertise bei Immobilien- und Bauprojekten.
+                  Unser Geschäftsführer {COMPANY.legalRepresentative} bringt langjährige Erfahrung
+                  in der Branche mit.
                 </p>
                 <p className="text-brand-text-muted mb-6 leading-relaxed">
                   Was uns auszeichnet: Wir denken über den Tellerrand hinaus. Mit unserer Air Fly Division
@@ -174,7 +188,7 @@ export default function UeberUnsPage() {
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {VALUES.map((val) => (
               <StaggerItem key={val.title}>
-                <div className="bg-white rounded-2xl p-8 border border-border hover:border-brand-accent/30 hover:shadow-lg transition-all duration-300 h-full">
+                <div className="bg-card rounded-2xl p-8 border border-border hover:border-brand-accent/30 hover:shadow-lg transition-all duration-300 h-full">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-primary/10 mb-6">
                     <val.icon className="h-6 w-6 text-brand-accent" />
                   </div>

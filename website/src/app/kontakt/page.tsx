@@ -7,7 +7,19 @@ export const metadata: Metadata = {
   title: "Kontakt",
   description:
     "Kontaktieren Sie Archivend GmbH in Günzburg. Wir beraten Sie persönlich zu Immobilien, Bauprojekten und Luftfahrtservices — kostenlos und unverbindlich.",
+  keywords: [
+    "Kontakt Archivend GmbH",
+    "Immobilienmakler Günzburg Kontakt",
+    "Beratung Immobilien Bayern",
+  ],
   alternates: { canonical: "/kontakt" },
+  openGraph: {
+    title: "Kontakt | Archivend GmbH",
+    description:
+      "Kontaktieren Sie Archivend GmbH in Günzburg. Wir beraten Sie persönlich zu Immobilien, Bauprojekten und Luftfahrtservices — kostenlos und unverbindlich.",
+    url: "/kontakt",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Kontakt — Archivend GmbH" }],
+  },
 };
 
 export default function KontaktPage() {

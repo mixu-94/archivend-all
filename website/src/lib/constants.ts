@@ -8,14 +8,16 @@ export const COMPANY = {
   tagline: "Ihr Partner für überlegene Bauwerte",
   taglineEnglish: "Your assignment is our passion",
   description:
-    "Archivend GmbH ist Ihr kompetenter Partner für Immobiliendienstleistungen, Bauprojekte und Luftfahrtservices in der Region Günzburg und darüber hinaus.",
+    "Archivend GmbH ist seit 2015 Ihr kompetenter Partner für Immobiliendienstleistungen, Bauprojekte und Luftfahrtservices in der Region Günzburg, Bayern und darüber hinaus.",
   address: {
     street: "Dossenbergerstr. 5",
     zip: "89312",
     city: "Günzburg",
+    state: "Bayern",
     country: "Deutschland",
     countryCode: "DE",
-    full: "Dossenbergerstr. 5, 89312 Günzburg, Deutschland",
+    full: "Dossenbergerstr. 5, 89312 Günzburg, Bayern, Deutschland",
+    note: "Seit 2024 in Günzburg ansässig",
   },
   contact: {
     phone: "+49 (0) 7951 / 472 14 29",
@@ -24,10 +26,19 @@ export const COMPANY = {
   },
   website: "https://archivend.de",
   legalRepresentative: "Johannes Wopfner",
-  foundedYear: 2020,
+  foundedYear: 2015,
+  registrationCourts: [
+    { court: "Amtsgericht Memmingen", number: "HRB 20920" },
+    { court: "Amtsgericht Ulm", number: "HRB 732094" },
+  ],
+  /** @deprecated Verwende registrationCourts */
   registrationCourt: "Amtsgericht Memmingen",
-  registrationNumber: "", // HRB-Nummer eintragen
+  /** @deprecated Verwende registrationCourts */
+  registrationNumber: "HRB 20920",
+  euid: "DED2505V.HRB20920",
   vatId: "", // USt-IdNr. eintragen
+  businessPurpose:
+    "Erwerb, Veräußerung und Vermietung von Grundstücken und Gebäuden; Immobilienmakler- und Bauträgertätigkeiten; Erbringung von Dienstleistungen rund um Immobilien und Bauvorhaben; Luftfahrtdienstleistungen einschließlich Rundflüge, Kurierflüge und Luftbild- sowie Filmproduktionen.",
 } as const;
 
 export type NavLink = {
@@ -125,7 +136,7 @@ export const AIR_FLY_SERVICES = [
     id: "rundflug",
     title: "Rundflüge",
     description:
-      "Erleben Sie die faszinierende Landschaft rund um Schwäbisch Hall und die Region aus der Vogelperspektive. Unsere Rundflüge bieten unvergessliche Ausblicke auf historische Städte, malerische Täler und die schwäbische Alb.",
+      "Erleben Sie die Landschaft rund um Günzburg, die Schwäbische Alb und die Region aus der Vogelperspektive. Unsere Rundflüge bieten unvergessliche Ausblicke auf historische Städte, malerische Täler und die bayerische Voralpenregion.",
     icon: "PlaneTakeoff",
   },
   {
@@ -139,7 +150,7 @@ export const AIR_FLY_SERVICES = [
     id: "luftbild",
     title: "Luftbild & Film",
     description:
-      "Professionelle Luftaufnahmen für Immobilienexposés, Bauprojektdokumentation und Film-/Fotoproduktionen. Einzigartige Perspektiven, die Ihr Objekt optimal in Szene setzen.",
+      "Professionelle Luftaufnahmen aus dem Flugzeug — weiträumiger, imposanter und höher als Drohnenaufnahmen. Ideal für Immobilien-Exposés, Bauprojektdokumentation und Film-/Fotoproduktionen. Einzigartige Perspektiven, die Ihr Objekt von seiner besten Seite zeigen.",
     icon: "Camera",
   },
 ] as const;
@@ -149,7 +160,7 @@ export const FOOTER_LINKS = {
     { href: "/ueber-uns", label: "Über uns" },
     { href: "/leistungen", label: "Leistungen" },
     {
-      href: "https://immowo-all.vercel.app/",
+      href: "https://immowo-ventures.de",
       label: "Immobilien",
       external: true,
       target: "_blank" as const,

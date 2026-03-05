@@ -9,7 +9,7 @@
 - E-Mail: info@archivend.de
 - Website: https://archivend.de
 - Geschäftsführer: Johannes Wopfner
-- Gegründet: 2020
+- Gegründet: 2015 (seit 2024 Hauptsitz in Günzburg, Bayern)
 - Tagline: "Ihr Partner für überlegene Bauwerte"
 
 ### Geschäftsbereiche

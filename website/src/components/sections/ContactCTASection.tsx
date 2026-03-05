@@ -50,7 +50,7 @@ export function ContactCTASection() {
               className="text-sm font-semibold tracking-[0.25em] uppercase mb-3"
               style={{ color: "oklch(0.16 0.03 258 / 0.6)" }}
             >
-              Bereit loszulegen?
+              Bereit für Ihren nächsten Schritt?
             </p>
             <h2
               className="text-4xl md:text-5xl font-bold leading-tight mb-4"
@@ -67,8 +67,8 @@ export function ContactCTASection() {
               className="text-base max-w-md"
               style={{ color: "oklch(0.16 0.03 258 / 0.65)" }}
             >
-              Wir freuen uns auf Ihre Anfrage und beraten Sie gerne — kostenlos
-              und unverbindlich.
+              Ob Immobilienkauf, Bauprojekt oder Luftaufnahmen — wir beraten Sie
+              persönlich und unverbindlich. Kostenlose Erstberatung auf Wunsch.
             </p>
           </div>
 

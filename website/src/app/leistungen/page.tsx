@@ -27,6 +27,13 @@ export const metadata: Metadata = {
     "Vertragsvermittlung Bau",
   ],
   alternates: { canonical: "/leistungen" },
+  openGraph: {
+    title: "Leistungen | Archivend GmbH",
+    description:
+      "Professionelle Immobiliendienstleistungen in Günzburg und der Region: Bauprojektservices, Vertragsvermittlung, Immobilienhandel, Gutachten, Verkaufsorganisation und Immobilienbewertung.",
+    url: "/leistungen",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Leistungen — Archivend GmbH" }],
+  },
 };
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -77,7 +84,7 @@ export default function LeistungenPage() {
                 <StaggerItem key={service.id}>
                   <div
                     id={service.id}
-                    className="bg-white rounded-2xl p-8 border border-border hover:border-brand-accent/30 hover:shadow-xl transition-all duration-300 h-full scroll-mt-24"
+                    className="bg-card rounded-2xl p-8 border border-border hover:border-brand-accent/30 hover:shadow-xl transition-all duration-300 h-full scroll-mt-24"
                   >
                     <div className="flex items-start gap-5 mb-6">
                       <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-brand-primary shrink-0">
@@ -106,7 +113,7 @@ export default function LeistungenPage() {
       </section>
 
       {/* Process */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-card">
         <div className="container mx-auto px-6 md:px-10">
           <FadeIn>
             <div className="text-center mb-12">
