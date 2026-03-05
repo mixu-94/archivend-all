@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   ARCHIVEND GMBH — BRAND FARBEN
+   Alle Markenfarben hier zentral ändern
+   ============================================ */
+:root {
+  /* Brand Farben */
+  --brand-primary: oklch(0.27 0.096 258.5);       /* Navy Blue #1B2F5C */
+  --brand-primary-light: oklch(0.38 0.12 258);    /* Light Navy #2A4A8F */
+  --brand-primary-foreground: oklch(1 0 0);        /* White */
+  --brand-accent: oklch(0.73 0.115 78);            /* Gold #C9A84C */
+  --brand-accent-light: oklch(0.84 0.10 80);       /* Light Gold #E8C96B */
+  --brand-accent-foreground: oklch(0.16 0.03 258); /* Dark Text */
+  --brand-surface: oklch(0.98 0.005 258);          /* Off-white #F8F9FC */
+  --brand-text: oklch(0.16 0.03 258);              /* Dark #1A1A2E */
+  --brand-text-muted: oklch(0.55 0.02 258);        /* Muted Gray */
+
+  /* shadcn/ui Variablen mit Brand-Farben überschreiben */
+  --radius: 0.5rem;
+  --background: oklch(0.98 0.005 258);
+  --foreground: oklch(0.16 0.03 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.03 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.03 258);
+  --primary: oklch(0.27 0.096 258.5);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.73 0.115 78);
+  --secondary-foreground: oklch(0.16 0.03 258);
+  --muted: oklch(0.94 0.005 258);
+  --muted-foreground: oklch(0.55 0.02 258);
+  --accent: oklch(0.73 0.115 78);
+  --accent-foreground: oklch(0.16 0.03 258);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.89 0.01 258);
+  --input: oklch(0.89 0.01 258);
+  --ring: oklch(0.27 0.096 258.5);
+  --chart-1: oklch(0.27 0.096 258.5);
+  --chart-2: oklch(0.73 0.115 78);
+  --chart-3: oklch(0.38 0.12 258);
+  --chart-4: oklch(0.84 0.10 80);
+  --chart-5: oklch(0.55 0.02 258);
+  --sidebar: oklch(0.27 0.096 258.5);
+  --sidebar-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.73 0.115 78);
+  --sidebar-primary-foreground: oklch(0.16 0.03 258);
+  --sidebar-accent: oklch(0.38 0.12 258);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.38 0.12 258);
+  --sidebar-ring: oklch(0.73 0.115 78);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+
+  /* Brand Color Tokens */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-light: var(--brand-primary-light);
+  --color-brand-primary-foreground: var(--brand-primary-foreground);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-light: var(--brand-accent-light);
+  --color-brand-accent-foreground: var(--brand-accent-foreground);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-text: var(--brand-text);
+  --color-brand-text-muted: var(--brand-text-muted);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
