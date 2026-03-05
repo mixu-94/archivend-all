@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ImpressumPage() {
   return (
-    <section className="py-16 md:py-24 bg-white min-h-screen">
+    <section className="py-16 md:py-24 bg-background min-h-screen">
       <div className="container mx-auto px-6 md:px-10 max-w-3xl">
         <h1 className="text-3xl md:text-4xl font-bold text-brand-text mb-2 tracking-tight">Impressum</h1>
         <p className="text-brand-text-muted mb-10 text-sm">Angaben gemäß §5 TMG</p>
@@ -47,13 +47,15 @@ export default function ImpressumPage() {
 
           <div>
             <h2 className="text-lg font-bold text-brand-text mb-3">Handelsregistereintrag</h2>
-            <p>Registergericht: {COMPANY.registrationCourt}</p>
-            <p>
-              Registernummer:{" "}
-              {COMPANY.registrationNumber
-                ? COMPANY.registrationNumber
-                : <span className="italic text-brand-text-muted/60">[wird nachgetragen]</span>}
-            </p>
+            {COMPANY.registrationCourts.map((entry) => (
+              <p key={entry.number}>{entry.court} · {entry.number}</p>
+            ))}
+            <p className="mt-1">EUID: {COMPANY.euid}</p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-brand-text mb-3">Unternehmensgegenstand</h2>
+            <p>{COMPANY.businessPurpose}</p>
           </div>
 
           <div>

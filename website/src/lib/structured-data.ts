@@ -14,9 +14,11 @@ export function getLocalBusinessSchema() {
       "@type": "PostalAddress",
       streetAddress: COMPANY.address.street,
       addressLocality: COMPANY.address.city,
+      addressRegion: COMPANY.address.state,
       postalCode: COMPANY.address.zip,
       addressCountry: COMPANY.address.countryCode,
     },
+    foundingDate: String(COMPANY.foundedYear),
     geo: {
       "@type": "GeoCoordinates",
       latitude: 48.4517,
