@@ -132,7 +132,7 @@ export function HeroSection() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="font-semibold text-base px-8 py-6 border-white/40 hover:bg-brand-accent/20 hover:border-brand-accent/60 transition-all duration-200"
+                className="font-semibold bg-transparent px-8 py-6 border-white/40 hover:bg-brand-accent/20 hover:border-brand-accent/60 transition-all duration-200"
                 style={{ color: "white" }}
               >
                 <Link href="/kontakt">Jetzt Kontakt aufnehmen</Link>
@@ -217,13 +217,7 @@ export function HeroSection() {
                   {/* Main horizontal divider */}
                   <line x1="70" y1="200" x2="390" y2="200" strokeWidth="2" />
                   {/* Bathroom/guest divider */}
-                  <line
-                    x1="210"
-                    y1="280"
-                    x2="300"
-                    y2="280"
-                    strokeWidth="1.5"
-                  />
+                  <line x1="210" y1="280" x2="300" y2="280" strokeWidth="1.5" />
                 </g>
 
                 {/* ── Doors ── */}

@@ -53,7 +53,7 @@ export const NAV_LINKS: NavLink[] = [
   { href: "/ueber-uns", label: "Über uns" },
   { href: "/leistungen", label: "Leistungen" },
   {
-    href: "https://immowo-ventures.de",
+    href: "https://immowo-all.vercel.app",
     label: "Immobilien",
     external: true,
     target: "_blank",
