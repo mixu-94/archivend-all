@@ -139,6 +139,33 @@ export function HeroSection() {
               </Button>
             </div>
 
+            {/* Mobile stats grid (hidden on lg+) */}
+            <div className="grid grid-cols-2 gap-3 mt-8 lg:hidden">
+              {[
+                { value: "10+", label: "Jahre Erfahrung" },
+                { value: "50+", label: "Objekte" },
+                { value: "100%", label: "Zufriedenheit" },
+                { value: "3", label: "Bereiche" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-lg p-3 text-center"
+                  style={{
+                    background: "oklch(1 0 0 / 0.06)",
+                    border: "1px solid oklch(1 0 0 / 0.12)",
+                  }}
+                >
+                  <span
+                    className="block text-xl font-bold"
+                    style={{ color: "var(--brand-accent)" }}
+                  >
+                    {stat.value}
+                  </span>
+                  <span className="text-xs text-white/60">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+
             {/* Quick contact line */}
             <div className="mt-12 flex items-center gap-3">
               <span
@@ -508,7 +535,7 @@ export function HeroSection() {
                     fillOpacity="0.25"
                     fontFamily="monospace"
                   >
-                    Projekt: Musterhaus
+                    Projekt: Archivend GmbH
                   </text>
                   <text
                     x="8"

@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   },
 };
 
+const DARK = "oklch(0.16 0.03 258)";
+const DARK_MID = "oklch(0.16 0.03 258 / 0.65)";
+
 const ICON_MAP: Record<string, React.ElementType> = {
   PlaneTakeoff,
   Zap,
@@ -44,7 +47,7 @@ const USPS = [
 export default function AirFlyPage() {
   return (
     <>
-      {/* Hero */}
+      {/* ① Hero — Navy + Grid + Gold accent */}
       <section className="bg-brand-primary py-16 md:py-28 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -85,19 +88,34 @@ export default function AirFlyPage() {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-16 md:py-24 bg-brand-surface">
-        <div className="container mx-auto px-6 md:px-10">
+      {/* ② Services — Gold + Diagonal */}
+      <section
+        className="py-16 md:py-24 relative overflow-hidden"
+        style={{ background: "var(--brand-accent)" }}
+      >
+        {/* Diagonal texture */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern id="af-svc-diag" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="40" x2="40" y2="0" stroke={DARK} strokeWidth="0.5" strokeOpacity="0.07" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#af-svc-diag)" />
+          </svg>
+        </div>
+
+        <div className="container mx-auto px-6 md:px-10 relative">
           <FadeIn>
             <div className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-4">
-                <span className="block h-px w-8 bg-brand-accent" />
-                <span className="text-xs font-semibold tracking-[0.3em] uppercase text-brand-accent">
+                <span className="block h-px w-8" style={{ background: DARK }} />
+                <span className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: DARK }}>
                   Unsere Air Fly Services
                 </span>
-                <span className="block h-px w-8 bg-brand-accent" />
+                <span className="block h-px w-8" style={{ background: DARK }} />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-text tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: DARK }}>
                 Drei Services, eine Division
               </h2>
             </div>
@@ -108,12 +126,15 @@ export default function AirFlyPage() {
               const Icon = ICON_MAP[service.icon] ?? PlaneTakeoff;
               return (
                 <StaggerItem key={service.id}>
-                  <div className="bg-card rounded-2xl p-8 border border-border hover:border-brand-accent/40 hover:shadow-xl transition-all duration-300 h-full group">
-                    <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-brand-primary mb-6 group-hover:bg-brand-accent/20 transition-colors">
+                  <div className="bg-card rounded-2xl p-8 border border-white/10 hover:border-brand-accent/40 hover:shadow-xl transition-all duration-300 h-full group">
+                    <div
+                      className="flex items-center justify-center w-14 h-14 rounded-xl mb-6 transition-colors"
+                      style={{ background: "oklch(0.73 0.115 78 / 0.15)", border: "1px solid oklch(0.73 0.115 78 / 0.3)" }}
+                    >
                       <Icon className="h-7 w-7 text-brand-accent" />
                     </div>
-                    <h3 className="text-xl font-bold text-brand-text mb-4">{service.title}</h3>
-                    <p className="text-brand-text-muted text-sm leading-relaxed">{service.description}</p>
+                    <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed">{service.description}</p>
                   </div>
                 </StaggerItem>
               );
@@ -122,12 +143,13 @@ export default function AirFlyPage() {
         </div>
       </section>
 
-      {/* USPs */}
+      {/* ③ USPs — Navy + Dot grid */}
       <section className="py-16 md:py-24 bg-brand-primary text-white relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
           style={{
-            backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)",
             backgroundSize: "30px 30px",
           }}
         />
@@ -177,14 +199,28 @@ export default function AirFlyPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 md:py-20 bg-card">
-        <div className="container mx-auto px-6 md:px-10 text-center">
+      {/* ④ CTA — Gold + Diagonal */}
+      <section
+        className="py-16 md:py-20 relative overflow-hidden"
+        style={{ background: "var(--brand-accent)" }}
+      >
+        {/* Diagonal texture */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern id="af-cta-diag" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="40" x2="40" y2="0" stroke={DARK} strokeWidth="0.5" strokeOpacity="0.07" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#af-cta-diag)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-6 md:px-10 text-center relative">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight" style={{ color: DARK }}>
               Interesse an Air Fly?
             </h2>
-            <p className="text-brand-text-muted mb-8 text-lg max-w-lg mx-auto">
+            <p className="mb-8 text-lg max-w-lg mx-auto" style={{ color: DARK_MID }}>
               Kontaktieren Sie uns für ein unverbindliches Angebot — egal ob Rundflug,
               Luftbild oder Kurierservice.
             </p>

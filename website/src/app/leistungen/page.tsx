@@ -36,6 +36,9 @@ export const metadata: Metadata = {
   },
 };
 
+const DARK = "oklch(0.16 0.03 258)";
+const DARK_MID = "oklch(0.16 0.03 258 / 0.65)";
+
 const ICON_MAP: Record<string, React.ElementType> = {
   Building2,
   Handshake,
@@ -48,7 +51,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
 export default function LeistungenPage() {
   return (
     <>
-      {/* Hero */}
+      {/* ① Hero — Navy + Grid */}
       <section className="bg-brand-primary py-16 md:py-24 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -74,9 +77,24 @@ export default function LeistungenPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-16 md:py-24 bg-brand-surface">
-        <div className="container mx-auto px-6 md:px-10">
+      {/* ② Services Grid — Gold + Diagonal */}
+      <section
+        className="py-16 md:py-24 relative overflow-hidden"
+        style={{ background: "var(--brand-accent)" }}
+      >
+        {/* Diagonal texture */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern id="lst-svc-diag" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="40" x2="40" y2="0" stroke={DARK} strokeWidth="0.5" strokeOpacity="0.07" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#lst-svc-diag)" />
+          </svg>
+        </div>
+
+        <div className="container mx-auto px-6 md:px-10 relative">
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {SERVICES.map((service, index) => {
               const Icon = ICON_MAP[service.icon] ?? Building2;
@@ -84,20 +102,20 @@ export default function LeistungenPage() {
                 <StaggerItem key={service.id}>
                   <div
                     id={service.id}
-                    className="bg-card rounded-2xl p-8 border border-border hover:border-brand-accent/30 hover:shadow-xl transition-all duration-300 h-full scroll-mt-24"
+                    className="bg-card rounded-2xl p-8 border border-white/10 hover:border-brand-accent/40 hover:shadow-xl transition-all duration-300 h-full scroll-mt-24"
                   >
                     <div className="flex items-start gap-5 mb-6">
-                      <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-brand-primary shrink-0">
+                      <div className="flex items-center justify-center w-14 h-14 rounded-xl shrink-0" style={{ background: "oklch(0.73 0.115 78 / 0.15)", border: "1px solid oklch(0.73 0.115 78 / 0.3)" }}>
                         <Icon className="h-7 w-7 text-brand-accent" />
                       </div>
                       <div>
-                        <span className="text-xs font-medium text-brand-text-muted tracking-wider uppercase">
+                        <span className="text-xs font-medium text-white/40 tracking-wider uppercase">
                           {String(index + 1).padStart(2, "0")} / {String(SERVICES.length).padStart(2, "0")}
                         </span>
-                        <h2 className="text-xl font-bold text-brand-text mt-1">{service.title}</h2>
+                        <h2 className="text-xl font-bold text-white mt-1">{service.title}</h2>
                       </div>
                     </div>
-                    <p className="text-brand-text-muted leading-relaxed mb-4 text-sm">
+                    <p className="text-white/60 leading-relaxed mb-4 text-sm">
                       {service.longDescription}
                     </p>
                     <div className="flex items-center gap-2 text-brand-accent text-sm font-medium">
@@ -112,9 +130,18 @@ export default function LeistungenPage() {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="py-16 md:py-20 bg-card">
-        <div className="container mx-auto px-6 md:px-10">
+      {/* ③ Process — Navy + Dots */}
+      <section className="py-16 md:py-20 bg-brand-primary relative overflow-hidden">
+        {/* Dot grid */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+          style={{
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div className="container mx-auto px-6 md:px-10 relative">
           <FadeIn>
             <div className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-4">
@@ -124,7 +151,7 @@ export default function LeistungenPage() {
                 </span>
                 <span className="block h-px w-8 bg-brand-accent" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-text tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
                 So arbeiten wir
               </h2>
             </div>
@@ -141,8 +168,8 @@ export default function LeistungenPage() {
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-brand-accent text-brand-accent font-bold text-lg mb-4">
                     {item.step}
                   </div>
-                  <h3 className="font-bold text-brand-text mb-2">{item.title}</h3>
-                  <p className="text-brand-text-muted text-sm leading-relaxed">{item.text}</p>
+                  <h3 className="font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{item.text}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -150,14 +177,28 @@ export default function LeistungenPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 md:py-20 bg-brand-accent">
-        <div className="container mx-auto px-6 md:px-10 text-center">
+      {/* ④ CTA — Gold + Diagonal */}
+      <section
+        className="py-16 md:py-20 relative overflow-hidden"
+        style={{ background: "var(--brand-accent)" }}
+      >
+        {/* Diagonal texture */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern id="lst-cta-diag" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="40" x2="40" y2="0" stroke={DARK} strokeWidth="0.5" strokeOpacity="0.07" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#lst-cta-diag)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-6 md:px-10 text-center relative">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-primary mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight" style={{ color: DARK }}>
               Welche Leistung interessiert Sie?
             </h2>
-            <p className="text-brand-primary/70 mb-8 text-lg">
+            <p className="mb-8 text-lg" style={{ color: DARK_MID }}>
               Nehmen Sie jetzt Kontakt auf — wir beraten Sie kostenlos und unverbindlich.
             </p>
             <Button asChild size="lg" className="bg-brand-primary hover:bg-brand-primary-light text-white font-semibold">

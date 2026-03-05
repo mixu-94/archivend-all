@@ -66,8 +66,7 @@ export function ContactFormSection() {
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!form.email.trim() || !emailRe.test(form.email.trim()))
       e.email = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
-    if (!form.interest)
-      e.interest = "Bitte wählen Sie Ihr Interessensgebiet.";
+    if (!form.interest) e.interest = "Bitte wählen Sie Ihr Interessensgebiet.";
     if (!form.message.trim() || form.message.trim().length < 10)
       e.message = "Bitte beschreiben Sie Ihr Anliegen (mindestens 10 Zeichen).";
     if (!form.datenschutz)
@@ -93,15 +92,22 @@ export function ContactFormSection() {
       const data = await res.json();
       if (res.ok) {
         setStatus("success");
-        setServerMessage(data.message ?? "Ihre Nachricht wurde erfolgreich gesendet.");
+        setServerMessage(
+          data.message ?? "Ihre Nachricht wurde erfolgreich gesendet.",
+        );
         setForm(INITIAL_FORM);
       } else {
         setStatus("error");
-        setServerMessage(data.error ?? "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.");
+        setServerMessage(
+          data.error ??
+            "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+        );
       }
     } catch {
       setStatus("error");
-      setServerMessage("Die Verbindung ist unterbrochen. Bitte prüfen Sie Ihre Internetverbindung.");
+      setServerMessage(
+        "Die Verbindung ist unterbrochen. Bitte prüfen Sie Ihre Internetverbindung.",
+      );
     }
   }
 
@@ -119,15 +125,14 @@ export function ContactFormSection() {
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-accent/15 mb-6">
           <CheckCircle2 className="h-8 w-8 text-brand-accent" />
         </div>
-        <h3 className="text-2xl font-bold text-brand-text mb-3">Vielen Dank!</h3>
+        <h3 className="text-2xl font-bold text-brand-text mb-3">
+          Vielen Dank!
+        </h3>
         <p className="text-brand-text-muted mb-2">{serverMessage}</p>
         <p className="text-sm text-brand-text-muted mb-8">
           Wir melden uns in der Regel innerhalb von 24 Stunden bei Ihnen zurück.
         </p>
-        <Button
-          variant="outline"
-          onClick={() => setStatus("idle")}
-        >
+        <Button variant="outline" onClick={() => setStatus("idle")}>
           Weitere Nachricht senden
         </Button>
       </div>
@@ -140,7 +145,7 @@ export function ContactFormSection() {
     <div>
       {/* Section header */}
       <FadeIn>
-        <div className="text-center mb-10">
+        <div className="text-center mb-10 ">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="block h-px w-8 bg-brand-accent" />
             <span className="text-xs font-semibold tracking-[0.3em] uppercase text-brand-accent">
@@ -152,7 +157,8 @@ export function ContactFormSection() {
             Schreiben Sie uns
           </h2>
           <p className="text-brand-text-muted text-lg">
-            Kostenlos und unverbindlich — wir antworten innerhalb von 24 Stunden.
+            Kostenlos und unverbindlich — wir antworten innerhalb von 24
+            Stunden.
           </p>
         </div>
       </FadeIn>
@@ -183,10 +189,15 @@ export function ContactFormSection() {
                 disabled={isLoading}
                 aria-invalid={!!errors.name}
                 aria-describedby={errors.name ? `${id}-name-err` : undefined}
-                className={cn(errors.name && "border-destructive focus-visible:ring-destructive")}
+                className={cn(
+                  errors.name &&
+                    "border-destructive focus-visible:ring-destructive",
+                )}
               />
               {errors.name && (
-                <p id={`${id}-name-err`} className="text-xs text-destructive">{errors.name}</p>
+                <p id={`${id}-name-err`} className="text-xs text-destructive">
+                  {errors.name}
+                </p>
               )}
             </div>
             <div className="space-y-2">
@@ -203,10 +214,15 @@ export function ContactFormSection() {
                 disabled={isLoading}
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? `${id}-email-err` : undefined}
-                className={cn(errors.email && "border-destructive focus-visible:ring-destructive")}
+                className={cn(
+                  errors.email &&
+                    "border-destructive focus-visible:ring-destructive",
+                )}
               />
               {errors.email && (
-                <p id={`${id}-email-err`} className="text-xs text-destructive">{errors.email}</p>
+                <p id={`${id}-email-err`} className="text-xs text-destructive">
+                  {errors.email}
+                </p>
               )}
             </div>
           </div>
@@ -233,7 +249,8 @@ export function ContactFormSection() {
                 value={form.interest}
                 onValueChange={(val) => {
                   setForm((prev) => ({ ...prev, interest: val }));
-                  if (errors.interest) setErrors((prev) => ({ ...prev, interest: undefined }));
+                  if (errors.interest)
+                    setErrors((prev) => ({ ...prev, interest: undefined }));
                 }}
                 disabled={isLoading}
               >
@@ -271,14 +288,19 @@ export function ContactFormSection() {
               onChange={setField("message")}
               disabled={isLoading}
               aria-invalid={!!errors.message}
-              aria-describedby={errors.message ? `${id}-message-err` : undefined}
+              aria-describedby={
+                errors.message ? `${id}-message-err` : undefined
+              }
               className={cn(
                 "resize-y min-h-[120px]",
-                errors.message && "border-destructive focus-visible:ring-destructive"
+                errors.message &&
+                  "border-destructive focus-visible:ring-destructive",
               )}
             />
             {errors.message && (
-              <p id={`${id}-message-err`} className="text-xs text-destructive">{errors.message}</p>
+              <p id={`${id}-message-err`} className="text-xs text-destructive">
+                {errors.message}
+              </p>
             )}
           </div>
 
@@ -290,24 +312,36 @@ export function ContactFormSection() {
                 type="checkbox"
                 checked={form.datenschutz}
                 onChange={(e) => {
-                  setForm((prev) => ({ ...prev, datenschutz: e.target.checked }));
-                  if (errors.datenschutz) setErrors((prev) => ({ ...prev, datenschutz: undefined }));
+                  setForm((prev) => ({
+                    ...prev,
+                    datenschutz: e.target.checked,
+                  }));
+                  if (errors.datenschutz)
+                    setErrors((prev) => ({ ...prev, datenschutz: undefined }));
                 }}
                 disabled={isLoading}
                 className="mt-0.5 h-4 w-4 rounded border-border accent-brand-primary cursor-pointer"
                 aria-invalid={!!errors.datenschutz}
               />
-              <Label htmlFor={`${id}-datenschutz`} className="text-sm text-brand-text-muted leading-relaxed cursor-pointer font-normal">
+              <Label
+                htmlFor={`${id}-datenschutz`}
+                className="text-sm text-brand-text-muted leading-relaxed cursor-pointer font-normal"
+              >
                 Ich habe die{" "}
-                <a href="/datenschutz" className="underline underline-offset-2 hover:text-brand-primary transition-colors">
+                <a
+                  href="/datenschutz"
+                  className="underline underline-offset-2 hover:text-brand-accent transition-colors"
+                >
                   Datenschutzerklärung
                 </a>{" "}
-                gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.{" "}
-                <span className="text-destructive">*</span>
+                gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung
+                meiner Anfrage zu. <span className="text-destructive">*</span>
               </Label>
             </div>
             {errors.datenschutz && (
-              <p className="text-xs text-destructive pl-7">{errors.datenschutz}</p>
+              <p className="text-xs text-destructive pl-7">
+                {errors.datenschutz}
+              </p>
             )}
           </div>
 
@@ -330,7 +364,8 @@ export function ContactFormSection() {
             )}
           </Button>
           <p className="text-xs text-brand-text-muted">
-            * Pflichtfelder. Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.
+            * Pflichtfelder. Ihre Daten werden ausschließlich zur Bearbeitung
+            Ihrer Anfrage verwendet.
           </p>
         </form>
       </FadeIn>

@@ -16,29 +16,29 @@
   --brand-accent: oklch(0.73 0.115 78);            /* Gold #C9A84C */
   --brand-accent-light: oklch(0.84 0.10 80);       /* Light Gold #E8C96B */
   --brand-accent-foreground: oklch(0.16 0.03 258); /* Dark Text */
-  --brand-surface: oklch(0.97 0.01 80);             /* Warm Creme #F7F4EF */
-  --brand-text: oklch(0.16 0.03 258);              /* Dark #1A1A2E */
-  --brand-text-muted: oklch(0.55 0.02 258);        /* Muted Gray */
+  --brand-surface: oklch(0.27 0.096 258.5);        /* Navy (kein Creme mehr) */
+  --brand-text: oklch(1 0 0);                      /* Weiß auf dunklen Flächen */
+  --brand-text-muted: oklch(0.72 0.03 258);        /* Helles Grau */
 
-  /* shadcn/ui Variablen mit Brand-Farben überschreiben */
+  /* shadcn/ui Variablen — dunkles Navy-Theme */
   --radius: 0.5rem;
-  --background: oklch(0.97 0.01 80);               /* Warm Creme */
-  --foreground: oklch(0.16 0.03 258);
-  --card: oklch(0.99 0.006 80);                     /* Leicht warmes Weiß statt reines Weiß */
-  --card-foreground: oklch(0.16 0.03 258);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.03 258);
+  --background: oklch(0.27 0.096 258.5);           /* Navy */
+  --foreground: oklch(1 0 0);                      /* Weiß */
+  --card: oklch(0.32 0.10 258.5);                  /* Etwas helleres Navy */
+  --card-foreground: oklch(1 0 0);                 /* Weiß */
+  --popover: oklch(0.32 0.10 258.5);               /* Navy Popover */
+  --popover-foreground: oklch(1 0 0);              /* Weiß */
   --primary: oklch(0.27 0.096 258.5);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.73 0.115 78);
   --secondary-foreground: oklch(0.16 0.03 258);
-  --muted: oklch(0.94 0.005 258);
-  --muted-foreground: oklch(0.55 0.02 258);
+  --muted: oklch(0.35 0.08 258);                   /* Dunkles Muted */
+  --muted-foreground: oklch(0.72 0.03 258);        /* Helles Grau */
   --accent: oklch(0.73 0.115 78);
   --accent-foreground: oklch(0.16 0.03 258);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.89 0.01 258);
-  --input: oklch(0.89 0.01 258);
+  --border: oklch(1 0 0 / 0.12);                   /* Weiß 12% */
+  --input: oklch(0.35 0.09 258.5);                 /* Input Navy */
   --ring: oklch(0.27 0.096 258.5);
   --chart-1: oklch(0.27 0.096 258.5);
   --chart-2: oklch(0.73 0.115 78);

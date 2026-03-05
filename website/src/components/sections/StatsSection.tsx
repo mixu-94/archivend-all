@@ -1,5 +1,3 @@
-import { Separator } from "@/components/ui/separator";
-
 const STATS = [
   { value: "10+", label: "Jahre Erfahrung", sub: "in der Branche" },
   { value: "50+", label: "Objekte vermittelt", sub: "privat & gewerblich" },
@@ -7,18 +5,65 @@ const STATS = [
   { value: "3", label: "Geschäftsbereiche", sub: "Immobilien · Bau · Air Fly" },
 ] as const;
 
+const DARK = "oklch(0.16 0.03 258)";
+const DARK_MID = "oklch(0.16 0.03 258 / 0.65)";
+const DARK_SUBTLE = "oklch(0.16 0.03 258 / 0.15)";
+
 export function StatsSection() {
   return (
-    <section className="py-16 bg-card border-y border-border">
-      <div className="container mx-auto px-6 md:px-10">
+    <section
+      className="py-16 relative overflow-hidden"
+      style={{ background: "var(--brand-accent)" }}
+    >
+      {/* Subtle diagonal texture */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <svg width="100%" height="100%">
+          <defs>
+            <pattern
+              id="stats-diag"
+              x="0"
+              y="0"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <line
+                x1="0"
+                y1="40"
+                x2="40"
+                y2="0"
+                stroke={DARK}
+                strokeWidth="0.5"
+                strokeOpacity="0.07"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#stats-diag)" />
+        </svg>
+      </div>
+
+      {/* Top / bottom hairlines */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: DARK_SUBTLE }}
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{ background: DARK_SUBTLE }}
+      />
+
+      <div className="container mx-auto px-6 md:px-10 relative">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
           {STATS.map((stat, index) => (
-            <div key={stat.label} className="relative flex flex-col items-center text-center lg:items-start lg:text-left px-0 lg:px-8">
+            <div
+              key={stat.label}
+              className="relative flex flex-col items-center text-center lg:items-start lg:text-left px-0 lg:px-8"
+            >
               {/* Vertical separator (desktop) */}
               {index < STATS.length - 1 && (
                 <div
                   className="absolute right-0 top-2 bottom-2 w-px hidden lg:block"
-                  style={{ background: "var(--brand-border, oklch(0.89 0.01 258))" }}
+                  style={{ background: DARK_SUBTLE }}
                   aria-hidden="true"
                 />
               )}
@@ -26,24 +71,18 @@ export function StatsSection() {
               {/* Value */}
               <span
                 className="text-5xl md:text-6xl font-bold leading-none mb-2"
-                style={{ color: "var(--brand-accent)" }}
+                style={{ color: DARK }}
               >
                 {stat.value}
               </span>
 
               {/* Label */}
-              <span
-                className="text-sm font-semibold"
-                style={{ color: "var(--brand-text)" }}
-              >
+              <span className="text-sm font-semibold" style={{ color: DARK }}>
                 {stat.label}
               </span>
 
               {/* Sub */}
-              <span
-                className="text-xs mt-1"
-                style={{ color: "var(--brand-text-muted)" }}
-              >
+              <span className="text-xs mt-1" style={{ color: DARK_MID }}>
                 {stat.sub}
               </span>
             </div>

@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   },
 };
 
+const DARK = "oklch(0.16 0.03 258)";
+const DARK_MID = "oklch(0.16 0.03 258 / 0.65)";
+
 const VALUES = [
   {
     icon: Target,
@@ -55,7 +58,7 @@ export default function UeberUnsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* Hero */}
+      {/* ① Hero — Navy + Grid */}
       <section className="bg-brand-primary py-16 md:py-24 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -82,29 +85,44 @@ export default function UeberUnsPage() {
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-16 md:py-24 bg-card">
-        <div className="container mx-auto px-6 md:px-10">
+      {/* ② Story — Gold + Diagonal */}
+      <section
+        className="py-16 md:py-24 relative overflow-hidden"
+        style={{ background: "var(--brand-accent)" }}
+      >
+        {/* Diagonal texture */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern id="ue-story-diag" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="40" x2="40" y2="0" stroke={DARK} strokeWidth="0.5" strokeOpacity="0.07" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#ue-story-diag)" />
+          </svg>
+        </div>
+
+        <div className="container mx-auto px-6 md:px-10 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <FadeIn direction="right">
               <div>
                 <div className="flex items-center gap-3 mb-5">
-                  <span className="block h-px w-8 bg-brand-accent" />
-                  <span className="text-xs font-semibold tracking-[0.3em] uppercase text-brand-accent">
+                  <span className="block h-px w-8" style={{ background: DARK }} />
+                  <span className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: DARK }}>
                     Unsere Geschichte
                   </span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-6 tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight" style={{ color: DARK }}>
                   Überlegene Bauwerte<br />kompetent betreut
                 </h2>
-                <p className="text-brand-text-muted mb-4 leading-relaxed">
+                <p className="mb-4 leading-relaxed" style={{ color: DARK_MID }}>
                   Archivend GmbH wurde {COMPANY.foundedYear} gegründet. Seit 2024 haben wir unseren
                   Hauptsitz in Günzburg, Bayern — von hier aus betreuen wir Kunden in der gesamten
                   Region mit fundierter Expertise bei Immobilien- und Bauprojekten.
                   Unser Geschäftsführer {COMPANY.legalRepresentative} bringt langjährige Erfahrung
                   in der Branche mit.
                 </p>
-                <p className="text-brand-text-muted mb-6 leading-relaxed">
+                <p className="mb-6 leading-relaxed" style={{ color: DARK_MID }}>
                   Was uns auszeichnet: Wir denken über den Tellerrand hinaus. Mit unserer Air Fly Division
                   bieten wir Luftbildaufnahmen für Exposés, Rundflüge und Kurierservices — eine Kombination,
                   die im Markt ihresgleichen sucht.
@@ -117,8 +135,8 @@ export default function UeberUnsPage() {
                     "Luftbildaufnahmen direkt aus eigener Air Fly Division",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-brand-accent shrink-0 mt-0.5" />
-                      <span className="text-brand-text-muted text-sm">{item}</span>
+                      <CheckCircle2 className="h-5 w-5 shrink-0 mt-0.5" style={{ color: DARK }} />
+                      <span className="text-sm" style={{ color: DARK_MID }}>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -167,9 +185,18 @@ export default function UeberUnsPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-16 md:py-24 bg-brand-surface">
-        <div className="container mx-auto px-6 md:px-10">
+      {/* ③ Values — Navy + Dots */}
+      <section className="py-16 md:py-24 bg-brand-primary relative overflow-hidden">
+        {/* Dot grid */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+          style={{
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div className="container mx-auto px-6 md:px-10 relative">
           <FadeIn>
             <div className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-4">
@@ -179,7 +206,7 @@ export default function UeberUnsPage() {
                 </span>
                 <span className="block h-px w-8 bg-brand-accent" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-text tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
                 Was uns antreibt
               </h2>
             </div>
@@ -188,12 +215,12 @@ export default function UeberUnsPage() {
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {VALUES.map((val) => (
               <StaggerItem key={val.title}>
-                <div className="bg-card rounded-2xl p-8 border border-border hover:border-brand-accent/30 hover:shadow-lg transition-all duration-300 h-full">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-primary/10 mb-6">
+                <div className="bg-card rounded-2xl p-8 border border-white/10 hover:border-brand-accent/40 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl mb-6" style={{ background: "oklch(0.73 0.115 78 / 0.12)", border: "1px solid oklch(0.73 0.115 78 / 0.25)" }}>
                     <val.icon className="h-6 w-6 text-brand-accent" />
                   </div>
-                  <h3 className="text-xl font-bold text-brand-text mb-3">{val.title}</h3>
-                  <p className="text-brand-text-muted text-sm leading-relaxed">{val.text}</p>
+                  <h3 className="text-xl font-bold text-white mb-3">{val.title}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{val.text}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -201,24 +228,38 @@ export default function UeberUnsPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 md:py-20 bg-brand-primary text-white">
-        <div className="container mx-auto px-6 md:px-10 text-center">
+      {/* ④ CTA — Gold + Diagonal */}
+      <section
+        className="py-16 md:py-20 relative overflow-hidden"
+        style={{ background: "var(--brand-accent)" }}
+      >
+        {/* Diagonal texture */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern id="ue-cta-diag" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="40" x2="40" y2="0" stroke={DARK} strokeWidth="0.5" strokeOpacity="0.07" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#ue-cta-diag)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-6 md:px-10 text-center relative">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight" style={{ color: DARK }}>
               Bereit für Ihr nächstes Projekt?
             </h2>
-            <p className="text-white/70 mb-8 text-lg">
+            <p className="mb-8 text-lg" style={{ color: DARK_MID }}>
               Lassen Sie uns gemeinsam herausfinden, wie wir Ihnen am besten helfen können.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="bg-brand-accent hover:bg-brand-accent-light text-brand-accent-foreground font-semibold">
+              <Button asChild size="lg" className="bg-brand-primary hover:bg-brand-primary-light text-white font-semibold">
                 <Link href="/kontakt">
                   Jetzt Kontakt aufnehmen
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+              <Button asChild size="lg" variant="outline" className="font-semibold" style={{ borderColor: `${DARK}40`, color: DARK }}>
                 <Link href="/leistungen">Unsere Leistungen</Link>
               </Button>
             </div>

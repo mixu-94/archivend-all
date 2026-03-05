@@ -28,8 +28,49 @@ const STATS = [
 
 export function AboutSection() {
   return (
-    <section className="py-24 md:py-32 bg-card overflow-hidden">
-      <div className="container mx-auto px-6 md:px-10">
+    <section
+      className="py-24 md:py-32 overflow-hidden relative"
+      style={{ background: "var(--brand-primary)" }}
+    >
+      {/* Blueprint grid (white, fine + major) */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <svg width="100%" height="100%">
+          <defs>
+            <pattern
+              id="about-sec-fine"
+              width="20"
+              height="20"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 20 0 L 0 0 0 20"
+                fill="none"
+                stroke="white"
+                strokeWidth="0.3"
+                strokeOpacity="0.1"
+              />
+            </pattern>
+            <pattern
+              id="about-sec-major"
+              width="100"
+              height="100"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect width="100" height="100" fill="url(#about-sec-fine)" />
+              <path
+                d="M 100 0 L 0 0 0 100"
+                fill="none"
+                stroke="white"
+                strokeWidth="0.6"
+                strokeOpacity="0.16"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#about-sec-major)" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-6 md:px-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left — Text content */}
           <div>
@@ -47,28 +88,22 @@ export function AboutSection() {
             </div>
 
             <h2
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-              style={{ color: "var(--brand-text)", letterSpacing: "-0.02em" }}
+              className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white"
+              style={{ letterSpacing: "-0.02em" }}
             >
               Überlegene Bauwerte{" "}
-              <span style={{ color: "var(--brand-primary)" }}>
+              <span style={{ color: "var(--brand-accent)" }}>
                 kompetent betreut
               </span>
             </h2>
 
-            <p
-              className="text-lg leading-relaxed mb-6"
-              style={{ color: "var(--brand-text-muted)" }}
-            >
+            <p className="text-lg leading-relaxed mb-6 text-white/70">
               Die Archivend GmbH ist ein modernes Immobilienunternehmen mit Sitz
               in Günzburg, Bayern. Seit unserer Gründung 2015 stehen wir für
               verlässliche Expertise bei Immobilientransaktionen und Bauprojekten
               in der Region.
             </p>
-            <p
-              className="text-base leading-relaxed mb-10"
-              style={{ color: "var(--brand-text-muted)" }}
-            >
+            <p className="text-base leading-relaxed mb-10 text-white/70">
               Unser Anspruch: Kein Auftrag ist zu klein, kein Projekt zu komplex.
               Mit unserer Air Fly Division ergänzen wir klassische
               Immobilienservices durch professionelle Luftbildaufnahmen — ein
@@ -84,16 +119,10 @@ export function AboutSection() {
                     style={{ color: "var(--brand-accent)" }}
                   />
                   <div>
-                    <p
-                      className="font-semibold text-sm mb-1"
-                      style={{ color: "var(--brand-text)" }}
-                    >
+                    <p className="font-semibold text-sm mb-1 text-white">
                       {value.title}
                     </p>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: "var(--brand-text-muted)" }}
-                    >
+                    <p className="text-sm leading-relaxed text-white/60">
                       {value.description}
                     </p>
                   </div>
@@ -105,8 +134,8 @@ export function AboutSection() {
               asChild
               className="font-semibold px-7"
               style={{
-                background: "var(--brand-primary)",
-                color: "white",
+                background: "var(--brand-accent)",
+                color: "var(--brand-accent-foreground)",
               }}
             >
               <Link href="/ueber-uns">
@@ -116,43 +145,68 @@ export function AboutSection() {
             </Button>
           </div>
 
-          {/* Right — Decorative stats panel */}
+          {/* Right — Cream stats panel on navy background */}
           <div className="relative">
-            {/* Main card */}
+            {/* Dark navy card */}
             <div
               className="relative rounded-2xl p-10 overflow-hidden"
-              style={{ background: "var(--brand-primary)" }}
+              style={{ background: "oklch(0.20 0.07 258)" }}
             >
-              {/* Decorative grid pattern */}
-              <div className="absolute inset-0 opacity-[0.06]" aria-hidden="true">
+              {/* Blueprint grid inside card */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                aria-hidden="true"
+              >
                 <svg width="100%" height="100%">
                   <defs>
                     <pattern
-                      id="about-grid"
-                      x="0"
-                      y="0"
-                      width="40"
-                      height="40"
+                      id="about-card-fine"
+                      width="20"
+                      height="20"
                       patternUnits="userSpaceOnUse"
                     >
                       <path
-                        d="M 40 0 L 0 0 0 40"
+                        d="M 20 0 L 0 0 0 20"
                         fill="none"
                         stroke="white"
-                        strokeWidth="0.5"
+                        strokeWidth="0.3"
+                        strokeOpacity="0.08"
+                      />
+                    </pattern>
+                    <pattern
+                      id="about-card-major"
+                      width="100"
+                      height="100"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <rect
+                        width="100"
+                        height="100"
+                        fill="url(#about-card-fine)"
+                      />
+                      <path
+                        d="M 100 0 L 0 0 0 100"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="0.6"
+                        strokeOpacity="0.14"
                       />
                     </pattern>
                   </defs>
-                  <rect width="100%" height="100%" fill="url(#about-grid)" />
+                  <rect
+                    width="100%"
+                    height="100%"
+                    fill="url(#about-card-major)"
+                  />
                 </svg>
               </div>
 
-              {/* Headline */}
+              {/* Content */}
               <div className="relative">
                 <span
-                  className="block text-6xl font-bold mb-1 select-none"
+                  className="block font-bold mb-1 select-none"
                   style={{
-                    color: "oklch(1 0 0 / 0.05)",
+                    color: "oklch(1 0 0 / 0.04)",
                     fontSize: "clamp(4rem, 8vw, 7rem)",
                     lineHeight: 1,
                   }}
@@ -160,7 +214,9 @@ export function AboutSection() {
                 >
                   seit
                 </span>
-                <p className="text-white/70 text-sm mb-8 -mt-2">
+                <p
+                  className="text-sm mb-8 -mt-2 text-white/50"
+                >
                   Ihr verlässlicher Partner
                 </p>
 
@@ -183,7 +239,9 @@ export function AboutSection() {
                       >
                         {stat.value}
                       </span>
-                      <span className="text-white/70 text-base">{stat.label}</span>
+                      <span className="text-base text-white/70">
+                        {stat.label}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -199,16 +257,16 @@ export function AboutSection() {
                   >
                     &ldquo;Your assignment is our passion&rdquo;
                   </p>
-                  <p className="text-white/50 text-xs mt-1">
+                  <p className="text-xs mt-1 text-white/40">
                     — Archivend GmbH, Günzburg
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Floating accent card */}
+            {/* Floating accent card — top-right, away from quote */}
             <div
-              className="absolute -bottom-5 -left-5 w-28 h-28 rounded-xl flex items-center justify-center shadow-lg"
+              className="absolute -top-4 -right-4 w-24 h-24 rounded-xl flex items-center justify-center shadow-lg"
               style={{ background: "var(--brand-accent)" }}
             >
               <div className="text-center">
