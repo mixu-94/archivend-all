@@ -11,11 +11,37 @@ export function HeroSection() {
       <div className="absolute inset-0 opacity-[0.07]" aria-hidden="true">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="0.5" />
+            <pattern
+              id="grid"
+              x="0"
+              y="0"
+              width="60"
+              height="60"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 60 0 L 0 0 0 60"
+                fill="none"
+                stroke="white"
+                strokeWidth="0.5"
+              />
             </pattern>
-            <pattern id="diag" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-              <line x1="0" y1="120" x2="120" y2="0" stroke="white" strokeWidth="0.3" />
+            <pattern
+              id="diag"
+              x="0"
+              y="0"
+              width="120"
+              height="120"
+              patternUnits="userSpaceOnUse"
+            >
+              <line
+                x1="0"
+                y1="120"
+                x2="120"
+                y2="0"
+                stroke="white"
+                strokeWidth="0.3"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
@@ -28,7 +54,7 @@ export function HeroSection() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 30% 50%, oklch(0.38 0.12 258 / 0.4) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 60% at 30% 50%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -56,40 +82,37 @@ export function HeroSection() {
           className="object-cover object-center"
           sizes="78vw"
           priority
-        />
-        {/* Subtle dark tint to integrate photo with theme */}
-        <div
-          className="absolute inset-0"
-          style={{ background: "oklch(0.18 0.07 258 / 0.22)" }}
-        />
-        {/* Left gradient fade — image dissolves behind text column */}
-        <div
-          className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(to right, var(--brand-primary) 0%, var(--brand-primary) 5%, oklch(0.27 0.096 258.5 / 0.85) 18%, oklch(0.27 0.096 258.5 / 0.3) 38%, transparent 60%)",
+            // Fade: left transparent → fully visible after ~25% → fades out at bottom
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 85%),linear-gradient(to left, transparent 0%, black 25%),  linear-gradient(to top, transparent 0%, black 30%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 85%),linear-gradient(to left, transparent 0%, black 25%),  linear-gradient(to top, transparent 0%, black 30%)",
+            maskComposite: "intersect",
+            WebkitMaskComposite: "destination-in",
           }}
         />
+
         {/* Top fade */}
         <div
           className="absolute top-0 left-0 right-0 h-28"
-          style={{ background: "linear-gradient(to bottom, var(--brand-primary), transparent)" }}
-        />
-        {/* Bottom fade */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-56"
-          style={{ background: "linear-gradient(to top, var(--brand-primary), transparent)" }}
+          style={{
+            background:
+              "linear-gradient(to bottom, var(--brand-primary), transparent)",
+          }}
         />
       </div>
 
       {/* ── Content — z-10 so it always sits above the image ── */}
       <div className="relative z-10 container mx-auto px-6 md:px-10 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
           {/* Left — Text */}
           <div>
             <div className="flex items-center gap-3 mb-8">
-              <span className="block h-px w-12" style={{ background: "var(--brand-accent)" }} />
+              <span
+                className="block h-px w-12"
+                style={{ background: "var(--brand-accent)" }}
+              />
               <span
                 className="text-xs font-semibold tracking-[0.3em] uppercase"
                 style={{ color: "var(--brand-accent)" }}
@@ -113,8 +136,8 @@ export function HeroSection() {
             />
 
             <p className="text-lg md:text-xl text-white/70 max-w-xl mb-10 leading-relaxed">
-              Professionelle Immobiliendienstleistungen und Bauprojektmanagement —
-              von der Bewertung bis zur schlüsselfertigen Übergabe.
+              Professionelle Immobiliendienstleistungen und Bauprojektmanagement
+              — von der Bewertung bis zur schlüsselfertigen Übergabe.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -172,7 +195,10 @@ export function HeroSection() {
             </div>
 
             <div className="mt-12 flex items-center gap-3">
-              <span className="block h-px w-8" style={{ background: "oklch(1 0 0 / 0.3)" }} />
+              <span
+                className="block h-px w-8"
+                style={{ background: "oklch(1 0 0 / 0.3)" }}
+              />
               <a
                 href={`tel:${COMPANY.contact.phoneClean}`}
                 className="text-sm text-white/50 hover:text-white/80 transition-colors"
@@ -194,34 +220,44 @@ export function HeroSection() {
               }}
             >
               <div className="text-center">
-                <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>
+                <p
+                  className="text-2xl font-bold"
+                  style={{ color: "var(--brand-accent)" }}
+                >
                   10+
                 </p>
                 <p className="text-xs text-white/70">Jahre Erfahrung</p>
               </div>
               <div className="w-px h-8 bg-white/20" />
               <div className="text-center">
-                <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>
+                <p
+                  className="text-2xl font-bold"
+                  style={{ color: "var(--brand-accent)" }}
+                >
                   50+
                 </p>
                 <p className="text-xs text-white/70">Objekte</p>
               </div>
               <div className="w-px h-8 bg-white/20" />
               <div className="text-center">
-                <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>
+                <p
+                  className="text-2xl font-bold"
+                  style={{ color: "var(--brand-accent)" }}
+                >
                   100%
                 </p>
                 <p className="text-xs text-white/70">Zufriedenheit</p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40 z-10">
-        <span className="text-white text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+        <span className="text-white text-[10px] tracking-[0.2em] uppercase">
+          Scroll
+        </span>
         <ChevronDown className="h-4 w-4 text-white animate-bounce" />
       </div>
     </section>
