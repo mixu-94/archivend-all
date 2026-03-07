@@ -1,9 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/lib/constants";
-
-const GOLD = "oklch(0.73 0.115 78)";
 
 export function HeroSection() {
   return (
@@ -12,37 +11,11 @@ export function HeroSection() {
       <div className="absolute inset-0 opacity-[0.07]" aria-hidden="true">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern
-              id="grid"
-              x="0"
-              y="0"
-              width="60"
-              height="60"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 60 0 L 0 0 0 60"
-                fill="none"
-                stroke="white"
-                strokeWidth="0.5"
-              />
+            <pattern id="grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="0.5" />
             </pattern>
-            <pattern
-              id="diag"
-              x="0"
-              y="0"
-              width="120"
-              height="120"
-              patternUnits="userSpaceOnUse"
-            >
-              <line
-                x1="0"
-                y1="120"
-                x2="120"
-                y2="0"
-                stroke="white"
-                strokeWidth="0.3"
-              />
+            <pattern id="diag" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="120" x2="120" y2="0" stroke="white" strokeWidth="0.3" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
@@ -77,10 +50,7 @@ export function HeroSection() {
           <div>
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-8">
-              <span
-                className="block h-px w-12"
-                style={{ background: "var(--brand-accent)" }}
-              />
+              <span className="block h-px w-12" style={{ background: "var(--brand-accent)" }} />
               <span
                 className="text-xs font-semibold tracking-[0.3em] uppercase"
                 style={{ color: "var(--brand-accent)" }}
@@ -100,10 +70,7 @@ export function HeroSection() {
             </h1>
 
             {/* Divider */}
-            <div
-              className="w-20 h-1 mb-8 rounded-full"
-              style={{ background: "var(--brand-accent)" }}
-            />
+            <div className="w-20 h-1 mb-8 rounded-full" style={{ background: "var(--brand-accent)" }} />
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-white/70 max-w-xl mb-10 leading-relaxed">
@@ -145,7 +112,7 @@ export function HeroSection() {
                 { value: "10+", label: "Jahre Erfahrung" },
                 { value: "50+", label: "Objekte" },
                 { value: "100%", label: "Zufriedenheit" },
-                { value: "3", label: "Bereiche" },
+                { value: "4+", label: "Referenzprojekte" },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -155,10 +122,7 @@ export function HeroSection() {
                     border: "1px solid oklch(1 0 0 / 0.12)",
                   }}
                 >
-                  <span
-                    className="block text-xl font-bold"
-                    style={{ color: "var(--brand-accent)" }}
-                  >
+                  <span className="block text-xl font-bold" style={{ color: "var(--brand-accent)" }}>
                     {stat.value}
                   </span>
                   <span className="text-xs text-white/60">{stat.label}</span>
@@ -168,10 +132,7 @@ export function HeroSection() {
 
             {/* Quick contact line */}
             <div className="mt-12 flex items-center gap-3">
-              <span
-                className="block h-px w-8"
-                style={{ background: "oklch(1 0 0 / 0.3)" }}
-              />
+              <span className="block h-px w-8" style={{ background: "oklch(1 0 0 / 0.3)" }} />
               <a
                 href={`tel:${COMPANY.contact.phoneClean}`}
                 className="text-sm text-white/50 hover:text-white/80 transition-colors"
@@ -181,422 +142,69 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right — Blueprint floor plan */}
+          {/* Right — Luxury house photo, bleeds to viewport right edge */}
           <div className="relative hidden lg:block" aria-hidden="true">
-            <div className="relative overflow-hidden">
-              <svg
-                viewBox="0 0 480 520"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-[600px]"
-              >
-                <defs>
-                  <pattern
-                    id="hero-bp-fine"
-                    width="20"
-                    height="20"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path
-                      d="M 20 0 L 0 0 0 20"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="0.3"
-                      strokeOpacity="0.18"
-                    />
-                  </pattern>
-                  <pattern
-                    id="hero-bp-major"
-                    width="100"
-                    height="100"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect width="100" height="100" fill="url(#hero-bp-fine)" />
-                    <path
-                      d="M 100 0 L 0 0 0 100"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="0.8"
-                      strokeOpacity="0.26"
-                    />
-                  </pattern>
-                </defs>
+            <div
+              className="relative h-[640px] overflow-hidden"
+              style={{ marginRight: "calc(-50vw + 50%)" }}
+            >
+              <Image
+                src="/images/hero-house.png"
+                alt=""
+                fill
+                className="object-cover object-center"
+                sizes="60vw"
+                priority
+              />
 
-                {/* Blueprint grid */}
-                <rect width="480" height="520" fill="url(#hero-bp-major)" />
+              {/* Dark tint — integrates photo with navy theme */}
+              <div
+                className="absolute inset-0"
+                style={{ background: "oklch(0.18 0.07 258 / 0.28)" }}
+              />
 
-                {/* ── Outer walls (L-shape) ── */}
-                <polyline
-                  points="70,70 390,70 390,240 300,240 300,420 70,420 70,70"
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="3"
-                  strokeOpacity="0.85"
-                  strokeLinejoin="miter"
-                />
+              {/* Left gradient fade — seamless blend into text column */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to right, var(--brand-primary) 0%, var(--brand-primary) 8%, oklch(0.27 0.096 258.5 / 0.55) 30%, transparent 62%)",
+                }}
+              />
 
-                {/* ── Interior walls ── */}
-                <g stroke="white" fill="none" strokeOpacity="0.65">
-                  {/* Main vertical divider */}
-                  <line x1="210" y1="70" x2="210" y2="420" strokeWidth="2" />
-                  {/* Main horizontal divider */}
-                  <line x1="70" y1="200" x2="390" y2="200" strokeWidth="2" />
-                  {/* Bathroom/guest divider */}
-                  <line x1="210" y1="280" x2="300" y2="280" strokeWidth="1.5" />
-                </g>
+              {/* Top fade */}
+              <div
+                className="absolute top-0 left-0 right-0 h-24"
+                style={{ background: "linear-gradient(to bottom, var(--brand-primary), transparent)" }}
+              />
 
-                {/* ── Doors ── */}
-                <g
-                  stroke="white"
-                  fill="none"
-                  strokeWidth="0.8"
-                  strokeOpacity="0.42"
-                >
-                  {/* Living → hallway */}
-                  <line x1="210" y1="148" x2="238" y2="148" />
-                  <path d="M 210,148 A 28,28 0 0,1 238,120" />
-                  {/* Bedroom */}
-                  <line x1="210" y1="310" x2="238" y2="310" />
-                  <path d="M 210,310 A 28,28 0 0,1 238,282" />
-                  {/* Front entry */}
-                  <line x1="110" y1="420" x2="138" y2="420" />
-                  <path d="M 110,420 A 28,28 0 0,0 138,392" />
-                </g>
-
-                {/* ── Windows ── */}
-                <g
-                  stroke="white"
-                  fill="none"
-                  strokeWidth="1.2"
-                  strokeOpacity="0.42"
-                >
-                  {/* Top wall — left window */}
-                  <line x1="100" y1="70" x2="160" y2="70" />
-                  <line x1="103" y1="66" x2="103" y2="74" />
-                  <line x1="157" y1="66" x2="157" y2="74" />
-                  {/* Top wall — right window */}
-                  <line x1="250" y1="70" x2="355" y2="70" />
-                  <line x1="253" y1="66" x2="253" y2="74" />
-                  <line x1="352" y1="66" x2="352" y2="74" />
-                  {/* Right wall */}
-                  <line x1="390" y1="95" x2="390" y2="162" />
-                  <line x1="386" y1="98" x2="394" y2="98" />
-                  <line x1="386" y1="159" x2="394" y2="159" />
-                  {/* Left wall */}
-                  <line x1="70" y1="275" x2="70" y2="365" />
-                  <line x1="66" y1="278" x2="74" y2="278" />
-                  <line x1="66" y1="362" x2="74" y2="362" />
-                </g>
-
-                {/* ── Dimension lines — gold ── */}
-                <g stroke={GOLD} fill={GOLD} strokeWidth="0.9" opacity="0.82">
-                  {/* Total width */}
-                  <line x1="70" y1="46" x2="390" y2="46" />
-                  <line x1="70" y1="41" x2="70" y2="51" />
-                  <line x1="390" y1="41" x2="390" y2="51" />
-                  <text
-                    x="230"
-                    y="43"
-                    textAnchor="middle"
-                    fontSize="9.5"
-                    fontFamily="monospace"
-                    fontWeight="600"
-                    fill={GOLD}
-                  >
-                    16.00 m
-                  </text>
-
-                  {/* Total height */}
-                  <line x1="46" y1="70" x2="46" y2="420" />
-                  <line x1="41" y1="70" x2="51" y2="70" />
-                  <line x1="41" y1="420" x2="51" y2="420" />
-                  <text
-                    x="14"
-                    y="248"
-                    textAnchor="middle"
-                    fontSize="9.5"
-                    fontFamily="monospace"
-                    fontWeight="600"
-                    fill={GOLD}
-                    transform="rotate(-90,14,248)"
-                  >
-                    17.50 m
-                  </text>
-
-                  {/* Left room width (dashed) */}
-                  <line
-                    x1="70"
-                    y1="183"
-                    x2="210"
-                    y2="183"
-                    strokeDasharray="3,2"
-                    strokeOpacity="0.5"
-                  />
-                  <line x1="70" y1="179" x2="70" y2="187" />
-                  <line x1="210" y1="179" x2="210" y2="187" />
-                  <text
-                    x="140"
-                    y="181"
-                    textAnchor="middle"
-                    fontSize="8.5"
-                    fontFamily="monospace"
-                    fill={GOLD}
-                  >
-                    7.00 m
-                  </text>
-                </g>
-
-                {/* ── Room labels ── */}
-                <g fontFamily="monospace" fill="white" textAnchor="middle">
-                  <text x="140" y="126" fontSize="10.5" fillOpacity="0.48">
-                    Wohnzimmer
-                  </text>
-                  <text x="140" y="140" fontSize="8" fillOpacity="0.25">
-                    28 m²
-                  </text>
-
-                  <text x="300" y="118" fontSize="10.5" fillOpacity="0.48">
-                    Küche /
-                  </text>
-                  <text x="300" y="132" fontSize="10.5" fillOpacity="0.48">
-                    Esszimmer
-                  </text>
-                  <text x="300" y="146" fontSize="8" fillOpacity="0.25">
-                    24 m²
-                  </text>
-
-                  <text x="102" y="223" fontSize="9" fillOpacity="0.38">
-                    Flur
-                  </text>
-
-                  <text x="140" y="318" fontSize="10.5" fillOpacity="0.48">
-                    Schlafzimmer
-                  </text>
-                  <text x="140" y="332" fontSize="8" fillOpacity="0.25">
-                    18 m²
-                  </text>
-
-                  <text x="255" y="259" fontSize="9.5" fillOpacity="0.42">
-                    Gästezimmer
-                  </text>
-                  <text x="255" y="271" fontSize="7.5" fillOpacity="0.22">
-                    12 m²
-                  </text>
-
-                  <text x="255" y="355" fontSize="9.5" fillOpacity="0.42">
-                    Bad
-                  </text>
-                  <text x="255" y="367" fontSize="7.5" fillOpacity="0.22">
-                    8 m²
-                  </text>
-                </g>
-
-                {/* ── Staircase ── */}
-                <g
-                  transform="translate(155,204)"
-                  stroke="white"
-                  strokeWidth="0.7"
-                  strokeOpacity="0.32"
-                  fill="none"
-                >
-                  <rect width="42" height="30" />
-                  <line x1="0" y1="6" x2="42" y2="6" />
-                  <line x1="0" y1="12" x2="42" y2="12" />
-                  <line x1="0" y1="18" x2="42" y2="18" />
-                  <line x1="0" y1="24" x2="42" y2="24" />
-                  <line
-                    x1="21"
-                    y1="3"
-                    x2="21"
-                    y2="26"
-                    stroke={GOLD}
-                    strokeOpacity="0.55"
-                    strokeWidth="0.9"
-                  />
-                  <polygon
-                    points="21,1 18,7 24,7"
-                    fill={GOLD}
-                    fillOpacity="0.55"
-                  />
-                </g>
-
-                {/* ── Compass rose ── */}
-                <g transform="translate(430,104)">
-                  <circle
-                    cx="0"
-                    cy="0"
-                    r="20"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="0.6"
-                    strokeOpacity="0.18"
-                  />
-                  <polygon
-                    points="0,-16 3.5,-7 -3.5,-7"
-                    fill={GOLD}
-                    fillOpacity="0.78"
-                  />
-                  <polygon
-                    points="0,16 3.5,7 -3.5,7"
-                    fill="white"
-                    fillOpacity="0.18"
-                  />
-                  <polygon
-                    points="16,0 7,3.5 7,-3.5"
-                    fill="white"
-                    fillOpacity="0.18"
-                  />
-                  <polygon
-                    points="-16,0 -7,3.5 -7,-3.5"
-                    fill="white"
-                    fillOpacity="0.18"
-                  />
-                  <text
-                    x="0"
-                    y="-22"
-                    textAnchor="middle"
-                    fontSize="8"
-                    fill={GOLD}
-                    fontFamily="monospace"
-                    fontWeight="700"
-                  >
-                    N
-                  </text>
-                </g>
-
-                {/* ── Title block ── */}
-                <g transform="translate(315,298)">
-                  <rect
-                    width="150"
-                    height="110"
-                    rx="3"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="0.7"
-                    strokeOpacity="0.16"
-                  />
-                  <line
-                    x1="0"
-                    y1="26"
-                    x2="150"
-                    y2="26"
-                    stroke="white"
-                    strokeWidth="0.5"
-                    strokeOpacity="0.12"
-                  />
-                  <line
-                    x1="0"
-                    y1="52"
-                    x2="150"
-                    y2="52"
-                    stroke="white"
-                    strokeWidth="0.5"
-                    strokeOpacity="0.12"
-                  />
-                  <text
-                    x="75"
-                    y="17"
-                    textAnchor="middle"
-                    fontSize="7.5"
-                    fill={GOLD}
-                    fontFamily="monospace"
-                    fontWeight="700"
-                    letterSpacing="1.5"
-                  >
-                    ARCHIVEND GMBH
-                  </text>
-                  <text
-                    x="8"
-                    y="39"
-                    fontSize="8"
-                    fill="white"
-                    fillOpacity="0.38"
-                    fontFamily="monospace"
-                  >
-                    Grundriss Erdgeschoss
-                  </text>
-                  <text
-                    x="8"
-                    y="64"
-                    fontSize="7"
-                    fill="white"
-                    fillOpacity="0.25"
-                    fontFamily="monospace"
-                  >
-                    Maßstab: 1 : 100
-                  </text>
-                  <text
-                    x="8"
-                    y="77"
-                    fontSize="7"
-                    fill="white"
-                    fillOpacity="0.25"
-                    fontFamily="monospace"
-                  >
-                    Projekt: Archivend GmbH
-                  </text>
-                  <text
-                    x="8"
-                    y="90"
-                    fontSize="7"
-                    fill="white"
-                    fillOpacity="0.25"
-                    fontFamily="monospace"
-                  >
-                    Datum: 2025-03-05
-                  </text>
-                  <text
-                    x="8"
-                    y="103"
-                    fontSize="7"
-                    fill="white"
-                    fillOpacity="0.25"
-                    fontFamily="monospace"
-                  >
-                    Blatt: 01 / 03
-                  </text>
-                </g>
-              </svg>
-
-              {/* Gradient fades — alle Kanten */}
-              <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-                <div className="absolute top-0 left-0 right-0 h-20" style={{ background: "linear-gradient(to bottom, var(--brand-primary), transparent)" }} />
-                <div className="absolute bottom-0 left-0 right-0 h-52" style={{ background: "linear-gradient(to top, var(--brand-primary), transparent)" }} />
-                <div className="absolute inset-y-0 left-0 w-16" style={{ background: "linear-gradient(to right, var(--brand-primary), transparent)" }} />
-                <div className="absolute inset-y-0 right-0 w-16" style={{ background: "linear-gradient(to left, var(--brand-primary), transparent)" }} />
-              </div>
+              {/* Bottom fade */}
+              <div
+                className="absolute bottom-0 left-0 right-0 h-52"
+                style={{ background: "linear-gradient(to top, var(--brand-primary), transparent)" }}
+              />
 
               {/* Stats badge */}
               <div
                 className="absolute bottom-6 left-6 right-6 flex items-center justify-between px-5 py-4 rounded-xl backdrop-blur-sm z-10"
-                style={{ background: "oklch(0.27 0.096 258.5 / 0.85)", border: "1px solid var(--brand-accent)", boxShadow: "0 0 0 1px oklch(0.73 0.115 78 / 0.15), 0 4px 24px oklch(0 0 0 / 0.4)" }}
+                style={{
+                  background: "oklch(0.27 0.096 258.5 / 0.85)",
+                  border: "1px solid var(--brand-accent)",
+                  boxShadow: "0 0 0 1px oklch(0.73 0.115 78 / 0.15), 0 4px 24px oklch(0 0 0 / 0.4)",
+                }}
               >
                 <div className="text-center">
-                  <p
-                    className="text-2xl font-bold"
-                    style={{ color: "var(--brand-accent)" }}
-                  >
-                    10+
-                  </p>
+                  <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>10+</p>
                   <p className="text-xs text-white/70">Jahre Erfahrung</p>
                 </div>
                 <div className="w-px h-8 bg-white/20" />
                 <div className="text-center">
-                  <p
-                    className="text-2xl font-bold"
-                    style={{ color: "var(--brand-accent)" }}
-                  >
-                    50+
-                  </p>
+                  <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>50+</p>
                   <p className="text-xs text-white/70">Objekte</p>
                 </div>
                 <div className="w-px h-8 bg-white/20" />
                 <div className="text-center">
-                  <p
-                    className="text-2xl font-bold"
-                    style={{ color: "var(--brand-accent)" }}
-                  >
-                    100%
-                  </p>
+                  <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>100%</p>
                   <p className="text-xs text-white/70">Zufriedenheit</p>
                 </div>
               </div>
@@ -607,9 +215,7 @@ export function HeroSection() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40">
-        <span className="text-white text-[10px] tracking-[0.2em] uppercase">
-          Scroll
-        </span>
+        <span className="text-white text-[10px] tracking-[0.2em] uppercase">Scroll</span>
         <ChevronDown className="h-4 w-4 text-white animate-bounce" />
       </div>
     </section>
