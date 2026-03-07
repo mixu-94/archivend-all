@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { COMPANY } from "@/lib/constants";
 
 const VALUES = [
   {
@@ -254,7 +255,7 @@ export function AboutSection() {
                     className="text-sm italic"
                     style={{ color: "var(--brand-accent)" }}
                   >
-                    &ldquo;Your assignment is our passion&rdquo;
+                    &ldquo;{COMPANY.taglineEnglish}&rdquo;
                   </p>
                   <p className="text-xs mt-1 text-white/40">
                     — Archivend GmbH, Günzburg

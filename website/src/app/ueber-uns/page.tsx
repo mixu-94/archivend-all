@@ -4,7 +4,7 @@ import { CheckCircle2, Target, Handshake, ShieldCheck, ArrowRight } from "lucide
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
 import { COMPANY } from "@/lib/constants";
-import { getLocalBusinessSchema } from "@/lib/structured-data";
+import { getLocalBusinessSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Über uns",
@@ -50,12 +50,20 @@ const VALUES = [
 
 export default function UeberUnsPage() {
   const schema = getLocalBusinessSchema();
+  const breadcrumb = getBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Über uns", url: "/ueber-uns" },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
 
       {/* ① Hero — Navy + Grid */}
@@ -165,7 +173,7 @@ export default function UeberUnsPage() {
                       {[
                         { value: "10+", label: "Jahre Erfahrung", sub: "kombiniert im Team" },
                         { value: "50+", label: "Objekte vermittelt", sub: "privat & gewerblich" },
-                        { value: "2", label: "Geschäftsbereiche", sub: "Immobilien · Komplettservice" },
+                        { value: "4+", label: "Referenz-Projekte", sub: "Neubau · Sanierung · Entwicklung" },
                       ].map((stat, i) => (
                         <div key={i} className={`pb-4 ${i < 2 ? "border-b border-white/10" : ""}`}>
                           <span className="text-3xl font-black text-brand-accent">{stat.value}</span>

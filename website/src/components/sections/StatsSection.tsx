@@ -2,7 +2,7 @@ const STATS = [
   { value: "10+", label: "Jahre Erfahrung", sub: "in der Branche" },
   { value: "50+", label: "Objekte vermittelt", sub: "privat & gewerblich" },
   { value: "100%", label: "Kundenzufriedenheit", sub: "unser Versprechen" },
-  { value: "2", label: "Geschäftsbereiche", sub: "Immobilien · Bau" },
+  { value: "4+", label: "Referenz-Projekte", sub: "Neubau · Sanierung · Entwicklung" },
 ] as const;
 
 const DARK = "oklch(0.16 0.03 258)";

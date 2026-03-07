@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
 import { SERVICES } from "@/lib/constants";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Leistungen",
@@ -49,8 +50,17 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default function LeistungenPage() {
+  const breadcrumb = getBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Leistungen", url: "/leistungen" },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       {/* ① Hero — Navy + Grid */}
       <section className="bg-brand-primary py-16 md:py-24 relative overflow-hidden">
         <div

@@ -129,6 +129,43 @@ export async function POST(request: NextRequest) {
     `Gesendet über das Kontaktformular auf archivend.de`,
   ].join("\n");
 
+  const confirmationHtml = `
+    <div style="font-family:sans-serif;max-width:600px;margin:0 auto;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;">
+      <div style="background:#1B2F5C;padding:20px 24px;">
+        <h1 style="color:#fff;margin:0;font-size:20px;">Vielen Dank für Ihre Anfrage</h1>
+        <p style="color:#C9A84C;margin:4px 0 0;font-size:13px;">Archivend GmbH — Bestätigung</p>
+      </div>
+      <div style="padding:24px;">
+        <p style="color:#111827;margin-bottom:16px;">Guten Tag ${safeName},</p>
+        <p style="color:#374151;margin-bottom:16px;">wir haben Ihre Nachricht erhalten und werden uns <strong>innerhalb von 24 Stunden</strong> bei Ihnen melden.</p>
+        <div style="background:#f9fafb;padding:16px;border-radius:6px;border-left:3px solid #C9A84C;margin-bottom:20px;">
+          <p style="font-weight:bold;margin:0 0 8px;color:#374151;">Ihre Anfrage (Thema: ${safeInterest}):</p>
+          <p style="margin:0;color:#111827;white-space:pre-wrap;">${safeMessage}</p>
+        </div>
+        <p style="color:#374151;margin-bottom:4px;">Bei dringenden Fragen erreichen Sie uns direkt:</p>
+        <p style="color:#374151;margin-bottom:4px;"><strong>Tel:</strong> +49 (0) 7951 / 472 14 29</p>
+        <p style="color:#374151;margin-bottom:20px;"><strong>E-Mail:</strong> info@archivend.de</p>
+        <p style="color:#6b7280;font-size:13px;">Mit freundlichen Grüßen<br/>Archivend GmbH · Dossenbergerstr. 5 · 89312 Günzburg</p>
+      </div>
+    </div>
+  `;
+
+  const confirmationText = [
+    `Guten Tag ${safeName},`,
+    ``,
+    `wir haben Ihre Nachricht erhalten und werden uns innerhalb von 24 Stunden bei Ihnen melden.`,
+    ``,
+    `Ihre Anfrage (Thema: ${safeInterest}):`,
+    safeMessage,
+    ``,
+    `Bei dringenden Fragen erreichen Sie uns direkt:`,
+    `Tel: +49 (0) 7951 / 472 14 29`,
+    `E-Mail: info@archivend.de`,
+    ``,
+    `Mit freundlichen Grüßen`,
+    `Archivend GmbH · Dossenbergerstr. 5 · 89312 Günzburg`,
+  ].join("\n");
+
   try {
     await transporter.sendMail({
       from: `"Archivend Website" <${process.env.SMTP_FROM ?? process.env.SMTP_USER}>`,
@@ -137,6 +174,14 @@ export async function POST(request: NextRequest) {
       subject,
       text,
       html,
+    });
+
+    await transporter.sendMail({
+      from: `"Archivend GmbH" <${process.env.SMTP_FROM ?? process.env.SMTP_USER}>`,
+      to: `"${safeName}" <${safeEmail}>`,
+      subject: `Ihre Anfrage bei Archivend GmbH — ${safeInterest}`,
+      text: confirmationText,
+      html: confirmationHtml,
     });
 
     return NextResponse.json(

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
 import { COMPANY } from "@/lib/constants";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Kontakt",
@@ -23,8 +24,17 @@ export const metadata: Metadata = {
 };
 
 export default function KontaktPage() {
+  const breadcrumb = getBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Kontakt", url: "/kontakt" },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       {/* ① Hero — Navy + Grid */}
       <section className="bg-brand-primary py-16 md:py-24 relative overflow-hidden">
         <div

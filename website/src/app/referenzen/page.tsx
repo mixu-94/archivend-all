@@ -4,6 +4,7 @@ import { Building2, MapPin, Calendar, ArrowRight, CheckCircle2 } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
 import { REFERENCE_PROJECTS, COMPANY } from "@/lib/constants";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Referenzen",
@@ -38,8 +39,17 @@ const PROCESS_STEPS = [
 ];
 
 export default function ReferenzenPage() {
+  const breadcrumb = getBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Referenzen", url: "/referenzen" },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       {/* ① Hero — Navy + Grid */}
       <section className="bg-brand-primary py-16 md:py-28 relative overflow-hidden">
         <div
