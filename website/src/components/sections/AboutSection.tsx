@@ -152,55 +152,6 @@ export function AboutSection() {
               className="relative rounded-2xl p-10 overflow-hidden"
               style={{ background: "oklch(0.20 0.07 258)" }}
             >
-              {/* Blueprint grid inside card */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                aria-hidden="true"
-              >
-                <svg width="100%" height="100%">
-                  <defs>
-                    <pattern
-                      id="about-card-fine"
-                      width="20"
-                      height="20"
-                      patternUnits="userSpaceOnUse"
-                    >
-                      <path
-                        d="M 20 0 L 0 0 0 20"
-                        fill="none"
-                        stroke="white"
-                        strokeWidth="0.3"
-                        strokeOpacity="0.08"
-                      />
-                    </pattern>
-                    <pattern
-                      id="about-card-major"
-                      width="100"
-                      height="100"
-                      patternUnits="userSpaceOnUse"
-                    >
-                      <rect
-                        width="100"
-                        height="100"
-                        fill="url(#about-card-fine)"
-                      />
-                      <path
-                        d="M 100 0 L 0 0 0 100"
-                        fill="none"
-                        stroke="white"
-                        strokeWidth="0.6"
-                        strokeOpacity="0.14"
-                      />
-                    </pattern>
-                  </defs>
-                  <rect
-                    width="100%"
-                    height="100%"
-                    fill="url(#about-card-major)"
-                  />
-                </svg>
-              </div>
-
               {/* Content */}
               <div className="relative">
                 <span
