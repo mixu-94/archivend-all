@@ -67,7 +67,7 @@ export function ContactCTASection() {
               className="text-base max-w-md"
               style={{ color: "oklch(0.16 0.03 258 / 0.65)" }}
             >
-              Ob Immobilienkauf, Bauprojekt oder Luftaufnahmen — wir beraten Sie
+              Ob Immobilienkauf, Bauprojekt oder Bewertung — wir beraten Sie
               persönlich und unverbindlich. Kostenlose Erstberatung auf Wunsch.
             </p>
           </div>

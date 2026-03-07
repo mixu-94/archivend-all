@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, Phone } from "lucide-react";
+import { Menu, Phone, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -75,6 +75,21 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => {
             const isActive = !link.external && pathname === link.href;
+            if (link.external) {
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target={link.target ?? "_blank"}
+                  rel="noopener noreferrer"
+                  className="ml-1 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors text-brand-accent hover:text-brand-accent-foreground hover:bg-brand-accent"
+                  style={{ border: "1px solid var(--brand-accent)" }}
+                >
+                  {link.label}
+                  <ExternalLink className="h-3 w-3 opacity-70" />
+                </a>
+              );
+            }
             return (
               <NavItem
                 key={link.href}
@@ -118,6 +133,22 @@ export function Header() {
             <div className="flex flex-col gap-1 mt-8">
               {NAV_LINKS.map((link) => {
                 const isActive = !link.external && pathname === link.href;
+                if (link.external) {
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target={link.target ?? "_blank"}
+                      rel="noopener noreferrer"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-2 px-4 py-3 rounded-md text-base font-medium transition-colors text-brand-accent"
+                      style={{ border: "1px solid oklch(0.73 0.115 78 / 0.4)" }}
+                    >
+                      {link.label}
+                      <ExternalLink className="h-4 w-4 opacity-70" />
+                    </a>
+                  );
+                }
                 return (
                   <NavItem
                     key={link.href}

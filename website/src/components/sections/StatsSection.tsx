@@ -2,7 +2,7 @@ const STATS = [
   { value: "10+", label: "Jahre Erfahrung", sub: "in der Branche" },
   { value: "50+", label: "Objekte vermittelt", sub: "privat & gewerblich" },
   { value: "100%", label: "Kundenzufriedenheit", sub: "unser Versprechen" },
-  { value: "3", label: "Geschäftsbereiche", sub: "Immobilien · Bau · Air Fly" },
+  { value: "2", label: "Geschäftsbereiche", sub: "Immobilien · Bau" },
 ] as const;
 
 const DARK = "oklch(0.16 0.03 258)";

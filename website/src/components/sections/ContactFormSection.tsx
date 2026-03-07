@@ -39,7 +39,6 @@ const INTEREST_OPTIONS = [
   { value: "Immobilien", label: "Immobilien" },
   { value: "Bauprojekte", label: "Bauprojekte" },
   { value: "Gutachten & Exposés", label: "Gutachten & Exposés" },
-  { value: "Air Fly", label: "Air Fly" },
   { value: "Sonstiges", label: "Sonstiges" },
 ];
 

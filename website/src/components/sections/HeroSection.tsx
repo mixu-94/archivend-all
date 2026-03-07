@@ -107,8 +107,8 @@ export function HeroSection() {
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-white/70 max-w-xl mb-10 leading-relaxed">
-              Professionelle Immobiliendienstleistungen, Bauprojektmanagement
-              und exklusive Luftfahrtservices — alles aus einer Hand.
+              Professionelle Immobiliendienstleistungen und Bauprojektmanagement —
+              von der Bewertung bis zur schlüsselfertigen Übergabe.
             </p>
 
             {/* CTA Buttons */}

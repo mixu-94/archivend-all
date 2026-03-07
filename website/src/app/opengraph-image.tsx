@@ -37,7 +37,7 @@ export default async function Image() {
         <span
           style={{ color: "white", fontSize: 22, opacity: 0.5, marginTop: 8 }}
         >
-          Günzburg, Bayern · Immobilien · Bauprojekte · Air Fly
+          Günzburg, Bayern · Immobilien · Bauprojekte · Referenzen
         </span>
       </div>
     ),
