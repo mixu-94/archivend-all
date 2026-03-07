@@ -7,7 +7,7 @@ import { COMPANY } from "@/lib/constants";
 export function HeroSection() {
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-brand-primary">
-      {/* Geometric SVG background pattern */}
+      {/* Background grid pattern */}
       <div className="absolute inset-0 opacity-[0.07]" aria-hidden="true">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -23,7 +23,7 @@ export function HeroSection() {
         </svg>
       </div>
 
-      {/* Gradient overlay */}
+      {/* Radial gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
@@ -33,9 +33,9 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* Gold diagonal accent bar */}
+      {/* Gold diagonal accent */}
       <div
-        className="absolute top-0 right-0 w-1/2 h-full opacity-10 origin-top-right"
+        className="absolute top-0 right-0 w-1/2 h-full opacity-10"
         style={{
           background:
             "linear-gradient(135deg, transparent 40%, var(--brand-accent) 40%, var(--brand-accent) 42%, transparent 42%)",
@@ -43,12 +43,51 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* Content */}
+      {/* ── House image — absolutely positioned, starts far left, bleeds to right edge ── */}
+      <div
+        className="absolute inset-y-0 right-0 hidden lg:block pointer-events-none"
+        style={{ left: "22%" }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/hero-house.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="78vw"
+          priority
+        />
+        {/* Subtle dark tint to integrate photo with theme */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "oklch(0.18 0.07 258 / 0.22)" }}
+        />
+        {/* Left gradient fade — image dissolves behind text column */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, var(--brand-primary) 0%, var(--brand-primary) 5%, oklch(0.27 0.096 258.5 / 0.85) 18%, oklch(0.27 0.096 258.5 / 0.3) 38%, transparent 60%)",
+          }}
+        />
+        {/* Top fade */}
+        <div
+          className="absolute top-0 left-0 right-0 h-28"
+          style={{ background: "linear-gradient(to bottom, var(--brand-primary), transparent)" }}
+        />
+        {/* Bottom fade */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-56"
+          style={{ background: "linear-gradient(to top, var(--brand-primary), transparent)" }}
+        />
+      </div>
+
+      {/* ── Content — z-10 so it always sits above the image ── */}
       <div className="relative z-10 container mx-auto px-6 md:px-10 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
           {/* Left — Text */}
           <div>
-            {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-8">
               <span className="block h-px w-12" style={{ background: "var(--brand-accent)" }} />
               <span
@@ -59,7 +98,6 @@ export function HeroSection() {
               </span>
             </div>
 
-            {/* Headline */}
             <h1
               className="text-5xl md:text-6xl font-bold text-white leading-[1.05] mb-6"
               style={{ letterSpacing: "-0.02em" }}
@@ -69,16 +107,16 @@ export function HeroSection() {
               Bauwerte
             </h1>
 
-            {/* Divider */}
-            <div className="w-20 h-1 mb-8 rounded-full" style={{ background: "var(--brand-accent)" }} />
+            <div
+              className="w-20 h-1 mb-8 rounded-full"
+              style={{ background: "var(--brand-accent)" }}
+            />
 
-            {/* Subheadline */}
             <p className="text-lg md:text-xl text-white/70 max-w-xl mb-10 leading-relaxed">
               Professionelle Immobiliendienstleistungen und Bauprojektmanagement —
               von der Bewertung bis zur schlüsselfertigen Übergabe.
             </p>
 
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 asChild
@@ -106,7 +144,7 @@ export function HeroSection() {
               </Button>
             </div>
 
-            {/* Mobile stats grid (hidden on lg+) */}
+            {/* Mobile stats */}
             <div className="grid grid-cols-2 gap-3 mt-8 lg:hidden">
               {[
                 { value: "10+", label: "Jahre Erfahrung" },
@@ -122,7 +160,10 @@ export function HeroSection() {
                     border: "1px solid oklch(1 0 0 / 0.12)",
                   }}
                 >
-                  <span className="block text-xl font-bold" style={{ color: "var(--brand-accent)" }}>
+                  <span
+                    className="block text-xl font-bold"
+                    style={{ color: "var(--brand-accent)" }}
+                  >
                     {stat.value}
                   </span>
                   <span className="text-xs text-white/60">{stat.label}</span>
@@ -130,7 +171,6 @@ export function HeroSection() {
               ))}
             </div>
 
-            {/* Quick contact line */}
             <div className="mt-12 flex items-center gap-3">
               <span className="block h-px w-8" style={{ background: "oklch(1 0 0 / 0.3)" }} />
               <a
@@ -142,79 +182,45 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right — Luxury house photo, bleeds to viewport right edge */}
-          <div className="relative hidden lg:block" aria-hidden="true">
+          {/* Right — Stats badge, floats over the image area */}
+          <div className="hidden lg:flex items-end pb-10">
             <div
-              className="relative h-[640px] overflow-hidden"
-              style={{ marginRight: "calc(-50vw + 50%)" }}
+              className="w-full flex items-center justify-between px-5 py-4 rounded-xl backdrop-blur-sm"
+              style={{
+                background: "oklch(0.27 0.096 258.5 / 0.75)",
+                border: "1px solid var(--brand-accent)",
+                boxShadow:
+                  "0 0 0 1px oklch(0.73 0.115 78 / 0.15), 0 4px 24px oklch(0 0 0 / 0.4)",
+              }}
             >
-              <Image
-                src="/images/hero-house.png"
-                alt=""
-                fill
-                className="object-cover object-center"
-                sizes="60vw"
-                priority
-              />
-
-              {/* Dark tint — integrates photo with navy theme */}
-              <div
-                className="absolute inset-0"
-                style={{ background: "oklch(0.18 0.07 258 / 0.28)" }}
-              />
-
-              {/* Left gradient fade — seamless blend into text column */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(to right, var(--brand-primary) 0%, var(--brand-primary) 8%, oklch(0.27 0.096 258.5 / 0.55) 30%, transparent 62%)",
-                }}
-              />
-
-              {/* Top fade */}
-              <div
-                className="absolute top-0 left-0 right-0 h-24"
-                style={{ background: "linear-gradient(to bottom, var(--brand-primary), transparent)" }}
-              />
-
-              {/* Bottom fade */}
-              <div
-                className="absolute bottom-0 left-0 right-0 h-52"
-                style={{ background: "linear-gradient(to top, var(--brand-primary), transparent)" }}
-              />
-
-              {/* Stats badge */}
-              <div
-                className="absolute bottom-6 left-6 right-6 flex items-center justify-between px-5 py-4 rounded-xl backdrop-blur-sm z-10"
-                style={{
-                  background: "oklch(0.27 0.096 258.5 / 0.85)",
-                  border: "1px solid var(--brand-accent)",
-                  boxShadow: "0 0 0 1px oklch(0.73 0.115 78 / 0.15), 0 4px 24px oklch(0 0 0 / 0.4)",
-                }}
-              >
-                <div className="text-center">
-                  <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>10+</p>
-                  <p className="text-xs text-white/70">Jahre Erfahrung</p>
-                </div>
-                <div className="w-px h-8 bg-white/20" />
-                <div className="text-center">
-                  <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>50+</p>
-                  <p className="text-xs text-white/70">Objekte</p>
-                </div>
-                <div className="w-px h-8 bg-white/20" />
-                <div className="text-center">
-                  <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>100%</p>
-                  <p className="text-xs text-white/70">Zufriedenheit</p>
-                </div>
+              <div className="text-center">
+                <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>
+                  10+
+                </p>
+                <p className="text-xs text-white/70">Jahre Erfahrung</p>
+              </div>
+              <div className="w-px h-8 bg-white/20" />
+              <div className="text-center">
+                <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>
+                  50+
+                </p>
+                <p className="text-xs text-white/70">Objekte</p>
+              </div>
+              <div className="w-px h-8 bg-white/20" />
+              <div className="text-center">
+                <p className="text-2xl font-bold" style={{ color: "var(--brand-accent)" }}>
+                  100%
+                </p>
+                <p className="text-xs text-white/70">Zufriedenheit</p>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40 z-10">
         <span className="text-white text-[10px] tracking-[0.2em] uppercase">Scroll</span>
         <ChevronDown className="h-4 w-4 text-white animate-bounce" />
       </div>
