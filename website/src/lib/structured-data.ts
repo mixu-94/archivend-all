@@ -51,18 +51,18 @@ export function getLocalBusinessSchema() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Bauprojektservices",
+            name: "Bauprojektmanagement",
             description:
-              "Vorbereitung und Abwicklung von Bauprojekten",
+              "Vorbereitung und Abwicklung von Bauprojekten — von der Planung bis zur Fertigstellung",
           },
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Luftfahrtservices",
+            name: "Komplettservice",
             description:
-              "Rundflüge, Kurierflüge und Luftbildaufnahmen",
+              "Hausverwaltung und Komplettservice über starkes Partner-Netzwerk",
           },
         },
       ],

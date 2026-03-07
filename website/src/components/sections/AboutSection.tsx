@@ -6,7 +6,7 @@ const VALUES = [
   {
     title: "Kompetenz & Erfahrung",
     description:
-      "Jahrelange Branchenerfahrung in Immobilien, Bauprojekten und Luftfahrt — für fundierte Entscheidungen.",
+      "Jahrelange Branchenerfahrung in Immobilien und Bauprojekten — für fundierte Entscheidungen.",
   },
   {
     title: "Transparenz & Vertrauen",
@@ -23,7 +23,7 @@ const VALUES = [
 const STATS = [
   { value: "10+", label: "Jahre Erfahrung" },
   { value: "50+", label: "Objekte vermittelt" },
-  { value: "3", label: "Geschäftsbereiche" },
+  { value: "2", label: "Geschäftsbereiche" },
 ] as const;
 
 export function AboutSection() {
@@ -105,9 +105,8 @@ export function AboutSection() {
             </p>
             <p className="text-base leading-relaxed mb-10 text-white/70">
               Unser Anspruch: Kein Auftrag ist zu klein, kein Projekt zu komplex.
-              Mit unserer Air Fly Division ergänzen wir klassische
-              Immobilienservices durch professionelle Luftbildaufnahmen — ein
-              Alleinstellungsmerkmal in der Region.
+              Mit unserem starken Partner-Netzwerk für Hausverwaltung und
+              Komplettservice bieten wir alles aus einer Hand.
             </p>
 
             {/* Value Propositions */}

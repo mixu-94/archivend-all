@@ -9,7 +9,7 @@ import { getLocalBusinessSchema } from "@/lib/structured-data";
 export const metadata: Metadata = {
   title: "Über uns",
   description:
-    "Lernen Sie Archivend GmbH kennen — Ihr kompetenter Partner für Immobilien, Bauprojekte und Luftfahrtservices in Günzburg. Seit 2015 stehen wir für Kompetenz, Transparenz und ganzheitlichen Service.",
+    "Lernen Sie Archivend GmbH kennen — Ihr kompetenter Partner für Immobilien und Bauprojekte in Günzburg. Seit 2015 stehen wir für Kompetenz, Transparenz und ganzheitlichen Service.",
   keywords: [
     "Archivend GmbH Über uns",
     "Immobilienmakler Günzburg Team",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Über uns | Archivend GmbH",
     description:
-      "Lernen Sie Archivend GmbH kennen — Ihr kompetenter Partner für Immobilien, Bauprojekte und Luftfahrtservices in Günzburg. Seit 2015 stehen wir für Kompetenz, Transparenz und ganzheitlichen Service.",
+      "Lernen Sie Archivend GmbH kennen — Ihr kompetenter Partner für Immobilien und Bauprojekte in Günzburg. Seit 2015 stehen wir für Kompetenz, Transparenz und ganzheitlichen Service.",
     url: "/ueber-uns",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Archivend GmbH — Über uns" }],
   },
@@ -34,7 +34,7 @@ const VALUES = [
   {
     icon: Target,
     title: "Kompetenz & Erfahrung",
-    text: "Seit der Gründung 2015 haben wir uns als verlässlicher Partner in der Region etabliert. Unser Team bringt tiefes Fachwissen in Immobilien, Baurecht und Luftfahrt mit.",
+    text: "Seit der Gründung 2015 haben wir uns als verlässlicher Partner in der Region etabliert. Unser Team bringt tiefes Fachwissen in Immobilien und Baurecht mit.",
   },
   {
     icon: ShieldCheck,
@@ -80,7 +80,7 @@ export default function UeberUnsPage() {
           </h1>
           <p className="text-white/70 text-lg max-w-xl">
             Archivend GmbH verbindet Immobilien-Expertise mit Bauprojekt-Know-how
-            und einzigartigen Luftfahrtservices — alles aus einer Hand.
+            und starkem Partner-Netzwerk — alles aus einer Hand.
           </p>
         </div>
       </section>
@@ -123,16 +123,16 @@ export default function UeberUnsPage() {
                   in der Branche mit.
                 </p>
                 <p className="mb-6 leading-relaxed" style={{ color: DARK_MID }}>
-                  Was uns auszeichnet: Wir denken über den Tellerrand hinaus. Mit unserer Air Fly Division
-                  bieten wir Luftbildaufnahmen für Exposés, Rundflüge und Kurierservices — eine Kombination,
-                  die im Markt ihresgleichen sucht.
+                  Was uns auszeichnet: Wir denken über den Tellerrand hinaus. Mit unserem starken
+                  Partner-Netzwerk für Hausverwaltung und Komplettservice bieten wir unseren Kunden
+                  eine rundum-sorglos-Betreuung — von der Planung bis zur laufenden Verwaltung.
                 </p>
                 <ul className="space-y-3">
                   {[
                     "Persönliche Betreuung durch erfahrene Experten",
                     "Tiefe Marktkenntnis in der Region Günzburg",
                     "Netzwerk aus Handwerkern, Planern & Behörden",
-                    "Luftbildaufnahmen direkt aus eigener Air Fly Division",
+                    "Partner-Netzwerk für Hausverwaltung und Komplettservice",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 shrink-0 mt-0.5" style={{ color: DARK }} />
@@ -165,7 +165,7 @@ export default function UeberUnsPage() {
                       {[
                         { value: "10+", label: "Jahre Erfahrung", sub: "kombiniert im Team" },
                         { value: "50+", label: "Objekte vermittelt", sub: "privat & gewerblich" },
-                        { value: "3", label: "Geschäftsbereiche", sub: "Immobilien · Bau · Air Fly" },
+                        { value: "2", label: "Geschäftsbereiche", sub: "Immobilien · Komplettservice" },
                       ].map((stat, i) => (
                         <div key={i} className={`pb-4 ${i < 2 ? "border-b border-white/10" : ""}`}>
                           <span className="text-3xl font-black text-brand-accent">{stat.value}</span>

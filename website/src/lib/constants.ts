@@ -8,7 +8,7 @@ export const COMPANY = {
   tagline: "Ihr Partner für überlegene Bauwerte",
   taglineEnglish: "Your assignment is our passion",
   description:
-    "Archivend GmbH ist seit 2015 Ihr kompetenter Partner für Immobiliendienstleistungen, Bauprojekte und Luftfahrtservices in der Region Günzburg, Bayern und darüber hinaus.",
+    "Archivend GmbH ist seit 2015 Ihr kompetenter Partner für Immobiliendienstleistungen und Bauprojekte in der Region Günzburg, Bayern und darüber hinaus.",
   address: {
     street: "Dossenbergerstr. 5",
     zip: "89312",
@@ -38,7 +38,7 @@ export const COMPANY = {
   euid: "DED2505V.HRB20920",
   vatId: "", // USt-IdNr. eintragen
   businessPurpose:
-    "Erwerb, Veräußerung und Vermietung von Grundstücken und Gebäuden; Immobilienmakler- und Bauträgertätigkeiten; Erbringung von Dienstleistungen rund um Immobilien und Bauvorhaben; Luftfahrtdienstleistungen einschließlich Rundflüge, Kurierflüge und Luftbild- sowie Filmproduktionen.",
+    "Erwerb, Veräußerung und Vermietung von Grundstücken und Gebäuden; Immobilienmakler- und Bauträgertätigkeiten; Erbringung von Dienstleistungen rund um Immobilien und Bauvorhaben.",
 } as const;
 
 export type NavLink = {
@@ -58,7 +58,7 @@ export const NAV_LINKS: NavLink[] = [
     external: true,
     target: "_blank",
   },
-  { href: "/air-fly", label: "Air Fly" },
+  { href: "/referenzen", label: "Referenzen" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 
@@ -103,7 +103,7 @@ export const SERVICES = [
     description:
       "Erstellung von Bauwertgutachten und professionellen Immobilienexposés für maximale Transparenz.",
     longDescription:
-      "Präzise Bauwertgutachten schaffen die Grundlage für faire Kaufpreise und sichere Finanzierungsentscheidungen. Unsere professionellen Exposés mit hochwertigen Luftbildaufnahmen (aus unserer Air Fly Division) heben Ihre Immobilie vom Markt ab und sprechen die richtigen Interessenten an.",
+      "Präzise Bauwertgutachten schaffen die Grundlage für faire Kaufpreise und sichere Finanzierungsentscheidungen. Unsere professionellen Exposés mit hochwertigen Aufnahmen heben Ihre Immobilie vom Markt ab und sprechen die richtigen Interessenten an.",
     icon: "FileText",
     href: "/leistungen#gutachten",
   },
@@ -131,27 +131,46 @@ export const SERVICES = [
   },
 ] as const;
 
-export const AIR_FLY_SERVICES = [
+export const REFERENCE_PROJECTS = [
   {
-    id: "rundflug",
-    title: "Rundflüge",
+    id: "mehrfamilienhaus-guenzburg",
+    title: "Mehrfamilienhaus Günzburg",
+    type: "Neubau",
+    location: "Günzburg",
+    year: 2024,
     description:
-      "Erleben Sie die Landschaft rund um Günzburg, die Schwäbische Alb und die Region aus der Vogelperspektive. Unsere Rundflüge bieten unvergessliche Ausblicke auf historische Städte, malerische Täler und die bayerische Voralpenregion.",
-    icon: "PlaneTakeoff",
+      "Schlüsselfertiger Neubau eines modernen Mehrfamilienhauses mit 8 Wohneinheiten. Von der Baugenehmigung bis zur Übergabe vollständig von Archivend betreut.",
+    tags: ["Neubau", "Mehrfamilienhaus", "Projektentwicklung"],
   },
   {
-    id: "kurierflug",
-    title: "Kurierflüge",
+    id: "gewerbeimmobilie-schwaebisch-hall",
+    title: "Gewerbeimmobilie Schwäbisch Hall",
+    type: "Gewerbebau",
+    location: "Schwäbisch Hall",
+    year: 2023,
     description:
-      "Schneller Lufttransport ohne konventionelle Landebahn. Ideal für zeitkritische Güter und Dokumente über weite Distanzen. Flexibel, zuverlässig und deutlich schneller als bodengebundene Alternativen.",
-    icon: "Zap",
+      "Planung und Realisierung eines modernen Gewerbeobjekts für einen mittelständischen Handwerksbetrieb. Inklusive Büroflächen und Produktionshalle.",
+    tags: ["Gewerbe", "Neubau", "Bauprojektmanagement"],
   },
   {
-    id: "luftbild",
-    title: "Luftbild & Film",
+    id: "sanierung-altbau-ulm",
+    title: "Sanierung Altbau Ulm",
+    type: "Sanierung",
+    location: "Ulm",
+    year: 2023,
     description:
-      "Professionelle Luftaufnahmen aus dem Flugzeug — weiträumiger, imposanter und höher als Drohnenaufnahmen. Ideal für Immobilien-Exposés, Bauprojektdokumentation und Film-/Fotoproduktionen. Einzigartige Perspektiven, die Ihr Objekt von seiner besten Seite zeigen.",
-    icon: "Camera",
+      "Kernsanierung eines denkmalgeschützten Gebäudes aus den 1920er Jahren. Energetische Modernisierung bei Erhalt des historischen Charakters.",
+    tags: ["Sanierung", "Denkmalschutz", "Energetik"],
+  },
+  {
+    id: "wohnanlage-schwaebische-alb",
+    title: "Wohnanlage Schwäbische Alb",
+    type: "Neubau",
+    location: "Schwäbische Alb",
+    year: 2022,
+    description:
+      "Entwicklung und Vertrieb einer Wohnanlage mit 12 Eigentumswohnungen in attraktiver Lage. Vollständige Verkaufsorganisation und Käuferbetreuung.",
+    tags: ["Wohnanlage", "Vertrieb", "Projektentwicklung"],
   },
 ] as const;
 
@@ -165,7 +184,7 @@ export const FOOTER_LINKS = {
       external: true,
       target: "_blank" as const,
     },
-    { href: "/air-fly", label: "Air Fly" },
+    { href: "/referenzen", label: "Referenzen" },
   ],
   legal: [
     { href: "/kontakt", label: "Kontakt" },
