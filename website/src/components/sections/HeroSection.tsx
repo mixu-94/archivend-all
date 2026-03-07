@@ -183,14 +183,11 @@ export function HeroSection() {
 
           {/* Right — Blueprint floor plan */}
           <div className="relative hidden lg:block" aria-hidden="true">
-            <div
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
-              style={{ background: "oklch(0.18 0.065 258)" }}
-            >
+            <div className="relative overflow-hidden">
               <svg
                 viewBox="0 0 480 520"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-[520px]"
+                className="w-full h-[600px]"
               >
                 <defs>
                   <pattern
@@ -204,7 +201,7 @@ export function HeroSection() {
                       fill="none"
                       stroke="white"
                       strokeWidth="0.3"
-                      strokeOpacity="0.12"
+                      strokeOpacity="0.18"
                     />
                   </pattern>
                   <pattern
@@ -218,8 +215,8 @@ export function HeroSection() {
                       d="M 100 0 L 0 0 0 100"
                       fill="none"
                       stroke="white"
-                      strokeWidth="0.6"
-                      strokeOpacity="0.18"
+                      strokeWidth="0.8"
+                      strokeOpacity="0.26"
                     />
                   </pattern>
                 </defs>
@@ -560,9 +557,17 @@ export function HeroSection() {
                 </g>
               </svg>
 
+              {/* Gradient fades — alle Kanten */}
+              <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+                <div className="absolute top-0 left-0 right-0 h-20" style={{ background: "linear-gradient(to bottom, var(--brand-primary), transparent)" }} />
+                <div className="absolute bottom-0 left-0 right-0 h-52" style={{ background: "linear-gradient(to top, var(--brand-primary), transparent)" }} />
+                <div className="absolute inset-y-0 left-0 w-16" style={{ background: "linear-gradient(to right, var(--brand-primary), transparent)" }} />
+                <div className="absolute inset-y-0 right-0 w-16" style={{ background: "linear-gradient(to left, var(--brand-primary), transparent)" }} />
+              </div>
+
               {/* Stats badge */}
               <div
-                className="absolute bottom-6 left-6 right-6 flex items-center justify-between px-5 py-4 rounded-xl backdrop-blur-sm"
+                className="absolute bottom-6 left-6 right-6 flex items-center justify-between px-5 py-4 rounded-xl backdrop-blur-sm z-10"
                 style={{ background: "oklch(0.27 0.096 258.5 / 0.85)" }}
               >
                 <div className="text-center">
