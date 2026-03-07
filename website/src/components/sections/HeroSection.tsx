@@ -568,7 +568,7 @@ export function HeroSection() {
               {/* Stats badge */}
               <div
                 className="absolute bottom-6 left-6 right-6 flex items-center justify-between px-5 py-4 rounded-xl backdrop-blur-sm z-10"
-                style={{ background: "oklch(0.27 0.096 258.5 / 0.85)" }}
+                style={{ background: "oklch(0.27 0.096 258.5 / 0.85)", border: "1px solid var(--brand-accent)", boxShadow: "0 0 0 1px oklch(0.73 0.115 78 / 0.15), 0 4px 24px oklch(0 0 0 / 0.4)" }}
               >
                 <div className="text-center">
                   <p

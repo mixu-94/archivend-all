@@ -58,30 +58,7 @@ export function Header() {
 
   return (
     <header className={cn("sticky top-0 z-50 w-full border-b border-border/40 bg-brand-primary backdrop-blur-sm transition-shadow duration-200", scrolled && "shadow-md shadow-black/20")}>
-      {/* Blueprint grid — fades at edges */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <svg width="100%" height="100%" className="absolute inset-0">
-          <defs>
-            <pattern id="hdr-fine" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="white" strokeWidth="0.4" strokeOpacity="0.12" />
-            </pattern>
-            <pattern id="hdr-major" width="100" height="100" patternUnits="userSpaceOnUse">
-              <rect width="100" height="100" fill="url(#hdr-fine)" />
-              <path d="M 100 0 L 0 0 0 100" fill="none" stroke="white" strokeWidth="0.8" strokeOpacity="0.18" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#hdr-major)" />
-        </svg>
-        {/* Left fade */}
-        <div className="absolute inset-y-0 left-0 w-40" style={{ background: "linear-gradient(to right, var(--brand-primary) 20%, transparent)" }} />
-        {/* Right fade */}
-        <div className="absolute inset-y-0 right-0 w-40" style={{ background: "linear-gradient(to left, var(--brand-primary) 20%, transparent)" }} />
-        {/* Bottom fade — blends into hero */}
-        <div className="absolute bottom-0 left-0 right-0 h-6" style={{ background: "linear-gradient(to bottom, transparent, var(--brand-primary))" }} />
-        {/* Gold accent line top */}
-        <div className="absolute top-0 left-0 right-0 h-px opacity-40" style={{ background: "var(--brand-accent)" }} />
-      </div>
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6 relative">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="flex flex-col leading-none">
