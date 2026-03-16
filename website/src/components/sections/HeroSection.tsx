@@ -11,6 +11,7 @@ import {
   DEFAULT_HERO_IMAGE,
   HERO_IMAGE_STORAGE_KEY,
   HERO_IMAGE_EVENT,
+  HERO_IMAGE_HIDDEN_ID,
 } from "@/lib/hero-images";
 
 export function HeroSection() {
@@ -101,12 +102,12 @@ export function HeroSection() {
 
       {/* ── House image — absolutely positioned, starts far left, bleeds to right edge ── */}
       <div
-        className="absolute inset-y-0 right-0 hidden lg:block pointer-events-none"
-        style={{ left: "22%" }}
+        className="absolute inset-y-0 right-0 hidden lg:block pointer-events-none transition-opacity duration-500"
+        style={{ left: "22%", opacity: heroSrc === HERO_IMAGE_HIDDEN_ID ? 0 : 1 }}
         aria-hidden="true"
       >
         <Image
-          src={heroSrc}
+          src={heroSrc === HERO_IMAGE_HIDDEN_ID ? DEFAULT_HERO_IMAGE.src : heroSrc}
           alt=""
           fill
           className="object-cover object-center"

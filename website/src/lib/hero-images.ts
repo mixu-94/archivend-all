@@ -22,3 +22,4 @@ export const HERO_IMAGES: HeroImageDef[] = [
 export const DEFAULT_HERO_IMAGE = HERO_IMAGES[0];
 export const HERO_IMAGE_STORAGE_KEY = "archivend-hero-image";
 export const HERO_IMAGE_EVENT = "archivend-hero-image-change";
+export const HERO_IMAGE_HIDDEN_ID = "none";

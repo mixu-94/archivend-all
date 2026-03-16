@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Palette, ImageIcon, X } from "lucide-react";
+import { Palette, ImageIcon, EyeOff, Eye, X } from "lucide-react";
 import Image from "next/image";
 import {
   HERO_IMAGES,
   DEFAULT_HERO_IMAGE,
   HERO_IMAGE_STORAGE_KEY,
   HERO_IMAGE_EVENT,
+  HERO_IMAGE_HIDDEN_ID,
   type HeroImageDef,
 } from "@/lib/hero-images";
 
@@ -322,7 +323,34 @@ export function ThemeSwitcher() {
                   );
                 })}
               </div>
-              <p className="text-[10px] text-center mt-3" style={{ color: "oklch(1 0 0 / 0.25)" }}>
+              {/* Ausblenden Toggle */}
+              <button
+                onClick={() => {
+                  const isHidden = activeImageId === HERO_IMAGE_HIDDEN_ID;
+                  const newId = isHidden ? DEFAULT_HERO_IMAGE.id : HERO_IMAGE_HIDDEN_ID;
+                  setActiveImageId(newId);
+                  try { localStorage.setItem(HERO_IMAGE_STORAGE_KEY, newId); } catch {}
+                  window.dispatchEvent(new CustomEvent(HERO_IMAGE_EVENT, { detail: newId }));
+                }}
+                className="mt-3 w-full flex items-center justify-center gap-2 rounded-lg py-2 text-xs font-medium transition-all duration-150"
+                style={{
+                  background: activeImageId === HERO_IMAGE_HIDDEN_ID
+                    ? "oklch(1 0 0 / 0.12)"
+                    : "oklch(1 0 0 / 0.05)",
+                  border: activeImageId === HERO_IMAGE_HIDDEN_ID
+                    ? "1px solid oklch(1 0 0 / 0.25)"
+                    : "1px solid oklch(1 0 0 / 0.1)",
+                  color: activeImageId === HERO_IMAGE_HIDDEN_ID
+                    ? "white"
+                    : "oklch(1 0 0 / 0.45)",
+                }}
+              >
+                {activeImageId === HERO_IMAGE_HIDDEN_ID
+                  ? <><Eye className="h-3.5 w-3.5" /> Bild einblenden</>
+                  : <><EyeOff className="h-3.5 w-3.5" /> Bild ausblenden</>
+                }
+              </button>
+              <p className="text-[10px] text-center mt-2" style={{ color: "oklch(1 0 0 / 0.25)" }}>
                 Weitere Bilder in hero-images.ts eintragen
               </p>
             </div>
