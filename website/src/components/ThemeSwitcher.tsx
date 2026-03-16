@@ -17,27 +17,52 @@ import {
 type ThemeDef = {
   id: string;
   name: string;
-  primary: string;  // OKLCH — Hintergrundfarbe
-  accent: string;   // OKLCH — Akzentfarbe
-  accentFg: string; // OKLCH — Dunkler Text AUF der Akzentfarbe
+  primary: string;
+  accent: string;
+  accentFg: string;
+  group: string;
 };
 
 const THEMES: ThemeDef[] = [
-  { id: "schiefer-champagner",   name: "Schieferblau · Champagner",  primary: "oklch(0.20 0.04 240)",  accent: "oklch(0.83 0.07 78)",   accentFg: "oklch(0.14 0.03 240)" },
-  { id: "navy-gold",             name: "Navy · Gold",                 primary: "oklch(0.22 0.085 258)", accent: "oklch(0.74 0.115 78)",  accentFg: "oklch(0.14 0.04 258)" },
-  { id: "anthrazit-gold",        name: "Anthrazit · Gold",            primary: "oklch(0.18 0.01 270)",  accent: "oklch(0.74 0.115 78)",  accentFg: "oklch(0.12 0.01 270)" },
-  { id: "anthrazit-terrakotta",  name: "Anthrazit · Terrakotta",      primary: "oklch(0.18 0.015 55)",  accent: "oklch(0.63 0.13 35)",   accentFg: "oklch(0.10 0.01 55)"  },
-  { id: "walnuss-moos",          name: "Walnuss · Moosgrün",          primary: "oklch(0.19 0.04 50)",   accent: "oklch(0.64 0.09 140)",  accentFg: "oklch(0.10 0.02 50)"  },
-  { id: "wald-champagner",       name: "Waldgrün · Champagner",       primary: "oklch(0.18 0.055 155)", accent: "oklch(0.83 0.07 78)",   accentFg: "oklch(0.12 0.03 155)" },
-  { id: "mitternacht-silber",    name: "Mitternacht · Silber",        primary: "oklch(0.15 0.02 270)",  accent: "oklch(0.78 0.01 270)",  accentFg: "oklch(0.12 0.01 270)" },
-  { id: "burgund-gold",          name: "Burgund · Gold",              primary: "oklch(0.22 0.065 15)",  accent: "oklch(0.74 0.115 78)",  accentFg: "oklch(0.12 0.03 15)"  },
-  { id: "schiefer-kupfer",       name: "Schiefer · Kupfer",           primary: "oklch(0.20 0.02 250)",  accent: "oklch(0.65 0.12 45)",   accentFg: "oklch(0.12 0.02 250)" },
-  { id: "tiefsee-tuerkis",       name: "Tiefsee · Türkis",            primary: "oklch(0.18 0.05 225)",  accent: "oklch(0.72 0.12 185)",  accentFg: "oklch(0.12 0.03 225)" },
-  { id: "oliv-sand",             name: "Olivgrün · Sand",             primary: "oklch(0.20 0.04 100)",  accent: "oklch(0.78 0.07 75)",   accentFg: "oklch(0.12 0.03 100)" },
-  { id: "braun-bernstein",       name: "Dunkelbraun · Bernstein",     primary: "oklch(0.20 0.04 45)",   accent: "oklch(0.75 0.14 65)",   accentFg: "oklch(0.12 0.03 45)"  },
-  { id: "petrol-rose",           name: "Petrol · Rosé",               primary: "oklch(0.20 0.05 210)",  accent: "oklch(0.78 0.08 10)",   accentFg: "oklch(0.12 0.03 210)" },
-  { id: "aubergine-champagner",  name: "Aubergine · Champagner",      primary: "oklch(0.20 0.06 320)",  accent: "oklch(0.83 0.07 78)",   accentFg: "oklch(0.12 0.04 320)" },
-  { id: "nacht-mint",            name: "Nacht · Mint",                primary: "oklch(0.15 0.01 160)",  accent: "oklch(0.72 0.12 160)",  accentFg: "oklch(0.10 0.01 160)" },
+  // ── Blau / Grau ──────────────────────────────────────────────────────────
+  { id: "schiefer-champagner",   name: "Schieferblau · Champagner",  primary: "oklch(0.20 0.04 240)",  accent: "oklch(0.83 0.07 78)",   accentFg: "oklch(0.14 0.03 240)",  group: "Blau & Grau"    },
+  { id: "navy-gold",             name: "Navy · Gold",                 primary: "oklch(0.22 0.085 258)", accent: "oklch(0.74 0.115 78)",  accentFg: "oklch(0.14 0.04 258)",  group: "Blau & Grau"    },
+  { id: "anthrazit-gold",        name: "Anthrazit · Gold",            primary: "oklch(0.18 0.01 270)",  accent: "oklch(0.74 0.115 78)",  accentFg: "oklch(0.12 0.01 270)",  group: "Blau & Grau"    },
+  { id: "mitternacht-silber",    name: "Mitternacht · Silber",        primary: "oklch(0.15 0.02 270)",  accent: "oklch(0.78 0.01 270)",  accentFg: "oklch(0.12 0.01 270)",  group: "Blau & Grau"    },
+  { id: "saphir-platin",         name: "Saphir · Platin",             primary: "oklch(0.18 0.075 262)", accent: "oklch(0.83 0.01 255)",  accentFg: "oklch(0.11 0.04 262)",  group: "Blau & Grau"    },
+  { id: "indigo-champagner",     name: "Indigo · Champagner",         primary: "oklch(0.19 0.08 280)",  accent: "oklch(0.83 0.07 78)",   accentFg: "oklch(0.11 0.04 280)",  group: "Blau & Grau"    },
+  { id: "schiefer-kupfer",       name: "Schiefer · Kupfer",           primary: "oklch(0.20 0.02 250)",  accent: "oklch(0.65 0.12 45)",   accentFg: "oklch(0.12 0.02 250)",  group: "Blau & Grau"    },
+  { id: "tiefsee-tuerkis",       name: "Tiefsee · Türkis",            primary: "oklch(0.18 0.05 225)",  accent: "oklch(0.72 0.12 185)",  accentFg: "oklch(0.12 0.03 225)",  group: "Blau & Grau"    },
+  { id: "petrol-rose",           name: "Petrol · Rosé",               primary: "oklch(0.20 0.05 210)",  accent: "oklch(0.78 0.08 10)",   accentFg: "oklch(0.12 0.03 210)",  group: "Blau & Grau"    },
+
+  // ── Bundeswehr / Militär ─────────────────────────────────────────────────
+  { id: "bundeswehr-messing",    name: "Bundeswehr · Messing",        primary: "oklch(0.20 0.045 105)", accent: "oklch(0.74 0.12 74)",   accentFg: "oklch(0.11 0.03 105)",  group: "Militär & Natur" },
+  { id: "tarngruen-sand",        name: "Tarngrün · Sand",             primary: "oklch(0.19 0.055 118)", accent: "oklch(0.82 0.06 78)",   accentFg: "oklch(0.11 0.03 118)",  group: "Militär & Natur" },
+  { id: "feldgrau-bronze",       name: "Feldgrau · Bronze",           primary: "oklch(0.21 0.022 162)", accent: "oklch(0.68 0.11 62)",   accentFg: "oklch(0.11 0.02 162)",  group: "Militär & Natur" },
+  { id: "nato-oliv-kupfer",      name: "NATO-Oliv · Kupfer",          primary: "oklch(0.19 0.042 112)", accent: "oklch(0.63 0.13 44)",   accentFg: "oklch(0.10 0.03 112)",  group: "Militär & Natur" },
+  { id: "erde-khaki",            name: "Erde · Khaki",                primary: "oklch(0.18 0.04 65)",   accent: "oklch(0.76 0.07 82)",   accentFg: "oklch(0.10 0.03 65)",   group: "Militär & Natur" },
+  { id: "oliv-sand",             name: "Olivgrün · Sand",             primary: "oklch(0.20 0.04 100)",  accent: "oklch(0.78 0.07 75)",   accentFg: "oklch(0.12 0.03 100)",  group: "Militär & Natur" },
+  { id: "walnuss-moos",          name: "Walnuss · Moosgrün",          primary: "oklch(0.19 0.04 50)",   accent: "oklch(0.64 0.09 140)",  accentFg: "oklch(0.10 0.02 50)",   group: "Militär & Natur" },
+  { id: "wald-champagner",       name: "Waldgrün · Champagner",       primary: "oklch(0.18 0.055 155)", accent: "oklch(0.83 0.07 78)",   accentFg: "oklch(0.12 0.03 155)",  group: "Militär & Natur" },
+  { id: "dunkeltanne-kupfer",    name: "Dunkeltanne · Kupfer",        primary: "oklch(0.17 0.05 158)",  accent: "oklch(0.63 0.12 44)",   accentFg: "oklch(0.10 0.03 158)",  group: "Militär & Natur" },
+
+  // ── Warm Luxury ──────────────────────────────────────────────────────────
+  { id: "ebenholz-gold",         name: "Ebenholz · Gold",             primary: "oklch(0.14 0.015 45)",  accent: "oklch(0.74 0.115 78)",  accentFg: "oklch(0.09 0.01 45)",   group: "Warm Luxury"     },
+  { id: "graphit-gold",          name: "Graphit · Gold",              primary: "oklch(0.17 0.005 250)", accent: "oklch(0.74 0.115 78)",  accentFg: "oklch(0.10 0.003 250)", group: "Warm Luxury"     },
+  { id: "schokolade-creme",      name: "Schokolade · Creme",          primary: "oklch(0.17 0.04 40)",   accent: "oklch(0.89 0.04 82)",   accentFg: "oklch(0.10 0.03 40)",   group: "Warm Luxury"     },
+  { id: "mokka-rosegold",        name: "Mokka · Roségold",            primary: "oklch(0.18 0.03 30)",   accent: "oklch(0.72 0.10 18)",   accentFg: "oklch(0.10 0.02 30)",   group: "Warm Luxury"     },
+  { id: "braun-bernstein",       name: "Dunkelbraun · Bernstein",     primary: "oklch(0.20 0.04 45)",   accent: "oklch(0.75 0.14 65)",   accentFg: "oklch(0.12 0.03 45)",   group: "Warm Luxury"     },
+  { id: "anthrazit-terrakotta",  name: "Anthrazit · Terrakotta",      primary: "oklch(0.18 0.015 55)",  accent: "oklch(0.63 0.13 35)",   accentFg: "oklch(0.10 0.01 55)",   group: "Warm Luxury"     },
+  { id: "obsidian-bernstein",    name: "Obsidian · Bernstein",        primary: "oklch(0.13 0.015 35)",  accent: "oklch(0.73 0.15 62)",   accentFg: "oklch(0.08 0.01 35)",   group: "Warm Luxury"     },
+
+  // ── Bunt / Akzent ────────────────────────────────────────────────────────
+  { id: "smaragd-gold",          name: "Smaragd · Gold",              primary: "oklch(0.17 0.07 152)",  accent: "oklch(0.74 0.115 78)",  accentFg: "oklch(0.10 0.04 152)",  group: "Farbakzente"     },
+  { id: "burgund-gold",          name: "Burgund · Gold",              primary: "oklch(0.22 0.065 15)",  accent: "oklch(0.74 0.115 78)",  accentFg: "oklch(0.12 0.03 15)",   group: "Farbakzente"     },
+  { id: "aubergine-champagner",  name: "Aubergine · Champagner",      primary: "oklch(0.20 0.06 320)",  accent: "oklch(0.83 0.07 78)",   accentFg: "oklch(0.12 0.04 320)",  group: "Farbakzente"     },
+  { id: "steingrau-orange",      name: "Steingrau · Signalorange",    primary: "oklch(0.19 0.01 240)",  accent: "oklch(0.72 0.20 38)",   accentFg: "oklch(0.10 0.005 240)", group: "Farbakzente"     },
+  { id: "rauchquarz-silber",     name: "Rauchquarz · Silber",         primary: "oklch(0.19 0.02 255)",  accent: "oklch(0.80 0.01 255)",  accentFg: "oklch(0.12 0.01 255)",  group: "Farbakzente"     },
+  { id: "nacht-mint",            name: "Nacht · Mint",                primary: "oklch(0.15 0.01 160)",  accent: "oklch(0.72 0.12 160)",  accentFg: "oklch(0.10 0.01 160)",  group: "Farbakzente"     },
+  { id: "tiefsee-rosegold",      name: "Tiefsee · Roségold",          primary: "oklch(0.17 0.04 222)",  accent: "oklch(0.72 0.10 18)",   accentFg: "oklch(0.10 0.02 222)",  group: "Farbakzente"     },
 ];
 
 /* ─── OKLCH Hilfsfunktionen ─────────────────────────────────────────────── */
@@ -231,51 +256,67 @@ export function ThemeSwitcher() {
 
           {/* Farben Tab */}
           {tab === "farben" && (
-            <div className="p-3 grid grid-cols-3 gap-2 max-h-[380px] overflow-y-auto">
-              {THEMES.map((theme) => {
-                const isActive = activeId === theme.id;
-                const [line1, line2] = theme.name.split(" · ");
-                return (
-                  <button
-                    key={theme.id}
-                    onClick={() => applyTheme(theme)}
-                    title={theme.name}
-                    className="flex flex-col gap-1.5 rounded-xl p-1.5 transition-all duration-150 cursor-pointer"
-                    style={{
-                      background: isActive ? "oklch(1 0 0 / 0.1)" : "transparent",
-                      border: isActive
-                        ? "1px solid oklch(1 0 0 / 0.3)"
-                        : "1px solid oklch(1 0 0 / 0.06)",
-                      outline: "none",
-                    }}
-                    onMouseEnter={e => {
-                      if (!isActive) e.currentTarget.style.background = "oklch(1 0 0 / 0.06)";
-                    }}
-                    onMouseLeave={e => {
-                      if (!isActive) e.currentTarget.style.background = "transparent";
-                    }}
-                  >
-                    <div className="w-full rounded-md overflow-hidden flex" style={{ height: 30 }}>
-                      <div className="flex-1" style={{ background: theme.primary }} />
-                      <div className="w-[38%]" style={{ background: theme.accent }} />
+            <div className="px-3 pb-3 max-h-[400px] overflow-y-auto">
+              {(() => {
+                const groups: string[] = [];
+                THEMES.forEach(t => { if (!groups.includes(t.group)) groups.push(t.group); });
+                return groups.map(group => (
+                  <div key={group} className="mt-3">
+                    <p
+                      className="text-[9px] font-semibold uppercase tracking-widest mb-2 px-0.5"
+                      style={{ color: "oklch(1 0 0 / 0.3)" }}
+                    >
+                      {group}
+                    </p>
+                    <div className="grid grid-cols-3 gap-2">
+                      {THEMES.filter(t => t.group === group).map((theme) => {
+                        const isActive = activeId === theme.id;
+                        const [line1, line2] = theme.name.split(" · ");
+                        return (
+                          <button
+                            key={theme.id}
+                            onClick={() => applyTheme(theme)}
+                            title={theme.name}
+                            className="flex flex-col gap-1.5 rounded-xl p-1.5 transition-all duration-150 cursor-pointer"
+                            style={{
+                              background: isActive ? "oklch(1 0 0 / 0.1)" : "transparent",
+                              border: isActive
+                                ? "1px solid oklch(1 0 0 / 0.3)"
+                                : "1px solid oklch(1 0 0 / 0.06)",
+                              outline: "none",
+                            }}
+                            onMouseEnter={e => {
+                              if (!isActive) e.currentTarget.style.background = "oklch(1 0 0 / 0.06)";
+                            }}
+                            onMouseLeave={e => {
+                              if (!isActive) e.currentTarget.style.background = "transparent";
+                            }}
+                          >
+                            <div className="w-full rounded-md overflow-hidden flex" style={{ height: 28 }}>
+                              <div className="flex-1" style={{ background: theme.primary }} />
+                              <div className="w-[38%]" style={{ background: theme.accent }} />
+                            </div>
+                            <div className="text-center">
+                              <p
+                                className="text-[9px] leading-none font-medium"
+                                style={{ color: isActive ? "white" : "oklch(1 0 0 / 0.55)" }}
+                              >
+                                {line1}
+                              </p>
+                              <p
+                                className="text-[8px] leading-none mt-0.5"
+                                style={{ color: isActive ? "oklch(1 0 0 / 0.7)" : "oklch(1 0 0 / 0.35)" }}
+                              >
+                                {line2}
+                              </p>
+                            </div>
+                          </button>
+                        );
+                      })}
                     </div>
-                    <div className="text-center">
-                      <p
-                        className="text-[9px] leading-none font-medium"
-                        style={{ color: isActive ? "white" : "oklch(1 0 0 / 0.55)" }}
-                      >
-                        {line1}
-                      </p>
-                      <p
-                        className="text-[8px] leading-none mt-0.5"
-                        style={{ color: isActive ? "oklch(1 0 0 / 0.7)" : "oklch(1 0 0 / 0.35)" }}
-                      >
-                        {line2}
-                      </p>
-                    </div>
-                  </button>
-                );
-              })}
+                  </div>
+                ));
+              })()}
             </div>
           )}
 
