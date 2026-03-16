@@ -90,9 +90,9 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* Gold diagonal accent */}
+      {/* Diagonal accent — VOR dem Bild im DOM = hinter dem Bild */}
       <div
-        className="absolute top-0 right-0 w-1/2 h-full opacity-10"
+        className="absolute top-0 right-0 w-1/2 h-full opacity-[0.06] pointer-events-none"
         style={{
           background:
             "linear-gradient(135deg, transparent 40%, var(--brand-accent) 40%, var(--brand-accent) 42%, transparent 42%)",
@@ -114,22 +114,21 @@ export function HeroSection() {
           sizes="78vw"
           priority
           style={{
-            // Fade: left transparent → fully visible after ~25% → fades out at bottom
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 85%),linear-gradient(to left, transparent 0%, black 25%),  linear-gradient(to top, transparent 0%, black 30%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 85%),linear-gradient(to left, transparent 0%, black 25%),  linear-gradient(to top, transparent 0%, black 30%)",
+            // Alle Kanten via Maske ausblenden — farbneutral, kein Theme-Overlay
+            maskImage: [
+              "linear-gradient(to right, transparent 0%, black 80%)",   // links einblenden
+              "linear-gradient(to left,  transparent 0%, black 20%)",   // rechts einblenden
+              "linear-gradient(to top,   transparent 0%, black 25%)",   // unten einblenden
+              "linear-gradient(to bottom, transparent 0%, black 10%)",  // oben einblenden
+            ].join(", "),
+            WebkitMaskImage: [
+              "linear-gradient(to right, transparent 0%, black 80%)",
+              "linear-gradient(to left,  transparent 0%, black 20%)",
+              "linear-gradient(to top,   transparent 0%, black 25%)",
+              "linear-gradient(to bottom, transparent 0%, black 10%)",
+            ].join(", "),
             maskComposite: "intersect",
-            WebkitMaskComposite: "destination-in",
-          }}
-        />
-
-        {/* Top fade */}
-        <div
-          className="absolute top-0 left-0 right-0 h-28"
-          style={{
-            background:
-              "linear-gradient(to bottom, var(--brand-primary), transparent)",
+            WebkitMaskComposite: "destination-in, destination-in, destination-in",
           }}
         />
       </div>
