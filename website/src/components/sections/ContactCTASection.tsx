@@ -48,7 +48,7 @@ export function ContactCTASection() {
           <div className="text-center lg:text-left">
             <p
               className="text-sm font-semibold tracking-[0.25em] uppercase mb-3"
-              style={{ color: "oklch(0.16 0.03 258 / 0.6)" }}
+              style={{ color: "var(--on-accent-muted)" }}
             >
               Bereit für Ihren nächsten Schritt?
             </p>
@@ -65,7 +65,7 @@ export function ContactCTASection() {
             </h2>
             <p
               className="text-base max-w-md"
-              style={{ color: "oklch(0.16 0.03 258 / 0.65)" }}
+              style={{ color: "var(--on-accent-muted)" }}
             >
               Ob Immobilienkauf, Bauprojekt oder Bewertung — wir beraten Sie
               persönlich und unverbindlich. Kostenlose Erstberatung auf Wunsch.
@@ -90,7 +90,7 @@ export function ContactCTASection() {
               <div>
                 <p
                   className="text-xs font-medium"
-                  style={{ color: "oklch(0.16 0.03 258 / 0.6)" }}
+                  style={{ color: "var(--on-accent-muted)" }}
                 >
                   Telefon
                 </p>
@@ -117,7 +117,7 @@ export function ContactCTASection() {
               <div>
                 <p
                   className="text-xs font-medium"
-                  style={{ color: "oklch(0.16 0.03 258 / 0.6)" }}
+                  style={{ color: "var(--on-accent-muted)" }}
                 >
                   E-Mail
                 </p>

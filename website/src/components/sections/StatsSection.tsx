@@ -5,9 +5,9 @@ const STATS = [
   { value: "4+", label: "Referenz-Projekte", sub: "Neubau · Sanierung · Entwicklung" },
 ] as const;
 
-const DARK = "oklch(0.16 0.03 258)";
-const DARK_MID = "oklch(0.16 0.03 258 / 0.65)";
-const DARK_SUBTLE = "oklch(0.16 0.03 258 / 0.15)";
+const DARK = "var(--on-accent)";
+const DARK_MID = "var(--on-accent-muted)";
+const DARK_SUBTLE = "var(--on-accent-faint)";
 
 export function StatsSection() {
   return (

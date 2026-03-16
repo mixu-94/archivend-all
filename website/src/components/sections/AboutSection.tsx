@@ -150,7 +150,7 @@ export function AboutSection() {
             {/* Dark navy card */}
             <div
               className="relative rounded-2xl p-10 overflow-hidden"
-              style={{ background: "oklch(0.20 0.07 258)" }}
+              style={{ background: "var(--primary-elevated)" }}
             >
               {/* Content */}
               <div className="relative">
@@ -229,7 +229,7 @@ export function AboutSection() {
                 </span>
                 <span
                   className="text-xs font-medium"
-                  style={{ color: "oklch(0.16 0.03 258 / 0.7)" }}
+                  style={{ color: "var(--on-accent-muted)" }}
                 >
                   Region
                 </span>

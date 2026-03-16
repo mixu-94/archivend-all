@@ -13,7 +13,7 @@ export default async function Image() {
           display: "flex",
           width: "100%",
           height: "100%",
-          background: "oklch(0.27 0.096 258.5)",
+          background: "oklch(0.20 0.04 240)",
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
@@ -23,7 +23,7 @@ export default async function Image() {
       >
         <span
           style={{
-            color: "oklch(0.73 0.115 78)",
+            color: "oklch(0.83 0.07 78)",
             fontSize: 72,
             fontWeight: 700,
             lineHeight: 1,

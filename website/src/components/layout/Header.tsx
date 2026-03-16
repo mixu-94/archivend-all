@@ -142,7 +142,7 @@ export function Header() {
                       rel="noopener noreferrer"
                       onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-2 px-4 py-3 rounded-md text-base font-medium transition-colors text-brand-accent"
-                      style={{ border: "1px solid oklch(0.73 0.115 78 / 0.4)" }}
+                      style={{ border: "1px solid var(--accent-border-lg)" }}
                     >
                       {link.label}
                       <ExternalLink className="h-4 w-4 opacity-70" />

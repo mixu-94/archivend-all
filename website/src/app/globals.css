@@ -7,52 +7,83 @@
 /* ============================================
    ARCHIVEND GMBH — BRAND FARBEN
    Alle Markenfarben hier zentral ändern
+   Farbkonzept: Schieferblau + Champagner
    ============================================ */
 :root {
-  /* Brand Farben */
-  --brand-primary: oklch(0.27 0.096 258.5);       /* Navy Blue #1B2F5C */
-  --brand-primary-light: oklch(0.38 0.12 258);    /* Light Navy #2A4A8F */
-  --brand-primary-foreground: oklch(1 0 0);        /* White */
-  --brand-accent: oklch(0.73 0.115 78);            /* Gold #C9A84C */
-  --brand-accent-light: oklch(0.84 0.10 80);       /* Light Gold #E8C96B */
-  --brand-accent-foreground: oklch(0.16 0.03 258); /* Dark Text */
-  --brand-surface: oklch(0.27 0.096 258.5);        /* Navy (kein Creme mehr) */
-  --brand-text: oklch(1 0 0);                      /* Weiß auf dunklen Flächen */
-  --brand-text-muted: oklch(0.72 0.03 258);        /* Helles Grau */
+  /* ── Primärfarben ── */
+  --brand-primary: oklch(0.20 0.04 240);           /* Dunkles Schieferblau */
+  --brand-primary-light: oklch(0.28 0.05 240);     /* Mittleres Schieferblau */
+  --brand-primary-foreground: oklch(1 0 0);        /* Weiß */
+  --brand-accent: oklch(0.83 0.07 78);             /* Champagner */
+  --brand-accent-light: oklch(0.90 0.05 78);       /* Helles Champagner */
+  --brand-accent-foreground: oklch(0.14 0.03 240); /* Dunkles Schiefer (Text auf Champagner) */
+  --brand-surface: oklch(0.20 0.04 240);
+  --brand-text: oklch(1 0 0);
+  --brand-text-muted: oklch(0.72 0.02 240);        /* Kühles Hellgrau */
 
-  /* shadcn/ui Variablen — dunkles Navy-Theme */
+  /* ── Sekundäre Token (Opacity-Varianten) ──
+     Nur diese Werte hier ändern → alles passt sich an */
+
+  /* Text AUF Akzent-Sektionen (Champagner-Background) */
+  --on-accent: oklch(0.14 0.03 240);               /* = brand-accent-foreground */
+  --on-accent-muted: oklch(0.14 0.03 240 / 0.65); /* Fließtext, Labels */
+  --on-accent-faint: oklch(0.14 0.03 240 / 0.15); /* Trennlinien, Hairlines */
+
+  /* Akzent-Füllfarben (Icon-Hintergründe, Chips) */
+  --accent-fill-xs: oklch(0.83 0.07 78 / 0.08);
+  --accent-fill-sm: oklch(0.83 0.07 78 / 0.10);
+  --accent-fill: oklch(0.83 0.07 78 / 0.12);
+  --accent-fill-md: oklch(0.83 0.07 78 / 0.15);
+
+  /* Akzent-Borders */
+  --accent-border-sm: oklch(0.83 0.07 78 / 0.2);
+  --accent-border: oklch(0.83 0.07 78 / 0.25);
+  --accent-border-md: oklch(0.83 0.07 78 / 0.3);
+  --accent-border-lg: oklch(0.83 0.07 78 / 0.4);
+
+  /* Primary-Töne */
+  --primary-glass: oklch(0.20 0.04 240 / 0.75);   /* Glas-Card Backdrop */
+  --primary-elevated: oklch(0.24 0.045 240);       /* Erhöhte Card (AboutSection) */
+  --primary-dark: oklch(0.16 0.035 240);           /* Dunkler Gradient-Stop */
+  --primary-light-dim: oklch(0.28 0.05 240 / 0.5);/* Gedimmter Gradient-Stop */
+
+  /* Schatten */
+  --shadow-sm: oklch(0.08 0.025 240 / 0.3);       /* Leichter Schatten */
+  --shadow-md: oklch(0.08 0.025 240 / 0.5);       /* Mittlerer Schatten */
+
+  /* shadcn/ui Variablen */
   --radius: 0.5rem;
-  --background: oklch(0.27 0.096 258.5);           /* Navy */
-  --foreground: oklch(1 0 0);                      /* Weiß */
-  --card: oklch(0.32 0.10 258.5);                  /* Etwas helleres Navy */
-  --card-foreground: oklch(1 0 0);                 /* Weiß */
-  --popover: oklch(0.32 0.10 258.5);               /* Navy Popover */
-  --popover-foreground: oklch(1 0 0);              /* Weiß */
-  --primary: oklch(0.27 0.096 258.5);
+  --background: oklch(0.20 0.04 240);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.26 0.045 240);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.26 0.045 240);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(0.20 0.04 240);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.73 0.115 78);
-  --secondary-foreground: oklch(0.16 0.03 258);
-  --muted: oklch(0.35 0.08 258);                   /* Dunkles Muted */
-  --muted-foreground: oklch(0.72 0.03 258);        /* Helles Grau */
-  --accent: oklch(0.73 0.115 78);
-  --accent-foreground: oklch(0.16 0.03 258);
+  --secondary: oklch(0.83 0.07 78);
+  --secondary-foreground: oklch(0.14 0.03 240);
+  --muted: oklch(0.28 0.04 240);
+  --muted-foreground: oklch(0.72 0.02 240);
+  --accent: oklch(0.83 0.07 78);
+  --accent-foreground: oklch(0.14 0.03 240);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(1 0 0 / 0.12);                   /* Weiß 12% */
-  --input: oklch(0.35 0.09 258.5);                 /* Input Navy */
-  --ring: oklch(0.27 0.096 258.5);
-  --chart-1: oklch(0.27 0.096 258.5);
-  --chart-2: oklch(0.73 0.115 78);
-  --chart-3: oklch(0.38 0.12 258);
-  --chart-4: oklch(0.84 0.10 80);
-  --chart-5: oklch(0.55 0.02 258);
-  --sidebar: oklch(0.27 0.096 258.5);
+  --border: oklch(1 0 0 / 0.12);
+  --input: oklch(0.28 0.04 240);
+  --ring: oklch(0.83 0.07 78);
+  --chart-1: oklch(0.20 0.04 240);
+  --chart-2: oklch(0.83 0.07 78);
+  --chart-3: oklch(0.28 0.05 240);
+  --chart-4: oklch(0.90 0.05 78);
+  --chart-5: oklch(0.50 0.03 240);
+  --sidebar: oklch(0.20 0.04 240);
   --sidebar-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.73 0.115 78);
-  --sidebar-primary-foreground: oklch(0.16 0.03 258);
-  --sidebar-accent: oklch(0.38 0.12 258);
+  --sidebar-primary: oklch(0.83 0.07 78);
+  --sidebar-primary-foreground: oklch(0.14 0.03 240);
+  --sidebar-accent: oklch(0.28 0.05 240);
   --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.38 0.12 258);
-  --sidebar-ring: oklch(0.73 0.115 78);
+  --sidebar-border: oklch(0.28 0.05 240);
+  --sidebar-ring: oklch(0.83 0.07 78);
 }
 
 @theme inline {

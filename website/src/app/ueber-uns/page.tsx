@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   },
 };
 
-const DARK = "oklch(0.16 0.03 258)";
-const DARK_MID = "oklch(0.16 0.03 258 / 0.65)";
+const DARK = "var(--on-accent)";
+const DARK_MID = "var(--on-accent-muted)";
 
 const VALUES = [
   {
@@ -224,7 +224,7 @@ export default function UeberUnsPage() {
             {VALUES.map((val) => (
               <StaggerItem key={val.title}>
                 <div className="bg-card rounded-2xl p-8 border border-white/10 hover:border-brand-accent/40 hover:shadow-lg transition-all duration-300 h-full">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl mb-6" style={{ background: "oklch(0.73 0.115 78 / 0.12)", border: "1px solid oklch(0.73 0.115 78 / 0.25)" }}>
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl mb-6" style={{ background: "var(--accent-fill)", border: "1px solid var(--accent-border)" }}>
                     <val.icon className="h-6 w-6 text-brand-accent" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-3">{val.title}</h3>

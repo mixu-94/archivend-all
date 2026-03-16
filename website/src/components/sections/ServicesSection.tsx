@@ -22,8 +22,8 @@ const ICON_MAP = {
 
 type IconName = keyof typeof ICON_MAP;
 
-const DARK = "oklch(0.16 0.03 258)";
-const DARK_MID = "oklch(0.16 0.03 258 / 0.65)";
+const DARK = "var(--on-accent)";
+const DARK_MID = "var(--on-accent-muted)";
 
 export function ServicesSection() {
   return (
@@ -118,7 +118,7 @@ export function ServicesSection() {
                   )}
                   style={{
                     background: "var(--brand-primary)",
-                    boxShadow: "0 4px 24px oklch(0.16 0.03 258 / 0.25)",
+                    boxShadow: "0 4px 24px var(--shadow-sm)",
                   }}
                 >
                   {/* Index number — gold shimmer on hover */}
@@ -140,8 +140,8 @@ export function ServicesSection() {
                   <div
                     className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-lg transition-colors duration-300"
                     style={{
-                      background: "oklch(0.73 0.115 78 / 0.12)",
-                      border: "1px solid oklch(0.73 0.115 78 / 0.25)",
+                      background: "var(--accent-fill)",
+                      border: "1px solid var(--accent-border)",
                     }}
                   >
                     {Icon && (

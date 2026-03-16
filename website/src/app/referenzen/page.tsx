@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
 };
 
-const DARK = "oklch(0.16 0.03 258)";
-const DARK_MID = "oklch(0.16 0.03 258 / 0.65)";
+const DARK = "var(--on-accent)";
+const DARK_MID = "var(--on-accent-muted)";
 
 const PROCESS_STEPS = [
   { step: "01", title: "Planung", text: "Bedarfsanalyse, Konzept und vollständige Bauplanung gemeinsam mit Architekten und Ingenieuren." },
@@ -63,7 +63,7 @@ export default function ReferenzenPage() {
         <div
           className="absolute top-0 right-0 w-96 h-full opacity-10"
           style={{
-            background: "linear-gradient(135deg, transparent 40%, oklch(0.73 0.115 78) 100%)",
+            background: "linear-gradient(135deg, transparent 40%, var(--brand-accent) 100%)",
           }}
         />
         <div className="container mx-auto px-6 md:px-10 relative">
@@ -132,7 +132,7 @@ export default function ReferenzenPage() {
                   <div
                     className="relative h-48 overflow-hidden"
                     style={{
-                      background: "linear-gradient(135deg, oklch(0.22 0.08 258) 0%, oklch(0.32 0.12 258) 100%)",
+                      background: "linear-gradient(135deg, var(--primary-dark) 0%, var(--brand-primary-light) 100%)",
                     }}
                   >
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -182,8 +182,8 @@ export default function ReferenzenPage() {
                           key={tag}
                           className="text-xs px-2.5 py-1 rounded-md"
                           style={{
-                            background: "oklch(0.73 0.115 78 / 0.12)",
-                            border: "1px solid oklch(0.73 0.115 78 / 0.25)",
+                            background: "var(--accent-fill)",
+                            border: "1px solid var(--accent-border)",
                             color: "var(--brand-accent)",
                           }}
                         >

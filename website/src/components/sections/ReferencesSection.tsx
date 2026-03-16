@@ -27,7 +27,7 @@ export function ReferencesSection() {
         aria-hidden="true"
         style={{
           background:
-            "linear-gradient(115deg, transparent 0%, transparent 50%, oklch(0.38 0.12 258 / 0.5) 50%, oklch(0.38 0.12 258 / 0.5) 100%)",
+            "linear-gradient(115deg, transparent 0%, transparent 50%, var(--primary-light-dim) 50%, var(--primary-light-dim) 100%)",
         }}
       />
 
@@ -83,7 +83,7 @@ export function ReferencesSection() {
               <div
                 className="h-36 relative"
                 style={{
-                  background: "linear-gradient(135deg, oklch(0.22 0.08 258) 0%, oklch(0.32 0.12 258) 100%)",
+                  background: "linear-gradient(135deg, var(--primary-dark) 0%, var(--brand-primary-light) 100%)",
                 }}
               >
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -98,7 +98,7 @@ export function ReferencesSection() {
                     className="text-xs font-semibold px-2.5 py-0.5 rounded-full"
                     style={{
                       background: "var(--brand-accent)",
-                      color: "oklch(0.16 0.03 258)",
+                      color: "var(--on-accent)",
                     }}
                   >
                     {project.type}
@@ -128,8 +128,8 @@ export function ReferencesSection() {
                       key={tag}
                       className="text-xs px-2 py-0.5 rounded"
                       style={{
-                        background: "oklch(0.73 0.115 78 / 0.1)",
-                        border: "1px solid oklch(0.73 0.115 78 / 0.2)",
+                        background: "var(--accent-fill-sm)",
+                        border: "1px solid var(--accent-border-sm)",
                         color: "var(--brand-accent)",
                       }}
                     >

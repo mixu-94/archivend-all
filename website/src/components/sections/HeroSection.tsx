@@ -177,7 +177,7 @@ export function HeroSection() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-lg p-3 text-center"
+                  className="rounded-lg p-3 text-end"
                   style={{
                     background: "oklch(1 0 0 / 0.06)",
                     border: "1px solid oklch(1 0 0 / 0.12)",
@@ -209,14 +209,14 @@ export function HeroSection() {
           </div>
 
           {/* Right — Stats badge, floats over the image area */}
-          <div className="hidden lg:flex items-end pb-10">
+          <div className="hidden lg:flex self-end pb-4">
             <div
               className="w-full flex items-center justify-between px-5 py-4 rounded-xl backdrop-blur-sm"
               style={{
-                background: "oklch(0.27 0.096 258.5 / 0.75)",
+                background: "var(--primary-glass)",
                 border: "1px solid var(--brand-accent)",
                 boxShadow:
-                  "0 0 0 1px oklch(0.73 0.115 78 / 0.15), 0 4px 24px oklch(0 0 0 / 0.4)",
+                  "0 0 0 1px var(--accent-fill-md), 0 4px 24px oklch(0 0 0 / 0.4)",
               }}
             >
               <div className="text-center">

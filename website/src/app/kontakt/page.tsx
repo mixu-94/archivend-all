@@ -81,7 +81,7 @@ export default function KontaktPage() {
                 style={{
                   background: "var(--card)",
                   border: "1px solid oklch(1 0 0 / 0.12)",
-                  boxShadow: "0 8px 48px oklch(0.16 0.03 258 / 0.5)",
+                  boxShadow: "0 8px 48px var(--shadow-md)",
                 }}
               >
                 {/* Gold top bar */}
@@ -104,7 +104,7 @@ export default function KontaktPage() {
                     href={`tel:${COMPANY.contact.phoneClean}`}
                     className="flex items-start gap-4 p-4 rounded-xl border border-white/12 hover:border-brand-accent/50 hover:bg-white/5 transition-all group"
                   >
-                    <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0 transition-colors" style={{ background: "oklch(0.73 0.115 78 / 0.12)", border: "1px solid oklch(0.73 0.115 78 / 0.2)" }}>
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0 transition-colors" style={{ background: "var(--accent-fill)", border: "1px solid var(--accent-border-sm)" }}>
                       <Phone className="h-5 w-5 text-brand-accent" />
                     </div>
                     <div>
@@ -117,7 +117,7 @@ export default function KontaktPage() {
                     href={`mailto:${COMPANY.contact.email}`}
                     className="flex items-start gap-4 p-4 rounded-xl border border-white/12 hover:border-brand-accent/50 hover:bg-white/5 transition-all group"
                   >
-                    <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0 transition-colors" style={{ background: "oklch(0.73 0.115 78 / 0.12)", border: "1px solid oklch(0.73 0.115 78 / 0.2)" }}>
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0 transition-colors" style={{ background: "var(--accent-fill)", border: "1px solid var(--accent-border-sm)" }}>
                       <Mail className="h-5 w-5 text-brand-accent" />
                     </div>
                     <div>
@@ -132,7 +132,7 @@ export default function KontaktPage() {
                     rel="noopener noreferrer"
                     className="flex items-start gap-4 p-4 rounded-xl border border-white/12 hover:border-brand-accent/50 hover:bg-white/5 transition-all group"
                   >
-                    <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0 transition-colors" style={{ background: "oklch(0.73 0.115 78 / 0.12)", border: "1px solid oklch(0.73 0.115 78 / 0.2)" }}>
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0 transition-colors" style={{ background: "var(--accent-fill)", border: "1px solid var(--accent-border-sm)" }}>
                       <MapPin className="h-5 w-5 text-brand-accent" />
                     </div>
                     <div>
@@ -143,7 +143,7 @@ export default function KontaktPage() {
                   </a>
 
                   <div className="flex items-start gap-4 p-4 rounded-xl border border-white/12">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style={{ background: "oklch(0.73 0.115 78 / 0.12)", border: "1px solid oklch(0.73 0.115 78 / 0.2)" }}>
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style={{ background: "var(--accent-fill)", border: "1px solid var(--accent-border-sm)" }}>
                       <Clock className="h-5 w-5 text-brand-accent" />
                     </div>
                     <div>
@@ -155,7 +155,7 @@ export default function KontaktPage() {
                 </div>
               </div>
 
-              <div className="p-5 rounded-xl border border-brand-accent/30" style={{ background: "oklch(0.73 0.115 78 / 0.08)" }}>
+              <div className="p-5 rounded-xl border border-brand-accent/30" style={{ background: "var(--accent-fill-xs)" }}>
                 <p className="text-brand-accent text-xs font-semibold tracking-wider uppercase mb-2">Unser Versprechen</p>
                 <p className="text-sm text-white/80 leading-relaxed">
                   Jede Anfrage wird von uns persönlich und sorgfältig bearbeitet.

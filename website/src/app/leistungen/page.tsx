@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   },
 };
 
-const DARK = "oklch(0.16 0.03 258)";
-const DARK_MID = "oklch(0.16 0.03 258 / 0.65)";
+const DARK = "var(--on-accent)";
+const DARK_MID = "var(--on-accent-muted)";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Building2,
@@ -115,7 +115,7 @@ export default function LeistungenPage() {
                     className="bg-card rounded-2xl p-8 border border-white/10 hover:border-brand-accent/40 hover:shadow-xl transition-all duration-300 h-full scroll-mt-24"
                   >
                     <div className="flex items-start gap-5 mb-6">
-                      <div className="flex items-center justify-center w-14 h-14 rounded-xl shrink-0" style={{ background: "oklch(0.73 0.115 78 / 0.15)", border: "1px solid oklch(0.73 0.115 78 / 0.3)" }}>
+                      <div className="flex items-center justify-center w-14 h-14 rounded-xl shrink-0" style={{ background: "var(--accent-fill-md)", border: "1px solid var(--accent-border-md)" }}>
                         <Icon className="h-7 w-7 text-brand-accent" />
                       </div>
                       <div>
