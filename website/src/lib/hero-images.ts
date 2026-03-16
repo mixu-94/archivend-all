@@ -15,7 +15,11 @@ export const HERO_IMAGES: HeroImageDef[] = [
     src: "/images/hero-house.png",
     label: "Haus 1",
   },
-  // { id: "house-2", src: "/images/hero-house-2.png", label: "Haus 2" },
+  {
+    id: "house-2",
+    src: "/images/hero-house1.png",
+    label: "Haus 2",
+  },
   // { id: "house-3", src: "/images/hero-house-3.png", label: "Haus 3" },
 ];
 
