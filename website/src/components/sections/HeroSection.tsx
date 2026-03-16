@@ -1,10 +1,40 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/lib/constants";
+import {
+  HERO_IMAGES,
+  DEFAULT_HERO_IMAGE,
+  HERO_IMAGE_STORAGE_KEY,
+  HERO_IMAGE_EVENT,
+} from "@/lib/hero-images";
 
 export function HeroSection() {
+  const [heroSrc, setHeroSrc] = useState(DEFAULT_HERO_IMAGE.src);
+
+  useEffect(() => {
+    // Gespeichertes Bild laden
+    try {
+      const saved = localStorage.getItem(HERO_IMAGE_STORAGE_KEY);
+      if (saved) {
+        const img = HERO_IMAGES.find((x) => x.id === saved);
+        if (img) setHeroSrc(img.src);
+      }
+    } catch {}
+
+    // Auf Bildwechsel hören
+    const handler = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail;
+      const img = HERO_IMAGES.find((x) => x.id === id);
+      if (img) setHeroSrc(img.src);
+    };
+    window.addEventListener(HERO_IMAGE_EVENT, handler);
+    return () => window.removeEventListener(HERO_IMAGE_EVENT, handler);
+  }, []);
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-brand-primary">
       {/* Background grid pattern */}
@@ -76,7 +106,7 @@ export function HeroSection() {
         aria-hidden="true"
       >
         <Image
-          src="/images/hero-house.png"
+          src={heroSrc}
           alt=""
           fill
           className="object-cover object-center"

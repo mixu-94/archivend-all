@@ -1,7 +1,15 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Palette, X } from "lucide-react";
+import { Palette, ImageIcon, X } from "lucide-react";
+import Image from "next/image";
+import {
+  HERO_IMAGES,
+  DEFAULT_HERO_IMAGE,
+  HERO_IMAGE_STORAGE_KEY,
+  HERO_IMAGE_EVENT,
+  type HeroImageDef,
+} from "@/lib/hero-images";
 
 /* ─── Theme Definitionen ─────────────────────────────────────────────────── */
 
@@ -116,7 +124,9 @@ const STORAGE_KEY = "archivend-preview-theme";
 
 export function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
+  const [tab, setTab] = useState<"farben" | "bilder">("farben");
   const [activeId, setActiveId] = useState("schiefer-champagner");
+  const [activeImageId, setActiveImageId] = useState(DEFAULT_HERO_IMAGE.id);
 
   const applyTheme = useCallback((theme: ThemeDef) => {
     const vars = buildVars(theme);
@@ -126,13 +136,23 @@ export function ThemeSwitcher() {
     try { localStorage.setItem(STORAGE_KEY, theme.id); } catch { /* SSR */ }
   }, []);
 
-  // Gespeichertes Theme beim ersten Laden wiederherstellen
+  const applyImage = useCallback((img: HeroImageDef) => {
+    setActiveImageId(img.id);
+    try { localStorage.setItem(HERO_IMAGE_STORAGE_KEY, img.id); } catch {}
+    window.dispatchEvent(new CustomEvent(HERO_IMAGE_EVENT, { detail: img.id }));
+  }, []);
+
+  // Gespeicherte Einstellungen beim ersten Laden wiederherstellen
   useEffect(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const t = THEMES.find((x) => x.id === saved);
+      const savedTheme = localStorage.getItem(STORAGE_KEY);
+      if (savedTheme) {
+        const t = THEMES.find((x) => x.id === savedTheme);
         if (t) applyTheme(t);
+      }
+      const savedImage = localStorage.getItem(HERO_IMAGE_STORAGE_KEY);
+      if (savedImage && HERO_IMAGES.find((x) => x.id === savedImage)) {
+        setActiveImageId(savedImage);
       }
     } catch { /* SSR */ }
   }, [applyTheme]);
@@ -158,7 +178,7 @@ export function ThemeSwitcher() {
           >
             <div className="flex items-center gap-2">
               <Palette className="h-4 w-4" style={{ color: "oklch(0.83 0.07 78)" }} />
-              <span className="text-sm font-semibold text-white">Farbschema</span>
+              <span className="text-sm font-semibold text-white">Design</span>
               <span
                 className="text-[10px] px-1.5 py-0.5 rounded font-semibold tracking-wide uppercase"
                 style={{
@@ -180,56 +200,133 @@ export function ThemeSwitcher() {
             </button>
           </div>
 
-          {/* Themes Grid */}
-          <div className="p-3 grid grid-cols-3 gap-2 max-h-[420px] overflow-y-auto">
-            {THEMES.map((theme) => {
-              const isActive = activeId === theme.id;
-              const [line1, line2] = theme.name.split(" · ");
+          {/* Tabs */}
+          <div className="flex" style={{ borderBottom: "1px solid oklch(1 0 0 / 0.08)" }}>
+            {(["farben", "bilder"] as const).map((t) => {
+              const isActive = tab === t;
               return (
                 <button
-                  key={theme.id}
-                  onClick={() => applyTheme(theme)}
-                  title={theme.name}
-                  className="flex flex-col gap-1.5 rounded-xl p-1.5 transition-all duration-150 cursor-pointer"
+                  key={t}
+                  onClick={() => setTab(t)}
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold transition-colors"
                   style={{
-                    background: isActive ? "oklch(1 0 0 / 0.1)" : "transparent",
-                    border: isActive
-                      ? "1px solid oklch(1 0 0 / 0.3)"
-                      : "1px solid oklch(1 0 0 / 0.06)",
-                    outline: "none",
-                  }}
-                  onMouseEnter={e => {
-                    if (!isActive) e.currentTarget.style.background = "oklch(1 0 0 / 0.06)";
-                  }}
-                  onMouseLeave={e => {
-                    if (!isActive) e.currentTarget.style.background = "transparent";
+                    color: isActive ? "white" : "oklch(1 0 0 / 0.4)",
+                    borderBottom: isActive
+                      ? "2px solid oklch(0.83 0.07 78)"
+                      : "2px solid transparent",
+                    marginBottom: -1,
                   }}
                 >
-                  {/* Farbvorschau */}
-                  <div className="w-full rounded-md overflow-hidden flex" style={{ height: 30 }}>
-                    <div className="flex-1" style={{ background: theme.primary }} />
-                    <div className="w-[38%]" style={{ background: theme.accent }} />
-                  </div>
-
-                  {/* Name */}
-                  <div className="text-center">
-                    <p
-                      className="text-[9px] leading-none font-medium"
-                      style={{ color: isActive ? "white" : "oklch(1 0 0 / 0.55)" }}
-                    >
-                      {line1}
-                    </p>
-                    <p
-                      className="text-[8px] leading-none mt-0.5"
-                      style={{ color: isActive ? "oklch(1 0 0 / 0.7)" : "oklch(1 0 0 / 0.35)" }}
-                    >
-                      {line2}
-                    </p>
-                  </div>
+                  {t === "farben" ? (
+                    <Palette className="h-3.5 w-3.5" />
+                  ) : (
+                    <ImageIcon className="h-3.5 w-3.5" />
+                  )}
+                  {t === "farben" ? "Farben" : "Bilder"}
                 </button>
               );
             })}
           </div>
+
+          {/* Farben Tab */}
+          {tab === "farben" && (
+            <div className="p-3 grid grid-cols-3 gap-2 max-h-[380px] overflow-y-auto">
+              {THEMES.map((theme) => {
+                const isActive = activeId === theme.id;
+                const [line1, line2] = theme.name.split(" · ");
+                return (
+                  <button
+                    key={theme.id}
+                    onClick={() => applyTheme(theme)}
+                    title={theme.name}
+                    className="flex flex-col gap-1.5 rounded-xl p-1.5 transition-all duration-150 cursor-pointer"
+                    style={{
+                      background: isActive ? "oklch(1 0 0 / 0.1)" : "transparent",
+                      border: isActive
+                        ? "1px solid oklch(1 0 0 / 0.3)"
+                        : "1px solid oklch(1 0 0 / 0.06)",
+                      outline: "none",
+                    }}
+                    onMouseEnter={e => {
+                      if (!isActive) e.currentTarget.style.background = "oklch(1 0 0 / 0.06)";
+                    }}
+                    onMouseLeave={e => {
+                      if (!isActive) e.currentTarget.style.background = "transparent";
+                    }}
+                  >
+                    <div className="w-full rounded-md overflow-hidden flex" style={{ height: 30 }}>
+                      <div className="flex-1" style={{ background: theme.primary }} />
+                      <div className="w-[38%]" style={{ background: theme.accent }} />
+                    </div>
+                    <div className="text-center">
+                      <p
+                        className="text-[9px] leading-none font-medium"
+                        style={{ color: isActive ? "white" : "oklch(1 0 0 / 0.55)" }}
+                      >
+                        {line1}
+                      </p>
+                      <p
+                        className="text-[8px] leading-none mt-0.5"
+                        style={{ color: isActive ? "oklch(1 0 0 / 0.7)" : "oklch(1 0 0 / 0.35)" }}
+                      >
+                        {line2}
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Bilder Tab */}
+          {tab === "bilder" && (
+            <div className="p-3">
+              <div className="grid grid-cols-2 gap-2">
+                {HERO_IMAGES.map((img) => {
+                  const isActive = activeImageId === img.id;
+                  return (
+                    <button
+                      key={img.id}
+                      onClick={() => applyImage(img)}
+                      className="flex flex-col gap-1.5 rounded-xl p-1.5 transition-all duration-150 cursor-pointer"
+                      style={{
+                        background: isActive ? "oklch(1 0 0 / 0.1)" : "transparent",
+                        border: isActive
+                          ? "1px solid oklch(1 0 0 / 0.3)"
+                          : "1px solid oklch(1 0 0 / 0.06)",
+                        outline: "none",
+                      }}
+                      onMouseEnter={e => {
+                        if (!isActive) e.currentTarget.style.background = "oklch(1 0 0 / 0.06)";
+                      }}
+                      onMouseLeave={e => {
+                        if (!isActive) e.currentTarget.style.background = "transparent";
+                      }}
+                    >
+                      <div className="relative w-full rounded-md overflow-hidden" style={{ paddingBottom: "60%" }}>
+                        <Image
+                          src={img.src}
+                          alt={img.label}
+                          fill
+                          className="object-cover object-center"
+                          sizes="120px"
+                        />
+                      </div>
+                      <p
+                        className="text-[9px] text-center leading-none font-medium"
+                        style={{ color: isActive ? "white" : "oklch(1 0 0 / 0.5)" }}
+                      >
+                        {img.label}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="text-[10px] text-center mt-3" style={{ color: "oklch(1 0 0 / 0.25)" }}>
+                Weitere Bilder in hero-images.ts eintragen
+              </p>
+            </div>
+          )}
 
           {/* Footer */}
           <div
