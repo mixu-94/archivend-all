@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description:
       "Kontaktieren Sie Archivend GmbH in Günzburg. Wir beraten Sie persönlich zu Immobilien und Bauprojekten — kostenlos und unverbindlich.",
     url: "/kontakt",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Kontakt — Archivend GmbH" }],
+    images: [{ url: COMPANY.openGraphImage, width: 1200, height: 630, alt: "Kontakt — Archivend GmbH" }],
   },
 };
 

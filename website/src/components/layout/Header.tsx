@@ -16,12 +16,10 @@ import { cn } from "@/lib/utils";
 
 function NavItem({
   link,
-  isActive,
   className,
   onClick,
 }: {
   link: NavLink;
-  isActive: boolean;
   className: string;
   onClick?: () => void;
 }) {
@@ -94,7 +92,6 @@ export function Header() {
               <NavItem
                 key={link.href}
                 link={link}
-                isActive={isActive}
                 className={cn(
                   "px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   isActive
@@ -153,7 +150,6 @@ export function Header() {
                   <NavItem
                     key={link.href}
                     link={link}
-                    isActive={isActive}
                     className={cn(
                       "px-4 py-3 rounded-md text-base font-medium transition-colors",
                       isActive

@@ -1,99 +1,110 @@
 # Archivend GmbH — Launch-Checkliste
 
-Stand: 2026-03-05
+Stand: 2026-04-27
 
 ---
 
-## 🔴 MUSS vor Go-Live (Kritisch)
+## 🔴 Muss vor Go-Live
 
-### Konfiguration
-- [ ] `.env.local` befüllen: SMTP-Zugangsdaten (Strato/IONOS)
-- [ ] Kontaktformular live testen (E-Mail ankommen lassen)
-- [ ] `npm run build` ohne Fehler durchlaufen lassen
+### Kundendaten / Rechtliches
+- [ ] USt-IdNr. vom Kunden einholen und in `website/src/lib/constants.ts` eintragen
+- [ ] Zuständige Aufsichtsbehörde vom Kunden bestätigen lassen und in `website/src/lib/constants.ts` eintragen
+- [ ] Aussage zur Verbraucherstreitbeilegung mit dem Kunden final abstimmen
+- [ ] Datenschutzerklärung rechtlich prüfen lassen
+- [ ] Impressum final gegen die echten Firmendaten des Kunden prüfen
 
-### Rechtliches
-- [ ] USt-IdNr. in `constants.ts` eintragen (sobald bekannt)
-- [ ] Impressum final prüfen (beide HRBs ✅, EUID ✅)
-- [ ] Datenschutzerklärung durch Anwalt/Datenschutzberater prüfen lassen
+Hinweis zur USt-IdNr.:
+Eine USt-IdNr. lässt sich normalerweise nicht seriös per Firmennamen "heraussuchen". Das EU-System VIES validiert bestehende Nummern, ist aber keine öffentliche Firmensuche. Wenn der Kunde die Nummer nicht liefert, sollte sie bis zur Bestätigung nicht auf der Website veröffentlicht werden.
 
-### Technisches Minimum
-- [ ] Eigenes Favicon erstellen (`/public/favicon.ico` + `/public/favicon.svg`)
-  - Empfehlung: "A" in Navy auf Gold-Hintergrund
-- [ ] OG-Image erstellen (`/public/og-image.jpg`, 1200×630 px)
-  - Empfehlung: Logo + Tagline + Brand-Farben
-- [x] `sitemap.ts` angelegt (`src/app/sitemap.ts`)
-- [x] `robots.ts` angelegt (`src/app/robots.ts`)
+### Hosting / Betrieb
+- [ ] VPS-Zielsetup festlegen und dokumentieren
+  - Domain / DNS
+  - Webserver/Reverse Proxy (`nginx` oder vergleichbar)
+  - Node.js-Version
+  - Prozessmanager (`pm2`, `systemd` o.ä.)
+  - SSL-Zertifikat
+- [ ] Produktions-`.env` auf dem VPS setzen
+  - `SMTP_HOST`
+  - `SMTP_PORT`
+  - `SMTP_USER`
+  - `SMTP_PASS`
+  - `SMTP_FROM`
+  - `CONTACT_EMAIL`
+- [ ] Kontaktformular auf dem VPS live testen
+  - Eingangsmail an Archivend
+  - Bestätigungsmail an Absender
+  - Fehlerfall ohne SMTP prüfen
+- [ ] Deployment auf dem VPS einmal komplett durchtesten
+  - `npm install`
+  - `npm run build`
+  - `npm run start`
 
-### Deployment
-- [ ] Hosting einrichten — Vercel (empfohlen, kostenlos für Starter-Plan)
-  1. `vercel.com` Account mit GitHub verbinden
-  2. Repo `archivend-all` importieren, Root = `website/`
-  3. Env-Variablen (SMTP_*) in Vercel Dashboard eintragen
-- [ ] Domain `archivend.de` auf Vercel-DNS umstellen
-- [ ] SSL-Zertifikat (automatisch durch Vercel)
-
----
-
-## 🟡 SOLLTE baldmöglich (Qualität)
-
-### Content
-- [ ] Echte Immobilien-/Objektfotos hinzufügen (ersetzen Unsplash-Bild im Hero)
-- [ ] Teamfoto / Foto des Geschäftsführers (für /ueber-uns)
-- [ ] Eigenes Logo als SVG-Datei (ersetzt Text-Logo im Header)
-- [ ] Referenzprojekte: 2–3 abgeschlossene Projekte auf /leistungen ergänzen
-
-### SEO & Marketing
-- [ ] Google Search Console Konto anlegen
-- [ ] Sitemap bei Google einreichen (nach Go-Live)
-- [ ] Google My Business Profil anlegen/aktualisieren (Adresse Günzburg)
-- [ ] Structured Data testen: search.google.com/test/rich-results
-
-### Performance
-- [ ] Lighthouse-Audit: Ziel ≥ 90 in allen Kategorien
-- [ ] Echte Bilder als WebP/AVIF optimieren (Next.js macht das automatisch)
-- [ ] Core Web Vitals prüfen (LCP, CLS, FID)
+### Inhalte / Nachweise
+- [ ] Bildrechte für `website/public/images/hero-house.png` und `website/public/images/hero-house1.png` dokumentieren
+- [ ] Prüfen, ob alle verwendeten Fotos / Grafiken entweder Eigentum des Kunden sind oder mit ausreichender Lizenz vorliegen
+- [ ] Falls Referenzprojekte echte Kundenprojekte sind: Freigabe der Texte und Projektnennungen einholen
 
 ---
 
-## 🟢 KANN später (Erweiterungen)
+## 🟡 Bereits erledigt
 
-### Neue Features
-- [ ] **Testimonials-Sektion** auf Homepage — Kundenstimmen/Referenzen (5⭐)
-- [ ] **Google Maps** auf /kontakt einbetten (iframe mit Adresse)
-- [ ] **Referenzen/Portfolio** Unterseite mit abgeschlossenen Projekten
-- [ ] **Sitemap-Seite** im Footer ergänzen (optional)
+### Technisch
+- [x] `npm run lint` läuft ohne Fehler
+- [x] `npm run build` läuft ohne Fehler
+- [x] OG-Metadaten repariert
+- [x] Kontaktformular gibt bei fehlender SMTP-Konfiguration sauber einen Fehler zurück
+- [x] `sitemap.ts` vorhanden
+- [x] `robots.ts` vorhanden
+- [x] Favicon-Dateien vorhanden
+- [x] Open-Graph-Bild wird dynamisch über `src/app/opengraph-image.tsx` erzeugt
+- [x] Auto-Reply-Mail für Kontaktformular ist implementiert
 
-### Analytics
-- [ ] Datenschutzfreundliche Analytics einrichten
-  - Empfehlung: **Plausible** (€9/Monat, DSGVO-konform, kein Cookie-Banner nötig)
-  - Alternative: **Umami** (Self-hosted, kostenlos)
-  - NICHT: Google Analytics ohne Cookie-Banner
-
-### Immobilien-Listing
-- [x] Weiterleitung `/immobilien` → `immowo-ventures.de` (bereits implementiert)
-- [ ] Ggf. Teaser-Sektion auf Homepage mit Link zu immowo-ventures.de
-
-### Technisches
-- [ ] Rate-Limiting für Kontaktformular verbessern (Upstash Redis statt In-Memory)
-- [ ] E-Mail-Bestätigung an Absender nach Kontaktformular-Absenden
-- [ ] Barrierefreiheit-Audit (WCAG 2.1 AA)
+### Rechtliches / Inhalt
+- [x] Impressum auf `DDG` statt altes `TMG` umgestellt
+- [x] VAT-Platzhalter entfernt, solange keine bestätigte Nummer vorliegt
+- [x] Abschnitt zur Verbraucherstreitbeilegung eingebaut
+- [x] Datenschutzerklärung an den tatsächlichen Code angepasst
+  - Kontaktformular / SMTP
+  - lokale Browser-Speicherung
+  - WhatsApp-Weiterleitung
 
 ---
 
-## Verbesserungsvorschläge
+## 🟡 Sollte bald gemacht werden
 
-### Sofort (geringer Aufwand, hohe Wirkung)
-1. **Testimonials-Sektion** — 3–5 Kundenstimmen auf der Startseite steigern Vertrauen enorm
-2. **Google Maps auf Kontaktseite** — Einfaches iframe-Embed, erhöht lokales SEO und Vertrauen
-3. **Auto-Reply E-Mail** — Beim Kontaktformular bekommt der Absender eine automatische Bestätigung
+### Qualität
+- [ ] SMTP-Zugangsdaten nicht nur eintragen, sondern real mit finalem Mailserver testen
+- [ ] Spam-/Missbrauchsschutz des Kontaktformulars verbessern
+  - aktuelles Rate-Limiting ist nur In-Memory
+- [ ] 404-/Fehlerseiten im Browser kurz gegenklicken
+- [ ] Mobile QA auf echter Hardware machen
 
-### Mittelfristig (guter ROI)
-4. **Echtes Logo** — Statt "ARCHIVEND GmbH" in Text ein professionelles SVG-Logo designen lassen
-5. **Plausible Analytics** — DSGVO-konform, kein Cookie-Banner nötig, zeigt Besucherströme
-6. **Portfolio-Seite** — Konkrete Referenzen (Fotos + Kurzbeschreibung) zeigen Kompetenz und helfen SEO
-7. **Blog "Immobilien-Ratgeber"** — Artikel wie "Immobilie verkaufen in Günzburg" ranken lokal sehr gut
+### SEO / Außendarstellung
+- [ ] Search Console einrichten
+- [ ] Sitemap nach Go-Live einreichen
+- [ ] Google-Unternehmensprofil prüfen / aktualisieren
+- [ ] Lighthouse-Audit nach Deployment fahren
 
-### Langfristig (strategisch)
-8. **Immobilien-Listing integrieren** — Wenn immowo-ventures.de auf Archivend gemergt werden soll
-9. **WhatsApp Business verifizieren** — Grünes Häkchen + Geschäftsprofil = mehr Vertrauen
-10. **Video-Hero** — Kurzes Luftvideo aus der Air Fly Division als Hero-Hintergrund (einzigartig!)
+### Inhalt
+- [ ] Echtes Logo als SVG liefern lassen
+- [ ] Echte Referenzbilder / Projektbilder ergänzen
+- [ ] Teamfoto / Geschäftsführerfoto ergänzen, falls gewünscht
+
+---
+
+## 🟢 Kann später
+
+### Erweiterungen
+- [ ] Robusteres Rate-Limiting mit Redis / externer Store
+- [ ] Analytics nur datenschutzkonform ergänzen
+- [ ] Zusätzliche Referenzen-/Portfolio-Unterseite mit echten Projekten ausbauen
+- [ ] Barrierefreiheits-Audit durchführen
+- [ ] Testimonials ergänzen
+
+---
+
+## Vor Push auf `main`
+
+- [x] Review-Fixes in separatem Branch umgesetzt
+- [x] Letzte Sichtprüfung von `TODO.md` und Legal-Texten
+- [ ] Merge / Push nach `main`

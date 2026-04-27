@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     description: COMPANY.description,
     images: [
       {
-        url: "/og-image.jpg",
+        url: COMPANY.openGraphImage,
         width: 1200,
         height: 630,
         alt: `${COMPANY.name} — ${COMPANY.tagline}`,

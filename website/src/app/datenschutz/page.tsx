@@ -42,13 +42,12 @@ export default function DatenschutzPage() {
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-brand-text mb-3">2. Erhebung und Verarbeitung personenbezogener Daten</h2>
-            <h3 className="font-semibold text-brand-text mb-2">a) Beim Besuch unserer Website</h3>
+            <h2 className="text-lg font-bold text-brand-text mb-3">
+              2. Zugriff auf die Website und Server-Logfiles
+            </h2>
             <p>
-              Beim Aufrufen unserer Website werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser
-              automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden
-              temporär in einem sogenannten Logfile gespeichert. Folgende Informationen werden dabei ohne
-              Ihr Zutun erfasst und bis zur automatisierten Löschung gespeichert:
+              Beim Aufrufen unserer Website verarbeitet unser Webserver bzw. Hosting-Dienstleister
+              automatisch technische Verbindungsdaten, die für den sicheren Betrieb der Website erforderlich sind.
             </p>
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li>IP-Adresse des anfragenden Rechners</li>
@@ -58,63 +57,93 @@ export default function DatenschutzPage() {
               <li>Verwendeter Browser und ggf. das Betriebssystem Ihres Rechners</li>
             </ul>
             <p className="mt-3">
-              Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse
-              an der Bereitstellung und Sicherheit der Website).
+              Die Verarbeitung erfolgt zur Auslieferung der Website, zur Systemsicherheit sowie zur
+              Missbrauchs- und Fehleranalyse. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
             </p>
+          </div>
 
-            <h3 className="font-semibold text-brand-text mt-5 mb-2">b) Kontaktformular</h3>
+          <div>
+            <h2 className="text-lg font-bold text-brand-text mb-3">3. Kontaktformular und E-Mail-Kommunikation</h2>
             <p>
               Wenn Sie uns über das Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem
               Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten (Name, E-Mail-Adresse,
-              Telefonnummer, Interessensgebiet, Nachricht) zum Zweck der Bearbeitung der Anfrage und für den
-              Fall von Anschlussfragen bei uns gespeichert.
+              Telefonnummer, Interessensgebiet, Nachricht) verarbeitet, um Ihre Anfrage zu beantworten und die
+              weitere Kommunikation mit Ihnen durchzuführen.
             </p>
             <p className="mt-2">
-              <strong>Zweck:</strong> Bearbeitung Ihrer Kontaktanfrage und Kommunikation mit Ihnen.
+              Im Rahmen der Verarbeitung werden die Daten an unseren Website-Hoster bzw. Serverbetreiber und
+              an den für den Mailversand eingesetzten E-Mail-/SMTP-Dienst übermittelt, soweit dies technisch
+              erforderlich ist. Zusätzlich erhalten Sie nach Absenden des Formulars eine automatische
+              Eingangsbestätigung an die von Ihnen angegebene E-Mail-Adresse.
             </p>
             <p className="mt-1">
-              <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) und
-              Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch Abschicken des Formulars).
+              <strong>Rechtsgrundlagen:</strong> Art. 6 Abs. 1 lit. b DSGVO bei vertragsbezogenen oder
+              vorvertraglichen Anfragen, im Übrigen Art. 6 Abs. 1 lit. f DSGVO für die Bearbeitung allgemeiner
+              Kontaktanfragen. Die Bestätigung Ihrer Kenntnisnahme dieser Datenschutzhinweise dient der
+              transparenten Information vor dem Absenden.
             </p>
             <p className="mt-1">
               <strong>Speicherdauer:</strong> Ihre Daten werden nach abschließender Bearbeitung Ihrer Anfrage
-              gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen (i.d.R. nach 3 Jahren).
+              gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Geschäfts- und
+              steuerrechtlich relevante Kommunikation kann entsprechend der gesetzlichen Fristen länger
+              aufbewahrt werden.
             </p>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-brand-text mb-3">3. Cookies</h2>
+            <h2 className="text-lg font-bold text-brand-text mb-3">4. Lokale Speicherung im Browser</h2>
             <p>
-              Unsere Website verwendet ausschließlich technisch notwendige Cookies, die für den Betrieb der
-              Website erforderlich sind. Wir setzen keine Tracking-Cookies, keine Analyse-Cookies und keine
-              Werbe-Cookies ein. Es findet keine Weitergabe von Daten an Dritte zu Werbezwecken statt.
+              Diese Website verwendet nach aktuellem Stand keine Analyse-, Tracking- oder Werbe-Cookies.
+              Es werden jedoch Einstellungen zur Darstellung der Website im Browser gespeichert, insbesondere
+              die ausgewählte Farbvariante sowie die bevorzugte Darstellung des Hero-Bildes.
+            </p>
+            <p className="mt-2">
+              Diese Speicherung erfolgt ausschließlich zur Bereitstellung der von Ihnen gewünschten
+              Darstellungsfunktion auf Ihrem Endgerät. Rechtsgrundlage ist § 25 Abs. 2 Nr. 2 TDDDG sowie
+              Art. 6 Abs. 1 lit. f DSGVO.
             </p>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-brand-text mb-3">4. Weitergabe von Daten</h2>
+            <h2 className="text-lg font-bold text-brand-text mb-3">5. Externe Kommunikationsdienste</h2>
             <p>
-              Eine Übermittlung Ihrer persönlichen Daten an Dritte zu anderen als den im Folgenden aufgeführten
-              Zwecken findet nicht statt. Wir geben Ihre persönlichen Daten nur an Dritte weiter, wenn:
+              Auf unserer Website ist eine Schaltfläche zur Kontaktaufnahme über WhatsApp eingebunden.
+              Wenn Sie diese Schaltfläche anklicken, verlassen Sie unsere Website und werden zu WhatsApp
+              bzw. einem Dienst der Meta-Unternehmensgruppe weitergeleitet. Dabei können personenbezogene
+              Daten, insbesondere Ihre IP-Adresse und Nutzungsdaten, durch den jeweiligen Anbieter verarbeitet
+              werden.
             </p>
-            <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>Sie Ihre nach Art. 6 Abs. 1 lit. a DSGVO ausdrückliche Einwilligung dazu erteilt haben,</li>
-              <li>die Weitergabe nach Art. 6 Abs. 1 lit. f DSGVO zur Wahrung berechtigter Interessen zulässig ist,</li>
-              <li>für die Weitergabe nach Art. 6 Abs. 1 lit. c DSGVO eine gesetzliche Verpflichtung besteht.</li>
-            </ul>
+            <p className="mt-2">
+              Für die weitere Datenverarbeitung durch WhatsApp ist ausschließlich deren Anbieter verantwortlich.
+              Bitte beachten Sie die Datenschutzhinweise von WhatsApp, bevor Sie diesen Kommunikationsweg nutzen.
+            </p>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-brand-text mb-3">5. Hosting</h2>
+            <h2 className="text-lg font-bold text-brand-text mb-3">6. Empfänger und Weitergabe von Daten</h2>
             <p>
-              Diese Website wird bei einem deutschen bzw. europäischen Hosting-Anbieter gehostet. Die Verarbeitung
-              erfolgt ausschließlich innerhalb der Europäischen Union. Mit dem Hosting-Anbieter besteht ein
-              Auftragsverarbeitungsvertrag (AVV) gemäß Art. 28 DSGVO.
+              Eine Weitergabe personenbezogener Daten erfolgt nur, soweit dies für den Betrieb der Website,
+              die Bearbeitung Ihrer Anfrage oder zur Erfüllung gesetzlicher Pflichten erforderlich ist. Empfänger
+              können insbesondere Hosting-Dienstleister, Serverbetreiber, E-Mail-/SMTP-Dienstleister und
+              IT-Dienstleister sein, die wir im Rahmen einer Auftragsverarbeitung einsetzen.
+            </p>
+            <p className="mt-2">
+              Eine Übermittlung zu Werbezwecken oder ein Verkauf personenbezogener Daten findet nicht statt.
             </p>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-brand-text mb-3">6. Ihre Rechte</h2>
+            <h2 className="text-lg font-bold text-brand-text mb-3">7. Hosting</h2>
+            <p>
+              Unsere Website wird auf einem von uns genutzten Server bzw. bei einem beauftragten Hosting-Anbieter
+              betrieben. Dabei werden die für den Betrieb der Website erforderlichen Daten verarbeitet. Sofern mit
+              externen Dienstleistern personenbezogene Daten in unserem Auftrag verarbeitet werden, erfolgt dies auf
+              Grundlage eines Vertrags zur Auftragsverarbeitung gemäß Art. 28 DSGVO.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-brand-text mb-3">8. Ihre Rechte</h2>
             <p>Sie haben das Recht:</p>
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li>gemäß Art. 15 DSGVO Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen,</li>
@@ -122,13 +151,13 @@ export default function DatenschutzPage() {
               <li>gemäß Art. 17 DSGVO die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen,</li>
               <li>gemäß Art. 18 DSGVO die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen,</li>
               <li>gemäß Art. 20 DSGVO Ihre personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten,</li>
-              <li>gemäß Art. 7 Abs. 3 DSGVO Ihre einmal erteilte Einwilligung jederzeit gegenüber uns zu widerrufen,</li>
+              <li>gemäß Art. 7 Abs. 3 DSGVO eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft zu widerrufen, soweit eine Verarbeitung auf Einwilligung beruht,</li>
               <li>gemäß Art. 77 DSGVO sich bei einer Aufsichtsbehörde zu beschweren.</li>
             </ul>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-brand-text mb-3">7. Widerspruchsrecht</h2>
+            <h2 className="text-lg font-bold text-brand-text mb-3">9. Widerspruchsrecht</h2>
             <p>
               Sofern Ihre personenbezogenen Daten auf Grundlage von berechtigten Interessen gemäß Art. 6 Abs. 1
               lit. f DSGVO verarbeitet werden, haben Sie das Recht, gemäß Art. 21 DSGVO Widerspruch gegen die
@@ -137,16 +166,16 @@ export default function DatenschutzPage() {
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-brand-text mb-3">8. Datensicherheit</h2>
+            <h2 className="text-lg font-bold text-brand-text mb-3">10. Datensicherheit</h2>
             <p>
-              Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren (Secure Socket Layer)
-              in Verbindung mit der jeweils höchsten Verschlüsselungsstufe, die von Ihrem Browser unterstützt
-              wird. Die Übertragung Ihrer Daten über das Kontaktformular erfolgt verschlüsselt.
+              Wir setzen technische und organisatorische Sicherheitsmaßnahmen ein, um Ihre Daten gegen zufällige
+              oder vorsätzliche Manipulationen, Verlust, Zerstörung oder gegen den unbefugten Zugriff Dritter
+              zu schützen. Die Übertragung der Website erfolgt verschlüsselt.
             </p>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-brand-text mb-3">9. Kontakt bei Datenschutzfragen</h2>
+            <h2 className="text-lg font-bold text-brand-text mb-3">11. Kontakt bei Datenschutzfragen</h2>
             <p>
               Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten sowie bei
               Auskunfts-, Berichtigungs-, Sperrung- oder Löschungswünschen wenden Sie sich bitte an:
@@ -159,6 +188,14 @@ export default function DatenschutzPage() {
               <a href={`mailto:${COMPANY.contact.email}`} className="text-brand-primary hover:underline">
                 {COMPANY.contact.email}
               </a>
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-brand-text mb-3">12. Stand und Aktualisierung</h2>
+            <p>
+              Diese Datenschutzerklärung gilt für den aktuellen Stand dieser Website. Bei technischen oder
+              rechtlichen Änderungen passen wir die Datenschutzhinweise entsprechend an.
             </p>
           </div>
 

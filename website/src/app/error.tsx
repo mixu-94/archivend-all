@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { AlertTriangle, RefreshCw, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -45,10 +46,10 @@ export default function Error({
             Seite neu laden
           </Button>
           <Button asChild size="lg" variant="outline">
-            <a href="/">
+            <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Zur Startseite
-            </a>
+            </Link>
           </Button>
         </div>
       </div>

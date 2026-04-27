@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
-import { SERVICES } from "@/lib/constants";
+import { COMPANY, SERVICES } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       "Professionelle Immobiliendienstleistungen in Günzburg und der Region: Bauprojektservices, Vertragsvermittlung, Immobilienhandel, Gutachten, Verkaufsorganisation und Immobilienbewertung.",
     url: "/leistungen",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Leistungen — Archivend GmbH" }],
+    images: [{ url: COMPANY.openGraphImage, width: 1200, height: 630, alt: "Leistungen — Archivend GmbH" }],
   },
 };
 

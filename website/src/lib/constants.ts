@@ -25,6 +25,7 @@ export const COMPANY = {
     email: "info@archivend.de",
   },
   website: "https://archivend.de",
+  openGraphImage: "/opengraph-image",
   legalRepresentative: "Johannes Wopfner",
   foundedYear: 2015,
   registrationCourts: [
@@ -36,7 +37,13 @@ export const COMPANY = {
   /** @deprecated Verwende registrationCourts */
   registrationNumber: "HRB 20920",
   euid: "DED2505V.HRB20920",
-  vatId: "", // USt-IdNr. eintragen
+  vatId: "",
+  supervisoryAuthority: "",
+  consumerDisputeResolution: {
+    participates: false,
+    statement:
+      "Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
+  },
   businessPurpose:
     "Erwerb, Veräußerung und Vermietung von Grundstücken und Gebäuden; Immobilienmakler- und Bauträgertätigkeiten; Erbringung von Dienstleistungen rund um Immobilien und Bauvorhaben.",
 } as const;

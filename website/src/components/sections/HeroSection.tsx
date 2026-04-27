@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/lib/constants";
@@ -15,21 +15,28 @@ import {
 } from "@/lib/hero-images";
 
 export function HeroSection() {
-  const [heroSrc, setHeroSrc] = useState(DEFAULT_HERO_IMAGE.src);
+  const [heroSrc, setHeroSrc] = useState(() => {
+    if (typeof window === "undefined") return DEFAULT_HERO_IMAGE.src;
 
-  useEffect(() => {
-    // Gespeichertes Bild laden
     try {
       const saved = localStorage.getItem(HERO_IMAGE_STORAGE_KEY);
-      if (saved) {
-        const img = HERO_IMAGES.find((x) => x.id === saved);
-        if (img) setHeroSrc(img.src);
-      }
+      if (saved === HERO_IMAGE_HIDDEN_ID) return HERO_IMAGE_HIDDEN_ID;
+
+      const image = HERO_IMAGES.find((item) => item.id === saved);
+      if (image) return image.src;
     } catch {}
 
-    // Auf Bildwechsel hören
+    return DEFAULT_HERO_IMAGE.src;
+  });
+
+  useEffect(() => {
     const handler = (e: Event) => {
       const id = (e as CustomEvent<string>).detail;
+      if (id === HERO_IMAGE_HIDDEN_ID) {
+        setHeroSrc(HERO_IMAGE_HIDDEN_ID);
+        return;
+      }
+
       const img = HERO_IMAGES.find((x) => x.id === id);
       if (img) setHeroSrc(img.src);
     };

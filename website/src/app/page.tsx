@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: `${COMPANY.name} — ${COMPANY.tagline}`,
     description: COMPANY.description,
     url: "/",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: COMPANY.name }],
+    images: [{ url: COMPANY.openGraphImage, width: 1200, height: 630, alt: COMPANY.name }],
   },
 };
 

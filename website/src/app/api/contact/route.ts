@@ -30,6 +30,22 @@ interface ContactFormData {
 const sanitize = (s: string) => s.replace(/<[^>]*>/g, "").trim();
 
 export async function POST(request: NextRequest) {
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+  const smtpFrom = process.env.SMTP_FROM ?? smtpUser;
+  const contactEmail = process.env.CONTACT_EMAIL ?? smtpUser;
+
+  if (!smtpUser || !smtpPass || !smtpFrom || !contactEmail) {
+    console.error("Mail send error: SMTP environment variables are incomplete.");
+    return NextResponse.json(
+      {
+        error:
+          "Das Kontaktformular ist derzeit nicht vollständig eingerichtet. Bitte kontaktieren Sie uns direkt per Telefon oder E-Mail.",
+      },
+      { status: 503 }
+    );
+  }
+
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
 
@@ -86,8 +102,8 @@ export async function POST(request: NextRequest) {
     port: Number(process.env.SMTP_PORT ?? 587),
     secure: false,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: smtpUser,
+      pass: smtpPass,
     },
     tls: { rejectUnauthorized: true },
   });
@@ -168,16 +184,16 @@ export async function POST(request: NextRequest) {
 
   try {
     await transporter.sendMail({
-      from: `"Archivend Website" <${process.env.SMTP_FROM ?? process.env.SMTP_USER}>`,
+      from: `"Archivend Website" <${smtpFrom}>`,
       replyTo: `"${safeName}" <${safeEmail}>`,
-      to: process.env.CONTACT_EMAIL ?? process.env.SMTP_USER,
+      to: contactEmail,
       subject,
       text,
       html,
     });
 
     await transporter.sendMail({
-      from: `"Archivend GmbH" <${process.env.SMTP_FROM ?? process.env.SMTP_USER}>`,
+      from: `"Archivend GmbH" <${smtpFrom}>`,
       to: `"${safeName}" <${safeEmail}>`,
       subject: `Ihre Anfrage bei Archivend GmbH — ${safeInterest}`,
       text: confirmationText,

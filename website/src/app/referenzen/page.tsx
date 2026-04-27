@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description:
       "Abgeschlossene Bauprojekte und Immobilien-Referenzen der Archivend GmbH. Neubau, Sanierung und Projektentwicklung in Bayern.",
     url: "/referenzen",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Referenzen — Archivend GmbH" }],
+    images: [{ url: COMPANY.openGraphImage, width: 1200, height: 630, alt: "Referenzen — Archivend GmbH" }],
   },
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Palette, ImageIcon, EyeOff, Eye, X } from "lucide-react";
 import Image from "next/image";
 import {
@@ -148,40 +148,62 @@ function buildVars(t: ThemeDef): Record<string, string> {
 
 const STORAGE_KEY = "archivend-preview-theme";
 
+function getInitialThemeId() {
+  if (typeof window === "undefined") return "schiefer-champagner";
+
+  try {
+    const savedTheme = localStorage.getItem(STORAGE_KEY);
+    if (savedTheme && THEMES.some((theme) => theme.id === savedTheme)) {
+      return savedTheme;
+    }
+  } catch {}
+
+  return "schiefer-champagner";
+}
+
+function getInitialImageId() {
+  if (typeof window === "undefined") return DEFAULT_HERO_IMAGE.id;
+
+  try {
+    const savedImage = localStorage.getItem(HERO_IMAGE_STORAGE_KEY);
+    if (
+      savedImage === HERO_IMAGE_HIDDEN_ID ||
+      HERO_IMAGES.some((image) => image.id === savedImage)
+    ) {
+      return savedImage;
+    }
+  } catch {}
+
+  return DEFAULT_HERO_IMAGE.id;
+}
+
 export function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<"farben" | "bilder">("farben");
-  const [activeId, setActiveId] = useState("schiefer-champagner");
-  const [activeImageId, setActiveImageId] = useState(DEFAULT_HERO_IMAGE.id);
+  const [activeId, setActiveId] = useState(getInitialThemeId);
+  const [activeImageId, setActiveImageId] = useState(getInitialImageId);
 
-  const applyTheme = useCallback((theme: ThemeDef) => {
-    const vars = buildVars(theme);
-    const root = document.documentElement;
-    Object.entries(vars).forEach(([k, v]) => root.style.setProperty(k, v));
+  function applyTheme(theme: ThemeDef) {
     setActiveId(theme.id);
-    try { localStorage.setItem(STORAGE_KEY, theme.id); } catch { /* SSR */ }
-  }, []);
+  }
 
-  const applyImage = useCallback((img: HeroImageDef) => {
+  function applyImage(img: HeroImageDef) {
     setActiveImageId(img.id);
     try { localStorage.setItem(HERO_IMAGE_STORAGE_KEY, img.id); } catch {}
     window.dispatchEvent(new CustomEvent(HERO_IMAGE_EVENT, { detail: img.id }));
-  }, []);
+  }
 
-  // Gespeicherte Einstellungen beim ersten Laden wiederherstellen
   useEffect(() => {
+    const theme = THEMES.find((item) => item.id === activeId) ?? THEMES[0];
+    const vars = buildVars(theme);
+    const root = document.documentElement;
+
+    Object.entries(vars).forEach(([key, value]) => root.style.setProperty(key, value));
+
     try {
-      const savedTheme = localStorage.getItem(STORAGE_KEY);
-      if (savedTheme) {
-        const t = THEMES.find((x) => x.id === savedTheme);
-        if (t) applyTheme(t);
-      }
-      const savedImage = localStorage.getItem(HERO_IMAGE_STORAGE_KEY);
-      if (savedImage && HERO_IMAGES.find((x) => x.id === savedImage)) {
-        setActiveImageId(savedImage);
-      }
-    } catch { /* SSR */ }
-  }, [applyTheme]);
+      localStorage.setItem(STORAGE_KEY, theme.id);
+    } catch {}
+  }, [activeId]);
 
   return (
     <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3 select-none">

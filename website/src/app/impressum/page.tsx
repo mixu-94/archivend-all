@@ -3,7 +3,7 @@ import { COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Impressum",
-  description: "Impressum der Archivend GmbH gemäß §5 TMG.",
+  description: "Impressum der Archivend GmbH gemäß § 5 DDG.",
   robots: { index: false, follow: false },
   alternates: { canonical: "/impressum" },
 };
@@ -13,7 +13,7 @@ export default function ImpressumPage() {
     <section className="py-16 md:py-24 bg-background min-h-screen">
       <div className="container mx-auto px-6 md:px-10 max-w-3xl">
         <h1 className="text-3xl md:text-4xl font-bold text-brand-text mb-2 tracking-tight">Impressum</h1>
-        <p className="text-brand-text-muted mb-10 text-sm">Angaben gemäß §5 TMG</p>
+        <p className="text-brand-text-muted mb-10 text-sm">Angaben gemäß § 5 DDG</p>
 
         <div className="space-y-8 text-brand-text-muted text-sm leading-relaxed">
           <div>
@@ -53,19 +53,28 @@ export default function ImpressumPage() {
             <p className="mt-1">EUID: {COMPANY.euid}</p>
           </div>
 
+          {COMPANY.supervisoryAuthority && (
+            <div>
+              <h2 className="text-lg font-bold text-brand-text mb-3">Zuständige Aufsichtsbehörde</h2>
+              <p>{COMPANY.supervisoryAuthority}</p>
+            </div>
+          )}
+
           <div>
             <h2 className="text-lg font-bold text-brand-text mb-3">Unternehmensgegenstand</h2>
             <p>{COMPANY.businessPurpose}</p>
           </div>
 
+          {COMPANY.vatId && (
+            <div>
+              <h2 className="text-lg font-bold text-brand-text mb-3">Umsatzsteuer-Identifikationsnummer</h2>
+              <p>Gemäß § 27a UStG: {COMPANY.vatId}</p>
+            </div>
+          )}
+
           <div>
-            <h2 className="text-lg font-bold text-brand-text mb-3">Umsatzsteuer-Identifikationsnummer</h2>
-            <p>
-              Gemäß §27a UStG:{" "}
-              {COMPANY.vatId
-                ? COMPANY.vatId
-                : <span className="italic text-brand-text-muted/60">[wird nachgetragen]</span>}
-            </p>
+            <h2 className="text-lg font-bold text-brand-text mb-3">Verbraucherstreitbeilegung</h2>
+            <p>{COMPANY.consumerDisputeResolution.statement}</p>
           </div>
 
           <hr className="border-border" />
@@ -73,9 +82,9 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-lg font-bold text-brand-text mb-3">Haftung für Inhalte</h2>
             <p>
-              Als Diensteanbieter sind wir gemäß §7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
-              allgemeinen Gesetzen verantwortlich. Nach §§8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
-              verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+              Als Diensteanbieter sind wir gemäß den allgemeinen Gesetzen für eigene Inhalte auf diesen Seiten
+              verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
+              Informationen zu überwachen oder nach Umständen
               zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
             </p>
             <p className="mt-3">

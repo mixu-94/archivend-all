@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Lernen Sie Archivend GmbH kennen — Ihr kompetenter Partner für Immobilien und Bauprojekte in Günzburg. Seit 2015 stehen wir für Kompetenz, Transparenz und ganzheitlichen Service.",
     url: "/ueber-uns",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Archivend GmbH — Über uns" }],
+    images: [{ url: COMPANY.openGraphImage, width: 1200, height: 630, alt: "Archivend GmbH — Über uns" }],
   },
 };
 
